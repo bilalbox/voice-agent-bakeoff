@@ -1,0 +1,23 @@
+{
+  "name": "@applianceops/contracts",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
+  "exports": {
+    ".": "./src/index.ts",
+    "./tools": "./src/tools.ts",
+    "./policies": "./src/policies.ts"
+  },
+  "scripts": {
+    "build:schemas": "tsx scripts/export-json-schemas.ts"
+  },
+  "dependencies": {
+    "zod": "^3.24.2"
+  },
+  "devDependencies": {
+    "typescript": "^5.8.2",
+    "tsx": "^4.19.3"
+  }
+}

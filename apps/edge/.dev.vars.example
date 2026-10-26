@@ -1,0 +1,15 @@
+# Copy to .dev.vars for local wrangler dev
+RETELL_API_KEY=
+# Set to false for local curl without signatures
+RETELL_VERIFY=false
+SEED_TOKEN=dev-seed-token
+DEMO_VOICE_TOKEN=dev-seed-token
+WORKIZ_MODE=mock
+# WORKIZ_BASE_URL=https://api.workiz.com
+# WORKIZ_API_TOKEN=
+MOCK_PAGE_DELAY_MS=400
+
+# LiveKit Cloud Credentials (from cloud.livekit.io -> Settings -> Keys)
+LIVEKIT_API_KEY=
+LIVEKIT_API_SECRET=
+LIVEKIT_WS_URL=wss://demo1-fhb0ecf7.livekit.cloud

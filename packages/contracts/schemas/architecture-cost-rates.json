@@ -1,0 +1,22 @@
+{
+  "retell": {
+    "base_per_audio_minute": 0.095,
+    "per_tool_execution": 0.005
+  },
+  "livekit": {
+    "stt_nova3_per_min": 0.005,
+    "tts_inworld_flash_per_1k_chars": 0.024,
+    "llm_gpt6_luna_prompt_per_1m": 0.3,
+    "llm_gpt6_luna_completion_per_1m": 1.2,
+    "livekit_cloud_per_min": 0.004,
+    "avg_per_minute": 0.061
+  },
+  "cloudflare": {
+    "stt_flux_per_min": 0.007,
+    "tts_aura2_per_1k_chars": 0.025,
+    "llm_deepseek_flash_prompt_per_1m": 0.14,
+    "llm_deepseek_flash_completion_per_1m": 0.28,
+    "durable_object_gb_sec": 0.0000125,
+    "avg_per_minute": 0.024
+  }
+}

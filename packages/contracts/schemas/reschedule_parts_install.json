@@ -1,0 +1,24 @@
+{
+  "$ref": "#/definitions/reschedule_parts_install",
+  "definitions": {
+    "reschedule_parts_install": {
+      "type": "object",
+      "properties": {
+        "job_id": {
+          "type": "string",
+          "description": "Workiz / ApplianceOps job id (e.g. 1042)."
+        },
+        "preferred_date": {
+          "type": "string",
+          "description": "Desired install date or datetime in ISO-8601."
+        }
+      },
+      "required": [
+        "job_id",
+        "preferred_date"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "$schema": "http://json-schema.org/draft-07/schema#"
+}

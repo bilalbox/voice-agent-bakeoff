@@ -1,0 +1,24 @@
+{
+  "$ref": "#/definitions/lookup_job",
+  "definitions": {
+    "lookup_job": {
+      "type": "object",
+      "properties": {
+        "phone": {
+          "type": "string",
+          "description": "Account phone number (e.g. +15550108800 or spoken digits). Used to locate active jobs."
+        },
+        "customer_name": {
+          "type": "string",
+          "description": "Optional caller name on the account to assist lookup."
+        },
+        "job_id": {
+          "type": "string",
+          "description": "Optional job ID if verifying a specific appointment."
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "$schema": "http://json-schema.org/draft-07/schema#"
+}

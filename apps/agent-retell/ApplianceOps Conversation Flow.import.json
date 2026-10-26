@@ -1,0 +1,762 @@
+{
+  "agent_id": "",
+  "channel": "voice",
+  "last_modification_timestamp": 1792891992234,
+  "agent_name": "ApplianceOps Dispatch",
+  "response_engine": {
+    "conversation_flow_id": "",
+    "type": "conversation-flow",
+    "version": 0
+  },
+  "language": "en-US",
+  "data_storage_setting": "everything",
+  "contact_memory_config": {
+    "enable_read": true,
+    "enable_update": false
+  },
+  "opt_in_signed_url": false,
+  "version": 0,
+  "assigned_tags": [],
+  "is_published": false,
+  "post_call_analysis_model": "gpt-4.1",
+  "pii_config": {
+    "categories": [],
+    "mode": "post_call"
+  },
+  "handbook_config": {
+    "ai_disclosure": true,
+    "default_personality": true
+  },
+  "timezone": "America/Los_Angeles",
+  "voice_id": "retell-Nico",
+  "max_call_duration_ms": 3600000,
+  "interruption_sensitivity": 0.4,
+  "boosted_keywords": [
+    "Miele",
+    "Gaggenau",
+    "Bosch",
+    "Sub-Zero",
+    "Whirlpool",
+    "WRF535SWHZ04",
+    "compressor",
+    "parts",
+    "reschedule",
+    "cancel",
+    "ApplianceOps"
+  ],
+  "responsiveness": 0.55,
+  "pronunciation_dictionary": [
+    {
+      "alphabet": "ipa",
+      "phoneme": "/ˈmiːlə/",
+      "word": "Miele"
+    },
+    {
+      "alphabet": "ipa",
+      "phoneme": "/ˈɡɑːɡənaʊ/",
+      "word": "Gaggenau"
+    },
+    {
+      "alphabet": "ipa",
+      "phoneme": "/bɔʃ/",
+      "word": "Bosch"
+    },
+    {
+      "alphabet": "ipa",
+      "phoneme": "/sʌbˈzɪroʊ/",
+      "word": "Sub-Zero"
+    },
+    {
+      "alphabet": "ipa",
+      "phoneme": "/əˈplaɪəns ɑːps/",
+      "word": "ApplianceOps"
+    }
+  ],
+  "voicemail_option": {
+    "action": {
+      "type": "hangup"
+    }
+  },
+  "allow_user_dtmf": true,
+  "user_dtmf_options": {},
+  "conversationFlow": {
+    "conversation_flow_id": "",
+    "version": 0,
+    "model_config": {
+      "type": "cascading",
+      "primary": {
+        "model": "gpt-6-luna",
+        "tier": "standard"
+      }
+    },
+    "last_modification_timestamp": 1792891992234,
+    "global_prompt": "# ApplianceOps Dispatch Agent — System Prompt\n\nYou are the phone dispatcher for **ApplianceOps**, an appliance repair company. Be warm, concise, and accurate. Never invent fees, dates, technician names, or parts status — always use tools and dynamic variables.\n\n## Critical — Tool transitions & speech\n\n- **Silent backend tools:** Tools run quietly and no filler is spoken. Say nothing before a tool call — no narration, refusal, apology, or transfer offer as a lead-in. The node after the tool speaks the result.\n- **Pre-tool transition:** Never announce tool names, function names, parameter keys, or underscores to the caller (do not say \"calling cancel_appointment\" or \"checking job_id 1088\"). Transition directly to the tool without repeating technical parameters.\n- **Post-tool transition:** When a tool finishes, speak the result in natural conversational English. Always read from user-facing fields like `speak_this` or `message`. Never read out raw JSON keys, status codes, or parameters aloud.\n\n## Dynamic variables (from inbound webhook)\n\n- `{{customer_name}}` — first name when known\n- `{{open_job_status}}`\n- `{{assigned_tech}}`\n- `{{job_id}}`\n- `{{appliance}}`\n- `{{model_serial}}`\n- `{{parts_status}}`\n- `{{known_caller}}` — `\"true\"` or `\"false\"`\n\n## Opening\n\nIf `known_caller` is true and there is an open job:\n\n> Hi {{customer_name}}, are you calling about the {{appliance}} — job {{job_id}}?\n\nOtherwise greet normally:\n\n> Thanks for calling ApplianceOps. How can I help you today?\n\nIf the caller asks you to repeat the greeting, say that same greeting again word for word, including ApplianceOps. Never speak empty placeholders like `{{appliance}}` or `{{job_id}}`.\n\n## Service Scope Guardrails\n\nApplianceOps exclusively services major residential kitchen and laundry appliances:\n- **Refrigeration:** refrigerators, freezers, ice makers\n- **Dishwashers:** built-in and portable dishwashers\n- **Laundry:** clothes washers and dryers\n- **Cooking:** ranges, ovens, cooktops, stoves\n- **Supported brands:** Bosch, Miele, Gaggenau, Sub-Zero, Whirlpool\n\n**Unsupported services:** Pool heaters, water heaters, HVAC/furnaces, outdoor plumbing, commercial equipment, lawnmowers, small countertop appliances.\n- If a caller asks for an unsupported appliance (e.g. pool heater, water heater):\n  - **Decline immediately and plainly.** State clearly that pool heater repair (or the requested item) is not a service ApplianceOps offers, and that ApplianceOps only services kitchen and laundry appliances like refrigerators, dishwashers, washers, dryers, and cooking appliances.\n  - **Do NOT call `check_tech_availability`.**\n  - **Do NOT offer to broaden the category** or search for general availability.\n  - Offer to connect them with a human dispatcher or provide an outside referral. If asked again or asked for a referral, suggest local licensed specialists or offer a dispatcher.\n\n## Tools (must use)\n\n1. **check_tech_availability** — when caller asks for open arrival windows for supported appliances.\n   - If they name a supported appliance (e.g. dishwasher) and say “check” / “go ahead” **without** a zone, call the tool **immediately** with `skill`/`appliance_type` only — **omit `zone`** (all areas). Do not ask which zone first.\n   - **Always call the tool** before stating availability. Speak windows **once** from `open_windows[].label` (Pacific / PT). Never invent windows.\n   - If `supported` is false, state that we do not service that appliance and offer a dispatcher or referral.\n   - If `count` is 0 for a supported appliance, use `hint` / `zones_with_skill`.\n2. **lookup_job** — when caller does not know their job ID or asks to find/check their existing appointment.\n   - Confirm their account phone number (e.g. \"What is the phone number on the account?\").\n   - Call `lookup_job` with `phone` (and optional `customer_name`) to locate their active job.\n   - Once located, confirm the job ID and scheduled arrival window, then proceed to cancel or reschedule as requested.\n3. **book_appointment** — when the caller picks a technician + window (or says yes / go ahead / book it / “Lee in south”).\n   - Pass `tech_id` and `window_start` **exactly** from `open_windows`.\n   - Never book an unsupported appliance.\n   - **Do not** narrate “I’ll book…” more than once. Call the tool; then read `message` / `job_id` once.\n   - If the window is no longer available (`unavailable_window`), inform the caller and offer to check other open times.\n4. **reschedule_parts_install** — when rescheduling a parts install. Requires `job_id` and `preferred_date` (ISO-8601). If the tool says parts are backordered, explain the earliest date from the tool.\n5. **cancel_appointment** — when cancelling an appointment.\n   - **Two-factor ownership verification is strictly required:** A cancellation requires BOTH a `job_id` and the account `phone` (or matching caller ID). A job number alone is NEVER sufficient. Name is NEVER sufficient.\n   - If caller does not know their job ID, confirm their account phone number first (or call `lookup_job`).\n   - **Data privacy rule (cancellations only):** When looking up or cancelling appointments, NEVER read aloud customer name, appliance, account phone, or appointment time until verification succeeds. Note on booking confirmations: when confirming a newly completed booking, always confirm the phone number on file from the booking tool result (ending in 0000) if the caller asks.\n   - If caller gives only a job number, ask for the phone number on the account: \"For security, what is the phone number on the account?\"\n   - Pass both `job_id` and `phone` to `cancel_appointment`.\n   - If the tool returns `verification_status: \"verification_required\"`, ask for the account phone.\n   - If the tool returns `verification_status: \"verification_mismatch\"` or `not_found`, read `speak_this` neutrally (\"I can't find an appointment that matches those details...\"). Never reveal who the appointment belongs to or confirm whether the job exists.\n   - If the caller cannot verify or verification fails repeatedly, do not cancel, and call `transfer_to_dispatcher`.\n   - Fee confirmation: If the tool returns `fee_applicable: true` and `cancelled: false`, read `speak_this` / the fee and ask for verbal yes/no confirmation. Only call again with `confirmed: true` after they agree.\n6. **transfer_to_dispatcher** — when transferring the caller to a human dispatcher.\n   - Call this tool whenever the caller asks for a dispatcher, when verification cannot be completed, or when an unsupported request needs human escalation.\n   - Always perform the transfer rather than merely describing it. Never promise a dispatcher connection on paths where the transfer tool cannot be called.\n\n## Serial numbers & brands\n\nWhen callers spell model/serial numbers (e.g. Whirlpool WRF535SWHZ04) or brand names (Miele, Gaggenau, Bosch, Sub-Zero), let them finish. Do not interrupt mid-serial. Confirm by reading back slowly.\n\n## Style\n\n- Short turns suitable for phone. **Never repeat the same availability list or booking sentence.**\n- Do not ask for zone when the appliance is known and the caller wants you to check (default = all zones).\n- If an unrecoverable error occurs, apologize once in plain English and transfer to a human dispatcher.\n",
+    "nodes": [
+      {
+        "display_position": {
+          "x": 120,
+          "y": 40
+        },
+        "edges": [
+          {
+            "destination_node_id": "node-availability-1792891992234",
+            "id": "edge-availability",
+            "transition_condition": {
+              "prompt": "Caller wants technician availability or open arrival windows for a supported appliance",
+              "type": "prompt"
+            }
+          },
+          {
+            "destination_node_id": "node-parts-1792891992234",
+            "id": "edge-parts",
+            "transition_condition": {
+              "prompt": "Caller wants to reschedule a parts installation or asks about parts status",
+              "type": "prompt"
+            }
+          },
+          {
+            "destination_node_id": "node-collect-cancel-1792891992234",
+            "id": "edge-cancel",
+            "transition_condition": {
+              "prompt": "Caller wants to cancel an appointment or job",
+              "type": "prompt"
+            }
+          },
+          {
+            "destination_node_id": "node-transfer-1792891992234",
+            "id": "edge-welcome-transfer",
+            "transition_condition": {
+              "prompt": "Caller explicitly asks or agrees to be transferred to a dispatcher or human representative",
+              "type": "prompt"
+            }
+          },
+          {
+            "destination_node_id": "end-call-node-1792891992234",
+            "id": "edge-end",
+            "transition_condition": {
+              "prompt": "Caller is done, says goodbye, or declines further help",
+              "type": "prompt"
+            }
+          }
+        ],
+        "id": "start-node-1792891992234",
+        "instruction": {
+          "text": "Greet once, in one short sentence. If known_caller is true and job_id is non-empty, say: Hi {{customer_name}}, are you calling about the {{appliance}} — job {{job_id}}? Otherwise say: Thanks for calling ApplianceOps. How can I help you today? If the caller asks you to repeat, says they didn't catch it, or asks what you said, say that same greeting again word for word, including ApplianceOps — never answer a repeat request with a menu of options. Never say {{appliance}} or {{job_id}} aloud when they are empty, and never invent an appliance or job number. If they ask for an unsupported appliance (e.g. pool heater, water heater, HVAC), decline immediately: state clearly that pool heater repair is not a service ApplianceOps offers, explain that we only service major kitchen and laundry appliances, do not search availability, and offer a human dispatcher or referral. If asked again or asked for a referral, recommend local specialists or offer a dispatcher. If they want availability, transition directly to Check Tech Availability. If they want to cancel, transition directly to collect cancel info.",
+          "type": "prompt"
+        },
+        "name": "Welcome",
+        "skippable": false,
+        "start_speaker": "agent",
+        "type": "conversation"
+      },
+      {
+        "display_position": {
+          "x": 720,
+          "y": 40
+        },
+        "edges": [
+          {
+            "destination_node_id": "node-book-1792891992234",
+            "id": "edge-discuss-to-book",
+            "transition_condition": {
+              "prompt": "Caller chose a technician (e.g. Lee in south / Ana / Rio) or said book/yes/go ahead for a visit",
+              "type": "prompt"
+            }
+          },
+          {
+            "destination_node_id": "node-availability-1792891992234",
+            "id": "edge-discuss-recheck",
+            "transition_condition": {
+              "prompt": "Caller wants different times, another zone, or to search availability again",
+              "type": "prompt"
+            }
+          },
+          {
+            "destination_node_id": "node-transfer-1792891992234",
+            "id": "edge-discuss-transfer",
+            "transition_condition": {
+              "prompt": "Caller asks to speak to a dispatcher / human representative",
+              "type": "prompt"
+            }
+          },
+          {
+            "destination_node_id": "end-call-node-1792891992234",
+            "id": "edge-discuss-end",
+            "transition_condition": {
+              "prompt": "Caller is finished or says goodbye without booking",
+              "type": "prompt"
+            }
+          }
+        ],
+        "id": "node-discuss-availability-1792891992234",
+        "instruction": {
+          "text": "Speak availability results once in plain English: at most two technician options with day/time in Pacific. Ask which they prefer. If the requested service was unsupported, explain that we only service kitchen and laundry appliances and offer a transfer. When they pick a tech, transition directly to Book (pass tech_id and window_start from open_windows) — static filler plays automatically.",
+          "type": "prompt"
+        },
+        "name": "Discuss availability",
+        "skippable": false,
+        "type": "conversation"
+      },
+      {
+        "display_position": {
+          "x": 1100,
+          "y": 40
+        },
+        "edges": [
+          {
+            "destination_node_id": "end-call-node-1792891992234",
+            "id": "edge-confirm-end",
+            "transition_condition": {
+              "prompt": "Caller is satisfied or says goodbye / thanks / that's all",
+              "type": "prompt"
+            }
+          },
+          {
+            "destination_node_id": "node-discuss-availability-1792891992234",
+            "id": "edge-confirm-retry",
+            "transition_condition": {
+              "prompt": "Booking failed, window unavailable, or caller wants a different technician/window",
+              "type": "prompt"
+            }
+          },
+          {
+            "destination_node_id": "node-transfer-1792891992234",
+            "id": "edge-confirm-transfer",
+            "transition_condition": {
+              "prompt": "Caller asks to speak to a dispatcher or needs human assistance",
+              "type": "prompt"
+            }
+          }
+        ],
+        "id": "node-confirm-booking-1792891992234",
+        "instruction": {
+          "text": "Read the booking tool result in plain English once: state the technician, Pacific time window, and job number from speak_this or message. If the window was unavailable, inform the caller and offer to pick another window. If the caller asks which phone number the appointment is under or on file, confirm the number on file from the booking (ending in 0000). Ask if they need anything else. Do not hang up until they say goodbye.",
+          "type": "prompt"
+        },
+        "name": "Confirm booking",
+        "skippable": false,
+        "type": "conversation"
+      },
+      {
+        "display_position": {
+          "x": 120,
+          "y": 560
+        },
+        "edges": [
+          {
+            "destination_node_id": "node-cancel-1792891992234",
+            "id": "edge-collect-to-cancel",
+            "transition_condition": {
+              "prompt": "Caller gave a job ID AND phone number, or gave their account phone number. Transition immediately to run cancel.",
+              "type": "prompt"
+            }
+          },
+          {
+            "destination_node_id": "node-transfer-1792891992234",
+            "id": "edge-collect-cancel-transfer",
+            "transition_condition": {
+              "prompt": "Caller cannot verify or asks to speak with a dispatcher",
+              "type": "prompt"
+            }
+          },
+          {
+            "destination_node_id": "end-call-node-1792891992234",
+            "id": "edge-collect-cancel-end",
+            "transition_condition": {
+              "prompt": "Caller changed their mind or says goodbye without cancelling",
+              "type": "prompt"
+            }
+          }
+        ],
+        "id": "node-collect-cancel-1792891992234",
+        "instruction": {
+          "text": "Collect both the job ID and the phone number on the account. Verification strictly requires two factors: a job ID and the matching account phone. Name alone is never sufficient. If caller gave only a job ID, ask: 'For security, what is the phone number on the account?' When they provide the phone number, transition immediately to Cancel without repeating parameter keys or tool names.",
+          "type": "prompt"
+        },
+        "name": "Collect cancel info",
+        "skippable": false,
+        "type": "conversation"
+      },
+      {
+        "display_position": {
+          "x": 720,
+          "y": 560
+        },
+        "edges": [
+          {
+            "destination_node_id": "node-cancel-1792891992234",
+            "id": "edge-confirm-fee-to-cancel",
+            "transition_condition": {
+              "prompt": "Tool asked for fee confirmation and caller clearly said yes / proceed / cancel it / I accept the fee. Re-run Cancel with the same job_id and confirmed=true.",
+              "type": "prompt"
+            }
+          },
+          {
+            "destination_node_id": "node-collect-cancel-1792891992234",
+            "id": "edge-confirm-cancel-retry",
+            "transition_condition": {
+              "prompt": "Verification required, mismatched phone, multiple jobs, or caller wants to try a different phone / job ID",
+              "type": "prompt"
+            }
+          },
+          {
+            "destination_node_id": "node-transfer-1792891992234",
+            "id": "edge-confirm-cancel-transfer",
+            "transition_condition": {
+              "prompt": "Tool indicated attempt limit reached / transfer required, or caller repeatedly failed verification, or caller asks for a dispatcher",
+              "type": "prompt"
+            }
+          },
+          {
+            "destination_node_id": "end-call-node-1792891992234",
+            "id": "edge-confirm-cancel-end",
+            "transition_condition": {
+              "prompt": "Cancellation succeeded, caller declined the fee, or caller is done / goodbye",
+              "type": "prompt"
+            }
+          }
+        ],
+        "id": "node-confirm-cancel-1792891992234",
+        "instruction": {
+          "text": "Read the cancel tool outcome in natural conversational English from speak_this or message. If verification failed or details do not match, do NOT reveal customer details (do not read name, appliance, or scheduled time). Speak the neutral message from speak_this. If tool returned verification_required, ask for the account phone and transition back to Collect cancel info. If fee_applicable and not cancelled, ask yes/no for the fee — on yes, transition back to Cancel with confirmed=true. If attempt limit reached or caller requests a dispatcher, transition to Transfer to Dispatcher. Never read raw JSON or parameter keys aloud.",
+          "type": "prompt"
+        },
+        "name": "Confirm cancel",
+        "skippable": false,
+        "type": "conversation"
+      },
+      {
+        "display_position": {
+          "x": 720,
+          "y": 780
+        },
+        "edge": {
+          "destination_node_id": "end-call-node-1792891992234",
+          "id": "edge-transfer-to-end",
+          "transition_condition": {
+            "prompt": "Transfer failed",
+            "type": "prompt"
+          }
+        },
+        "id": "node-transfer-1792891992234",
+        "instruction": {
+          "text": "Please hold while I connect you with a dispatcher.",
+          "type": "static_text"
+        },
+        "name": "Transfer to Dispatcher",
+        "speak_during_execution": true,
+        "transfer_destination": {
+          "number": "+14155550100",
+          "type": "predefined"
+        },
+        "transfer_option": {
+          "type": "cold_transfer"
+        },
+        "type": "transfer_call"
+      },
+      {
+        "display_position": {
+          "x": 1100,
+          "y": 520
+        },
+        "id": "end-call-node-1792891992234",
+        "instruction": {
+          "text": "Thanks for calling ApplianceOps! Have a great day.",
+          "type": "static_text"
+        },
+        "name": "End Call",
+        "skippable": false,
+        "type": "end"
+      },
+      {
+        "display_position": {
+          "x": 420,
+          "y": 40
+        },
+        "edges": [
+          {
+            "id": "edge-avail-to-discuss",
+            "destination_node_id": "node-discuss-availability-1792891992234",
+            "transition_condition": {
+              "type": "prompt",
+              "prompt": "Availability tool finished (success, unsupported, or empty). Always continue here to discuss results with the caller."
+            }
+          }
+        ],
+        "enable_typing_sound": true,
+        "id": "node-availability-1792891992234",
+        "name": "Check Tech Availability",
+        "skippable": false,
+        "speak_during_execution": false,
+        "tool_id": "tool-check-tech-availability-1792891992234",
+        "tool_type": "local",
+        "type": "function",
+        "wait_for_result": true
+      },
+      {
+        "display_position": {
+          "x": 960,
+          "y": 40
+        },
+        "edges": [
+          {
+            "id": "edge-book-to-confirm",
+            "destination_node_id": "node-confirm-booking-1792891992234",
+            "transition_condition": {
+              "type": "prompt",
+              "prompt": "Booking tool finished (success, unavailable window, or failure). Always continue to confirm the outcome with the caller — do not end the call yet."
+            }
+          }
+        ],
+        "enable_typing_sound": true,
+        "id": "node-book-1792891992234",
+        "name": "Book Appointment",
+        "skippable": false,
+        "speak_during_execution": false,
+        "tool_id": "tool-book-appointment-1792891992238",
+        "tool_type": "local",
+        "type": "function",
+        "wait_for_result": true
+      },
+      {
+        "display_position": {
+          "x": 420,
+          "y": 320
+        },
+        "edges": [
+          {
+            "id": "edge-parts-end",
+            "destination_node_id": "end-call-node-1792891992234",
+            "transition_condition": {
+              "type": "prompt",
+              "prompt": "Parts reschedule handled or caller is done"
+            }
+          }
+        ],
+        "enable_typing_sound": true,
+        "id": "node-parts-1792891992234",
+        "name": "Reschedule Parts Install",
+        "skippable": false,
+        "speak_during_execution": false,
+        "tool_id": "tool-reschedule-parts-install-1792891992236",
+        "tool_type": "local",
+        "type": "function",
+        "wait_for_result": true
+      },
+      {
+        "display_position": {
+          "x": 420,
+          "y": 560
+        },
+        "edges": [
+          {
+            "id": "edge-cancel-to-confirm",
+            "destination_node_id": "node-confirm-cancel-1792891992234",
+            "transition_condition": {
+              "type": "prompt",
+              "prompt": "Cancel tool finished (verified, fee prompt, mismatch, or cap reached). Always continue to confirm the outcome — do not end the call yet."
+            }
+          }
+        ],
+        "enable_typing_sound": true,
+        "id": "node-cancel-1792891992234",
+        "name": "Cancel Appointment",
+        "skippable": false,
+        "speak_during_execution": false,
+        "tool_id": "tool-cancel-appointment-1792891992237",
+        "tool_type": "local",
+        "type": "function",
+        "wait_for_result": true
+      }
+    ],
+    "start_node_id": "start-node-1792891992234",
+    "start_speaker": "agent",
+    "tools": [
+      {
+        "args_at_root": false,
+        "description": "Return open 2-hour technician arrival windows for supported appliances (refrigeration, dishwasher, laundry, cooking, Bosch, Miele, Gaggenau, Sub-Zero). Do NOT call for unsupported services like pool heaters or water heaters. Zone is OPTIONAL — omit it (preferred default) to search all service areas when the caller says check/go ahead without a zone.",
+        "enable_typing_sound": true,
+        "execution_message_type": "static_text",
+        "execution_message_description": "One moment while I check our schedule.",
+        "headers": {},
+        "max_retry": 0,
+        "method": "POST",
+        "name": "check_tech_availability",
+        "parameter_type": "json",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "zone": {
+              "type": "string",
+              "description": "Optional. north | central | south. Omit entirely for all zones. Do not pass 'all' or 'any'."
+            },
+            "skill": {
+              "type": "string",
+              "description": "Canonical skill: dishwasher, refrigeration, laundry, cooking, bosch, miele, gaggenau, general"
+            },
+            "appliance_type": {
+              "type": "string",
+              "description": "Same as skill when caller names an appliance (e.g. dishwasher)"
+            },
+            "preferred_date": {
+              "type": "string",
+              "description": "Optional ISO date YYYY-MM-DD only (e.g. 2026-10-22)"
+            }
+          }
+        },
+        "query_params": {},
+        "response_variables": {},
+        "speak_after_execution": false,
+        "speak_during_execution": false,
+        "timeout_ms": 10000,
+        "tool_id": "tool-check-tech-availability-1792891992234",
+        "type": "custom",
+        "url": "https://applianceops-edge.23p.workers.dev/retell/check-availability"
+      },
+      {
+        "args_at_root": false,
+        "description": "Look up an appointment / job ID when the caller does not know their job ID. Call this with the caller's confirmed account phone number (e.g. +15550108800) to find their job ID, appliance, and scheduled arrival window.",
+        "enable_typing_sound": true,
+        "execution_message_type": "static_text",
+        "execution_message_description": "One moment while I check our schedule.",
+        "headers": {},
+        "max_retry": 0,
+        "method": "POST",
+        "name": "lookup_job",
+        "parameter_type": "json",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "phone": {
+              "type": "string",
+              "description": "Account phone number for caller verification (e.g. +15550108800 or spoken digits)."
+            },
+            "customer_name": {
+              "type": "string",
+              "description": "Optional caller name on the account to assist lookup."
+            },
+            "job_id": {
+              "type": "string",
+              "description": "Optional job ID if verifying a specific appointment."
+            }
+          }
+        },
+        "query_params": {},
+        "response_variables": {},
+        "speak_after_execution": false,
+        "speak_during_execution": true,
+        "timeout_ms": 10000,
+        "tool_id": "tool-lookup-job-1792891992235",
+        "type": "custom",
+        "url": "https://applianceops-edge.23p.workers.dev/retell/lookup-job"
+      },
+      {
+        "args_at_root": false,
+        "description": "Reschedule a parts installation after validating parts status. Keeps the primary technician from the diagnostic visit when parts are in stock.",
+        "enable_typing_sound": true,
+        "execution_message_type": "static_text",
+        "execution_message_description": "One moment while I check the parts status.",
+        "headers": {},
+        "max_retry": 0,
+        "method": "POST",
+        "name": "reschedule_parts_install",
+        "parameter_type": "json",
+        "parameters": {
+          "type": "object",
+          "required": [
+            "job_id",
+            "preferred_date"
+          ],
+          "properties": {
+            "job_id": {
+              "type": "string",
+              "description": "Workiz / ApplianceOps job id"
+            },
+            "preferred_date": {
+              "type": "string",
+              "description": "Desired install datetime in ISO-8601"
+            }
+          }
+        },
+        "query_params": {},
+        "response_variables": {},
+        "speak_after_execution": false,
+        "speak_during_execution": false,
+        "timeout_ms": 10000,
+        "tool_id": "tool-reschedule-parts-install-1792891992236",
+        "type": "custom",
+        "url": "https://applianceops-edge.23p.workers.dev/retell/reschedule-parts"
+      },
+      {
+        "args_at_root": false,
+        "description": "Cancel an appointment with verified caller ownership. Requires BOTH job_id AND account phone number (or matching caller ID). Name alone is never sufficient. Enforces 24h fee — if fee_applicable and not yet confirmed, read speak_this, get verbal yes, then call again with the same job_id and confirmed=true. Never invent lookup failures.",
+        "enable_typing_sound": true,
+        "execution_message_type": "static_text",
+        "execution_message_description": "One moment while I look up that appointment.",
+        "headers": {},
+        "max_retry": 0,
+        "method": "POST",
+        "name": "cancel_appointment",
+        "parameter_type": "json",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "job_id": {
+              "type": "string",
+              "description": "Job id (digits ok, e.g. 1088). Required alongside phone for cancellation."
+            },
+            "phone": {
+              "type": "string",
+              "description": "Account phone number for caller verification (e.g. +15550108800 or spoken digits). Required to verify ownership."
+            },
+            "customer_name": {
+              "type": "string",
+              "description": "Optional caller name to assist lookup."
+            },
+            "confirmed": {
+              "type": "boolean",
+              "description": "True only after caller verbally accepts the fee when fee_applicable was returned."
+            }
+          }
+        },
+        "query_params": {},
+        "response_variables": {},
+        "speak_after_execution": false,
+        "speak_during_execution": false,
+        "timeout_ms": 10000,
+        "tool_id": "tool-cancel-appointment-1792891992237",
+        "type": "custom",
+        "url": "https://applianceops-edge.23p.workers.dev/retell/cancel-job"
+      },
+      {
+        "args_at_root": false,
+        "description": "Book a technician for an open arrival window for supported appliances. Requires tech_id + window_start from open_windows. Unavailable/stale windows are rejected. Writes a Scheduled job into the CRM cache.",
+        "enable_typing_sound": true,
+        "execution_message_type": "static_text",
+        "execution_message_description": "One moment while I lock that in on the schedule.",
+        "headers": {},
+        "max_retry": 0,
+        "method": "POST",
+        "name": "book_appointment",
+        "parameter_type": "json",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "tech_id": {
+              "type": "string",
+              "description": "Technician id from open_windows (e.g. tech-lee)"
+            },
+            "technician": {
+              "type": "string",
+              "description": "Technician display name if tech_id missing (e.g. Lee P.)"
+            },
+            "window_start": {
+              "type": "string",
+              "description": "arrival_window_start ISO from open_windows (must match an open slot)"
+            },
+            "window_end": {
+              "type": "string",
+              "description": "Optional arrival_window_end ISO"
+            },
+            "zone": {
+              "type": "string",
+              "description": "Service zone (north|central|south)"
+            },
+            "skill": {
+              "type": "string",
+              "description": "Canonical skill e.g. dishwasher"
+            },
+            "appliance": {
+              "type": "string",
+              "description": "Appliance description for the job"
+            },
+            "appliance_type": {
+              "type": "string",
+              "description": "Alias for skill/appliance category"
+            },
+            "phone": {
+              "type": "string",
+              "description": "Caller phone if not available on the call object"
+            },
+            "customer_name": {
+              "type": "string",
+              "description": "Caller name when known"
+            },
+            "model_serial": {
+              "type": "string",
+              "description": "Appliance model/serial if the caller provided one"
+            }
+          }
+        },
+        "query_params": {},
+        "response_variables": {},
+        "speak_after_execution": false,
+        "speak_during_execution": false,
+        "timeout_ms": 10000,
+        "tool_id": "tool-book-appointment-1792891992238",
+        "type": "custom",
+        "url": "https://applianceops-edge.23p.workers.dev/retell/book-appointment"
+      },
+      {
+        "args_at_root": false,
+        "description": "Optional second agent or A/B tool URL to demo uncached pagination latency.",
+        "enable_typing_sound": true,
+        "execution_message_type": "static_text",
+        "execution_message_description": "One moment while I query technician availability.",
+        "headers": {},
+        "max_retry": 0,
+        "method": "POST",
+        "name": "check_tech_availability_slow",
+        "parameter_type": "json",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "zone": {
+              "type": "string",
+              "description": "Optional. north | central | south. Omit entirely for all zones. Do not pass 'all' or 'any'."
+            },
+            "skill": {
+              "type": "string",
+              "description": "Canonical skill: dishwasher, refrigeration, laundry, cooking, bosch, miele, gaggenau, general"
+            },
+            "appliance_type": {
+              "type": "string",
+              "description": "Same as skill when caller names an appliance (e.g. dishwasher)"
+            },
+            "preferred_date": {
+              "type": "string",
+              "description": "Optional ISO date YYYY-MM-DD only (e.g. 2026-10-22)"
+            }
+          }
+        },
+        "query_params": {},
+        "response_variables": {},
+        "speak_after_execution": false,
+        "speak_during_execution": true,
+        "timeout_ms": 10000,
+        "tool_id": "tool-check-tech-availability-slow-1792891992333",
+        "type": "custom",
+        "url": "https://applianceops-edge.23p.workers.dev/slow/check-availability"
+      }
+    ],
+    "model_choice": {
+      "type": "cascading",
+      "model": "gpt-6-luna",
+      "high_priority": false,
+      "ultrafast": false
+    },
+    "tool_call_strict_mode": true,
+    "knowledge_base_ids": [],
+    "kb_config": {
+      "filter_score": 0.6,
+      "top_k": 3
+    },
+    "begin_tag_display_position": {
+      "x": 6,
+      "y": 15
+    },
+    "notes": [],
+    "is_published": false,
+    "is_transfer_cf": false
+  }
+}
