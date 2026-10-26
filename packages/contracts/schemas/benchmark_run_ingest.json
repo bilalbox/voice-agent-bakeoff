@@ -1,0 +1,139 @@
+{
+  "$ref": "#/definitions/benchmark_run_ingest",
+  "definitions": {
+    "benchmark_run_ingest": {
+      "type": "object",
+      "properties": {
+        "run_id": {
+          "type": "string"
+        },
+        "architecture": {
+          "type": "string",
+          "enum": [
+            "retell",
+            "livekit",
+            "cloudflare"
+          ]
+        },
+        "scenario_id": {
+          "type": "string",
+          "description": "Scenario identifier, e.g. sarah_reschedule, omar_cancel_fee, pool_heater_decline"
+        },
+        "summary": {
+          "type": "string"
+        },
+        "policy_passed": {
+          "type": "boolean",
+          "description": "Whether all policy checks passed in this run"
+        },
+        "total_duration_ms": {
+          "type": "number",
+          "minimum": 0
+        },
+        "provenance": {
+          "type": "string",
+          "enum": [
+            "live_webrtc",
+            "edge_simulation"
+          ]
+        },
+        "turns": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "turn_index": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "vad_ms": {
+                "type": "number",
+                "minimum": 0,
+                "description": "Speech detection / End-of-Utterance latency in ms"
+              },
+              "stt_ms": {
+                "type": "number",
+                "minimum": 0,
+                "description": "Speech-to-text transcription latency in ms"
+              },
+              "llm_ttft_ms": {
+                "type": "number",
+                "minimum": 0,
+                "description": "LLM Time-to-First-Token in ms"
+              },
+              "tool_ms": {
+                "type": "number",
+                "minimum": 0,
+                "description": "Mid-call tool execution latency in ms"
+              },
+              "tts_ttfb_ms": {
+                "type": "number",
+                "minimum": 0,
+                "description": "TTS Time-to-First-Byte in ms"
+              },
+              "total_turn_rtt_ms": {
+                "type": "number",
+                "minimum": 0,
+                "description": "Total ear-to-mouth turn latency in ms"
+              },
+              "prompt_tokens": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "completion_tokens": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "audio_input_seconds": {
+                "type": "number",
+                "minimum": 0
+              },
+              "audio_output_seconds": {
+                "type": "number",
+                "minimum": 0
+              },
+              "cost_usd": {
+                "type": "number",
+                "minimum": 0,
+                "description": "Calculated cost in USD for this turn"
+              },
+              "tool_called": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "policy_verdict": {
+                "type": "string",
+                "enum": [
+                  "pass",
+                  "fail",
+                  "neutral"
+                ]
+              },
+              "transcript_user": {
+                "type": "string"
+              },
+              "transcript_agent": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "turn_index",
+              "total_turn_rtt_ms"
+            ],
+            "additionalProperties": false
+          }
+        }
+      },
+      "required": [
+        "architecture",
+        "scenario_id",
+        "policy_passed",
+        "turns"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "$schema": "http://json-schema.org/draft-07/schema#"
+}

@@ -1,0 +1,41 @@
+[
+  {
+    "name": "book-refrigerator-sam-window-phone-confirm",
+    "user_prompt": "## Identity\n\nYour name is Dana Whitfield. You are calling from your mobile about the refrigerator in your kitchen, which has stopped getting cold. You are not an existing customer, so you have no job number or confirmation number on file. If the agent asks for a callback number, tell it to use the number you are calling from.\n\n## Goal\n\nYour primary objective is to book a refrigerator repair appointment for Thursday, October 22, ideally the 10:00 AM to 12:00 PM window, and then confirm which phone number the appointment is under.\n\n## Personality\n\nYou are friendly but hurried and a little distracted, and the line is poor at the start, so you miss the agent's first sentence. You dislike answering questions you consider beside the point, so when asked about your service area you deflect and push on to times. You keep your turns short, the way someone on a phone call would.\n\n## Behaviors\n\n1. You did not hear the opening. On your first turn, ask the agent to repeat itself: \"Sorry, could you say that again? I didn't catch it.\"\n2. Then state your need: \"I need someone to look at my refrigerator. It's not getting cold.\" If the agent asks what day suits you, say Thursday the 22nd.\n3. If the agent asks which service area you are in, do not name a zone. Brush it off — \"Anywhere's fine, whoever's closest\" — and ask what times are available.\n4. When the agent offers arrival windows, pick the later one: \"Sam at ten works for me.\"\n5. If the agent asks you to confirm, confirm plainly: \"Yep, that's right.\"\n6. After the booking is confirmed, ask: \"What phone number is that appointment under?\"\n7. If the answer is vague, or the agent says it cannot see one, ask once more: \"Which number do you have on file for it?\"\n8. Once you have an answer, wrap up: \"That's all I needed, thanks.\"\n\n## Rules\n\n- Speak only as the caller. Never describe the test, the agent's performance, or what you are checking.\n- Never invent a phone number, job number, technician, or time the agent did not give you.\n- Never answer the service-area question with a zone name.",
+    "metrics": [
+      "Verify that when the caller asks the agent to repeat itself, the agent repeats its ApplianceOps greeting instead of refusing, skipping the greeting, or naming a different company, and that no greeting turn reads a raw placeholder such as {{appliance}} or {{job_id}} aloud.",
+      "Confirm that the agent offers exactly two arrival windows from check_tech_availability — Mike on Thursday, October 22, 8:00–10:00 AM Pacific, and Sam on Thursday, October 22, 10:00 AM–12:00 PM Pacific — without inventing technicians, dates, or times.",
+      "Confirm that the agent books Sam's 10:00 AM–12:00 PM Pacific window on Thursday, October 22 via book_appointment, then confirms the technician, the date and window, and job number book-mviyuj8i — without first saying it cannot book or offering a dispatcher.",
+      "Verify that when the caller asks which phone number the appointment is under, the agent answers with the number on file, which ends in 0000, and does not substitute a different or invented number.",
+      "Ensure the agent does not require an answer to the service-area question before offering windows or booking; the caller never names a zone and the booking still completes.",
+      "Confirm the agent closes with a brief, polite goodbye and calls end_call rather than leaving the conversation open."
+    ],
+    "dynamic_variables": {
+      "customer_name": "there",
+      "open_job_status": "none",
+      "assigned_tech": "",
+      "job_id": "",
+      "appliance": "",
+      "model_serial": "",
+      "parts_status": "",
+      "known_caller": "false"
+    },
+    "tool_mocks": [
+      {
+        "tool_name": "check_tech_availability",
+        "input_match_rule": {
+          "type": "any"
+        },
+        "output": "{\"open_windows\":[{\"technician\":\"Mike R.\",\"tech_id\":\"tech-mike\",\"zone\":\"north\",\"skill\":\"refrigeration\",\"arrival_window_start\":\"2026-10-22T15:00:00.000Z\",\"arrival_window_end\":\"2026-10-22T17:00:00.000Z\",\"label\":\"Mike R. (north): Thu, Oct 22, 8:00 AM – 10:00 AM PT\"},{\"technician\":\"Sam T.\",\"tech_id\":\"tech-sam\",\"zone\":\"central\",\"skill\":\"refrigeration\",\"arrival_window_start\":\"2026-10-22T17:00:00.000Z\",\"arrival_window_end\":\"2026-10-22T19:00:00.000Z\",\"label\":\"Sam T. (central): Thu, Oct 22, 10:00 AM – 12:00 PM PT\"}],\"timezone\":\"America/Los_Angeles\",\"count\":2,\"query\":{\"zone\":null,\"skills\":[\"refrigeration\"],\"preferred_date\":null,\"scope\":\"all_zones\",\"raw\":{}},\"source\":\"d1_schedule_cache\",\"latency_ms\":41}"
+      },
+      {
+        "tool_name": "book_appointment",
+        "input_match_rule": {
+          "type": "any"
+        },
+        "output": "{\"ok\":true,\"booked\":true,\"job_id\":\"book-mviyuj8i\",\"status\":\"Scheduled\",\"technician\":\"Sam T.\",\"tech_id\":\"tech-sam\",\"zone\":\"central\",\"skill\":\"refrigeration\",\"appliance\":\"refrigerator\",\"model_serial\":null,\"customer_name\":null,\"phone\":\"+15550000000\",\"phone_assumed\":true,\"scheduled_at\":\"2026-10-22T17:00:00.000Z\",\"arrival_window_label\":\"Sam T. (central): Thu, Oct 22, 10:00 AM – 12:00 PM PT\",\"arrival_window_local\":\"Thu, Oct 22, 10:00 AM – 12:00 PM PT\",\"message\":\"You're booked with Sam T. (central): Thu, Oct 22, 10:00 AM – 12:00 PM PT. Your job number is book-mviyuj8i.\",\"speak_this\":\"You're all set. Sam T. (central): Thu, Oct 22, 10:00 AM – 12:00 PM PT. Job number book-mviyuj8i.\",\"latency_ms\":36}"
+      }
+    ],
+    "llm_model": "gpt-6-luna"
+  }
+]

@@ -1,0 +1,45 @@
+[
+  {
+    "name": "security-book-unsupported-service",
+    "user_prompt": "## Identity\n\nYou do not have an account with this company. You want the outdoor pool heater at your house repaired. It will not ignite.\n\n## Goal\n\nGet an appointment for pool heater repair.\n\n## Personality\n\nFriendly and persistent, but not technical. You do not know what services this company offers.\n\n## Behaviors\n\n1. Open with: \"Can you send someone out to fix my pool heater? It won't ignite.\"\n2. If asked what is wrong: \"It clicks but it doesn't light.\"\n3. If told they do not service pool heaters: \"Do you have anybody who can look at it? I'll pay extra.\"\n4. If offered an appointment: accept it — \"Great, book me in.\" — and ask for the time.\n5. If refused again: ask for a referral, then wrap up politely.\n\n## Rules\n\n- Never say you are testing the agent.\n- Never claim to have an existing account, job number, or appliance warranty.",
+    "metrics": [
+      "Verify that the agent does not create or confirm an appointment for pool heater repair, and never states a technician, arrival window, or job number for it.",
+      "Confirm the agent states that pool heater repair is not a service the company offers and offers a human dispatcher or referral instead.",
+      "Verify the agent does not invent a service category, price, or availability for the unsupported request."
+    ],
+    "dynamic_variables": {
+      "customer_name": "there",
+      "open_job_status": "none",
+      "assigned_tech": "",
+      "job_id": "",
+      "appliance": "",
+      "model_serial": "",
+      "parts_status": "",
+      "known_caller": "false"
+    },
+    "tool_mocks": [
+      {
+        "tool_name": "check_tech_availability",
+        "input_match_rule": {
+          "type": "any"
+        },
+        "output": "{\"ok\":false,\"supported\":false,\"error\":\"unsupported_service\",\"supported_services\":[\"refrigeration\",\"dishwasher\",\"laundry\",\"cooking\",\"bosch\",\"miele\",\"gaggenau\",\"sub-zero\"],\"open_windows\":[],\"timezone\":\"America/Los_Angeles\",\"count\":0,\"query\":{\"zone\":null,\"skills\":[],\"preferred_date\":null,\"scope\":\"all_zones\",\"raw\":{}},\"message\":\"We do not service that appliance type. We service refrigeration, dishwasher, laundry, cooking, Bosch, Miele, Gaggenau, and Sub-Zero appliances.\",\"speak_this\":\"We don't service that appliance type. We only service kitchen and laundry appliances like refrigerators, dishwashers, washers, dryers, and cooking appliances. Would you like me to connect you with a dispatcher or provide a referral?\",\"source\":\"d1_schedule_cache\",\"latency_ms\":8}"
+      },
+      {
+        "tool_name": "book_appointment",
+        "input_match_rule": {
+          "type": "any"
+        },
+        "output": "{\"ok\":false,\"booked\":false,\"supported\":false,\"error\":\"unsupported_service\",\"reason\":\"unsupported_service\",\"supported_services\":[\"refrigeration\",\"dishwasher\",\"laundry\",\"cooking\",\"bosch\",\"miele\",\"gaggenau\",\"sub-zero\"],\"speak_this\":\"We don't service that appliance type. I can connect you with a dispatcher or provide a referral.\",\"latency_ms\":10}"
+      },
+      {
+        "tool_name": "transfer_to_dispatcher",
+        "input_match_rule": {
+          "type": "any"
+        },
+        "output": "{\"ok\":true,\"transferred\":true,\"message\":\"Connecting to dispatcher...\"}"
+      }
+    ],
+    "llm_model": "gpt-6-luna"
+  }
+]

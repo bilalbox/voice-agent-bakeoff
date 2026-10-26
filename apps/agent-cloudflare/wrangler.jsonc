@@ -1,0 +1,31 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "applianceops-agent-cloudflare",
+  "main": "src/index.ts",
+  "compatibility_date": "2026-10-01",
+  "compatibility_flags": ["nodejs_compat"],
+  "durable_objects": {
+    "bindings": [
+      {
+        "name": "ApplianceOpsVoiceAgent",
+        "class_name": "ApplianceOpsVoiceAgent"
+      }
+    ]
+  },
+  "migrations": [
+    {
+      "tag": "v1",
+      "new_sqlite_classes": ["ApplianceOpsVoiceAgent"]
+    }
+  ],
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "applianceops",
+      "database_id": "b838e891-7246-4986-a682-a14d8c85650d"
+    }
+  ],
+  "ai": {
+    "binding": "AI"
+  }
+}

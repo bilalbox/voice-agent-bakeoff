@@ -1,0 +1,71 @@
+{
+  "agent_name": "ApplianceOps Dispatch",
+  "version_description": "Synced from repo retell/ files (prompt + custom tools + turn/pronunciation tuning)",
+  "voice_id": "REPLACE_WITH_RETELL_VOICE_ID",
+  "language": "en-US",
+  "llm_model": "gpt-6-luna",
+  "responsiveness": 0.55,
+  "interruption_sensitivity": 0.4,
+  "begin_message": "",
+  "dispatcher_phone_number": "+14155550100",
+  "include_transfer_tool": true,
+  "default_dynamic_variables": {
+    "customer_name": "there",
+    "open_job_status": "none",
+    "assigned_tech": "",
+    "job_id": "",
+    "appliance": "",
+    "model_serial": "",
+    "parts_status": "",
+    "known_caller": "false"
+  },
+  "boosted_keywords": [
+    "Miele",
+    "Gaggenau",
+    "Bosch",
+    "Sub-Zero",
+    "Whirlpool",
+    "WRF535SWHZ04",
+    "compressor",
+    "parts",
+    "reschedule",
+    "cancel",
+    "ApplianceOps"
+  ],
+  "pronunciation_dictionary": [
+    {
+      "word": "Miele",
+      "alphabet": "ipa",
+      "phoneme": "ˈmiːlə"
+    },
+    {
+      "word": "Gaggenau",
+      "alphabet": "ipa",
+      "phoneme": "ˈɡɑːɡənaʊ"
+    },
+    {
+      "word": "Bosch",
+      "alphabet": "ipa",
+      "phoneme": "bɔʃ"
+    },
+    {
+      "word": "Sub-Zero",
+      "alphabet": "ipa",
+      "phoneme": "sʌbˈzɪroʊ"
+    },
+    {
+      "word": "ApplianceOps",
+      "alphabet": "ipa",
+      "phoneme": "əˈplaɪəns ɑːps"
+    }
+  ],
+  "phone_number_e164": null,
+  "include_end_call_tool": true,
+  "speak_during_tool_execution": true,
+  "conversation_flow": {
+    "model": "gpt-6-luna",
+    "post_call_analysis_model": "gpt-4.1",
+    "include_slow_tool": true,
+    "timezone": "America/Los_Angeles"
+  }
+}

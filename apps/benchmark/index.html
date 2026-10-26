@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ApplianceOps — Triple Voice Architecture Benchmark</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <!-- Top Navigation & Status Bar -->
+      <header class="header">
+        <div class="header-content">
+          <div class="brand-group">
+            <span class="brand-badge">ApplianceOps</span>
+            <div class="header-titles">
+              <h1 class="main-title">Triple Voice Architecture Benchmark</h1>
+              <p class="subtitle">
+                Empirical latency breakdowns, unbundled unit economics, and policy safety fidelity across Cloudflare Edge, LiveKit (gpt-6-luna), and Retell AI.
+              </p>
+            </div>
+          </div>
+          <div class="header-actions">
+            <div class="status-indicator" id="connection-status">
+              <span class="status-dot"></span>
+              <span class="status-label">D1 Telemetry Connected</span>
+            </div>
+            <button class="btn btn-secondary btn-sm" id="btn-refresh-telemetry" type="button">
+              Refresh Data
+            </button>
+            <button class="btn btn-primary btn-sm" id="btn-nav-voice" type="button">
+              🎙️ Live Voice Console
+            </button>
+          </div>
+        </div>
+      </header>
+
+      <main class="main-content">
+        <!-- Section 1: Physical Turnaround Latency Breakdown -->
+        <section class="section" id="section-latency">
+          <div class="section-header">
+            <div>
+              <h2 class="section-title">Physical Turnaround Latency Breakdown</h2>
+              <p class="section-desc">
+                Turn-by-turn ear-to-mouth timing. Shows where acoustic turnaround delay originates across the voice pipeline.
+              </p>
+            </div>
+            <!-- Scenario Selector Filter -->
+            <div class="filter-group" id="scenario-filters" role="tablist" aria-label="Latency scenarios">
+              <button class="filter-btn active" role="tab" aria-selected="true" data-scenario="all">Aggregate (p50)</button>
+              <button class="filter-btn" role="tab" aria-selected="false" data-scenario="security-book-unsupported-service">Pool Heater Refusal</button>
+              <button class="filter-btn" role="tab" aria-selected="false" data-scenario="security-cancel-someone-elses-job">2FA Cancellation</button>
+              <button class="filter-btn" role="tab" aria-selected="false" data-scenario="security-cancel-verified-with-fee">$85 Fee Confirmation</button>
+              <button class="filter-btn" role="tab" aria-selected="false" data-scenario="book-refrigerator-sam-window">Availability &amp; Booking</button>
+              <button class="filter-btn" role="tab" aria-selected="false" data-scenario="security-transfer-to-dispatcher">Dispatcher Escalation</button>
+            </div>
+          </div>
+
+          <!-- Pipeline Stages Legend -->
+          <div class="pipeline-legend">
+            <span class="legend-item"><span class="legend-swatch stage-vad"></span> VAD / End-of-Turn</span>
+            <span class="legend-item"><span class="legend-swatch stage-stt"></span> Speech-to-Text</span>
+            <span class="legend-item"><span class="legend-swatch stage-llm"></span> LLM TTFT</span>
+            <span class="legend-item"><span class="legend-swatch stage-tool"></span> CRM Tool RTT</span>
+            <span class="legend-item"><span class="legend-swatch stage-tts"></span> TTS TTFB</span>
+          </div>
+
+          <!-- Waterfall Comparison Container -->
+          <div class="waterfall-card">
+            <div class="waterfall-list" id="waterfall-container">
+              <!-- Architecture 1: Cloudflare Voice Agent -->
+              <div class="arch-row" id="row-cloudflare">
+                <div class="arch-meta">
+                  <div class="arch-name-tag tag-cf">Cloudflare Edge Native</div>
+                  <div class="arch-specs">Deepgram Flux · DeepSeek V4.1 Flash (1017) · Aura-2 · Colocated D1</div>
+                </div>
+                <div class="waterfall-bar-track">
+                  <div class="waterfall-bar-segments" id="bar-cloudflare">
+                    <!-- Dynamic segments filled by JS -->
+                  </div>
+                  <div class="waterfall-total" id="total-cloudflare">390ms</div>
+                </div>
+              </div>
+
+              <!-- Architecture 2: LiveKit Agent -->
+              <div class="arch-row" id="row-livekit">
+                <div class="arch-meta">
+                  <div class="arch-name-tag tag-livekit">LiveKit Agents</div>
+                  <div class="arch-specs">Silero VAD v5 · Deepgram Nova-3 · OpenAI gpt-6-luna · Inworld TTS-2 Flash</div>
+                </div>
+                <div class="waterfall-bar-track">
+                  <div class="waterfall-bar-segments" id="bar-livekit">
+                    <!-- Dynamic segments filled by JS -->
+                  </div>
+                  <div class="waterfall-total" id="total-livekit">475ms</div>
+                </div>
+              </div>
+
+              <!-- Architecture 3: Retell AI -->
+              <div class="arch-row" id="row-retell">
+                <div class="arch-meta">
+                  <div class="arch-name-tag tag-retell">Retell AI Managed</div>
+                  <div class="arch-specs">Retell Endpointer · Deepgram Nova-3 · OpenAI gpt-6-luna · ElevenLabs Flash v2.5</div>
+                </div>
+                <div class="waterfall-bar-track">
+                  <div class="waterfall-bar-segments" id="bar-retell">
+                    <!-- Dynamic segments filled by JS -->
+                  </div>
+                  <div class="waterfall-total" id="total-retell">510ms</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Stage Detail Inspector (Updated on Hover/Click) -->
+            <div class="waterfall-detail-bar" id="stage-inspector" aria-live="polite">
+              <span class="inspector-hint">Hover over or tap any pipeline segment to inspect component latencies and bottlenecks.</span>
+            </div>
+
+            <!-- Integrated Latency Highlights -->
+            <div class="waterfall-summary-strip">
+              <div class="summary-metric">
+                <span class="summary-label">Fastest Turnaround</span>
+                <span class="summary-val text-cf" id="kpi-fastest">390ms</span>
+                <span class="summary-note">Cloudflare Edge Native</span>
+              </div>
+              <div class="summary-metric">
+                <span class="summary-label">Tool Execution</span>
+                <span class="summary-val text-cf">12ms vs 30ms</span>
+                <span class="summary-note">Sub-15ms with colocated D1</span>
+              </div>
+              <div class="summary-metric">
+                <span class="summary-label">Fastest TTFT</span>
+                <span class="summary-val text-cf">85ms</span>
+                <span class="summary-note">Cloudflare (DeepSeek Flash)</span>
+              </div>
+              <div class="summary-metric">
+                <span class="summary-label">Policy Safety</span>
+                <span class="summary-val text-success" id="kpi-compliance">100% Pass</span>
+                <span class="summary-note">5/5 canonical guardrails</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Section 2: Economics & Unit Cost Calculator -->
+        <section class="section" id="section-economics">
+          <div class="section-header">
+            <div>
+              <h2 class="section-title">Unit Cost Economics &amp; Scale Calculator</h2>
+              <p class="section-desc">
+                Unbundled component cost comparison and interactive volume modeling across platforms.
+              </p>
+            </div>
+          </div>
+
+          <div class="economics-container">
+            <!-- Interactive Volume Toolbar -->
+            <div class="volume-toolbar">
+              <div class="volume-input-group">
+                <div class="volume-label-row">
+                  <label for="slider-calls" class="volume-label">Monthly Call Volume</label>
+                  <span class="volume-value" id="val-calls">10,000 calls</span>
+                </div>
+                <input
+                  type="range"
+                  id="slider-calls"
+                  min="1000"
+                  max="50000"
+                  step="1000"
+                  value="10000"
+                  class="slider"
+                />
+              </div>
+
+              <div class="volume-input-group">
+                <div class="volume-label-row">
+                  <label for="slider-duration" class="volume-label">Average Call Duration</label>
+                  <span class="volume-value" id="val-duration">5.0 min / call</span>
+                </div>
+                <input
+                  type="range"
+                  id="slider-duration"
+                  min="1.0"
+                  max="10.0"
+                  step="0.5"
+                  value="5.0"
+                  class="slider"
+                />
+              </div>
+            </div>
+
+            <!-- Unified Cost Breakdown Table -->
+            <div class="table-container">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th scope="col">Component</th>
+                    <th scope="col">Cloudflare Voice Agent</th>
+                    <th scope="col">LiveKit Cloud Inference</th>
+                    <th scope="col">Retell AI Managed</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">Platform &amp; Orchestration</th>
+                    <td>$0.000 / min</td>
+                    <td>$0.004 / min <span class="cell-sub">(LiveKit Cloud)</span></td>
+                    <td>$0.050 / min <span class="cell-sub">(managed markup)</span></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Speech-to-Text (STT)</th>
+                    <td>$0.007 / min <span class="cell-sub">(Deepgram Flux)</span></td>
+                    <td>$0.005 / min <span class="cell-sub">(Deepgram Nova-3)</span></td>
+                    <td>Included <span class="cell-sub">(Deepgram Nova-3)</span></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">LLM Intelligence</th>
+                    <td>$0.005 / min <span class="cell-sub">(DeepSeek Flash 1017)</span></td>
+                    <td>$0.038 / min <span class="cell-sub">(gpt-6-luna)</span></td>
+                    <td>$0.028 / min <span class="cell-sub">(gpt-6-luna)</span></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Text-to-Speech (TTS)</th>
+                    <td>$0.010 / min <span class="cell-sub">(Deepgram Aura-2)</span></td>
+                    <td>$0.012 / min <span class="cell-sub">(Inworld TTS-2 Flash)</span></td>
+                    <td>$0.015 / min <span class="cell-sub">(ElevenLabs Flash v2.5)</span></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Database &amp; CRM Tool Compute</th>
+                    <td>$0.002 / min <span class="cell-sub">(D1 colocation)</span></td>
+                    <td>$0.002 / min <span class="cell-sub">(D1 Edge API)</span></td>
+                    <td>$0.002 / min <span class="cell-sub">(External Edge D1)</span></td>
+                  </tr>
+                  <tr class="table-subtotal-row">
+                    <th scope="row">Effective Unit Cost</th>
+                    <td class="text-cf font-mono font-bold">$0.0240 / min</td>
+                    <td class="text-livekit font-mono font-bold">$0.0610 / min</td>
+                    <td class="text-retell font-mono font-bold">$0.0950 / min</td>
+                  </tr>
+                  <tr class="table-total-row">
+                    <th scope="row">Calculated Monthly Spend</th>
+                    <td class="text-cf font-mono font-bold" id="cost-cf-month">$1,200 / mo</td>
+                    <td class="text-livekit font-mono font-bold" id="cost-livekit-month">$3,050 / mo</td>
+                    <td class="text-retell font-mono font-bold" id="cost-retell-month">$4,750 / mo</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <!-- Savings Banner -->
+            <div class="savings-callout">
+              <div class="savings-content">
+                <div class="savings-badge">Annual Cloudflare Savings</div>
+                <div class="savings-amount" id="savings-annual">$42,600 / year</div>
+                <div class="savings-caption">Compared to Retell AI baseline at selected 10,000 calls / mo</div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Section 3: Policy & Security Fidelity Scorecards -->
+        <section class="section" id="section-fidelity">
+          <div class="section-header">
+            <div>
+              <h2 class="section-title">Policy &amp; Security Fidelity Scorecards</h2>
+              <p class="section-desc">
+                Verification of non-negotiable business rules across all 5 canonical regression scenarios.
+              </p>
+            </div>
+            <button class="btn btn-primary btn-sm" id="btn-run-all-scenarios" type="button">
+              Run Fidelity Suite (All Engines)
+            </button>
+          </div>
+
+          <div class="fidelity-layout">
+            <!-- Left: Scenarios Navigation List -->
+            <div class="scenarios-list" id="scenarios-scorecard-grid" role="tablist" aria-label="Regression scenarios">
+              <div class="scenario-card active-card" role="tab" tabindex="0" aria-selected="true" data-scenario="security-book-unsupported-service">
+                <div class="scenario-meta-line">
+                  <span class="scenario-id">Scenario 1</span>
+                  <span class="status-pill status-pill-success">Verified</span>
+                </div>
+                <h3 class="scenario-title">Scope Guardrail: Pool Heater Refusal</h3>
+                <p class="scenario-desc">
+                  Immediately declines outdoor pool heater repair and offers dispatcher referral without attempting CRM booking.
+                </p>
+              </div>
+
+              <div class="scenario-card" role="tab" tabindex="0" aria-selected="false" data-scenario="security-cancel-someone-elses-job">
+                <div class="scenario-meta-line">
+                  <span class="scenario-id">Scenario 2</span>
+                  <span class="status-pill status-pill-success">Verified</span>
+                </div>
+                <h3 class="scenario-title">2FA Security: Unauthorized Cancellation Refusal</h3>
+                <p class="scenario-desc">
+                  Blocks cancellation of job 1088 when caller ID / phone number fails ownership verification; escalates to dispatcher.
+                </p>
+              </div>
+
+              <div class="scenario-card" role="tab" tabindex="0" aria-selected="false" data-scenario="security-cancel-verified-with-fee">
+                <div class="scenario-meta-line">
+                  <span class="scenario-id">Scenario 3</span>
+                  <span class="status-pill status-pill-success">Verified</span>
+                </div>
+                <h3 class="scenario-title">Policy: Verified Cancellation with $85 Late Fee</h3>
+                <p class="scenario-desc">
+                  Omar Diaz cancels job 1088 scheduled in 14 hours (&lt;24h window). Requires verbal confirmation before charging $85 fee.
+                </p>
+              </div>
+
+              <div class="scenario-card" role="tab" tabindex="0" aria-selected="false" data-scenario="book-refrigerator-sam-window">
+                <div class="scenario-meta-line">
+                  <span class="scenario-id">Scenario 4</span>
+                  <span class="status-pill status-pill-success">Verified</span>
+                </div>
+                <h3 class="scenario-title">Scheduling: Availability Search &amp; Window Booking</h3>
+                <p class="scenario-desc">
+                  Queries open 2-hour arrival windows without forcing arbitrary zone constraints, then books Sam T. on Thursday.
+                </p>
+              </div>
+
+              <div class="scenario-card" role="tab" tabindex="0" aria-selected="false" data-scenario="security-transfer-to-dispatcher">
+                <div class="scenario-meta-line">
+                  <span class="scenario-id">Scenario 5</span>
+                  <span class="status-pill status-pill-success">Verified</span>
+                </div>
+                <h3 class="scenario-title">Escalation: Human Dispatcher Transfer on Demand</h3>
+                <p class="scenario-desc">
+                  Caller insists on speaking to a manager regarding a billing dispute. Immediately transfers to dispatcher queue.
+                </p>
+              </div>
+            </div>
+
+            <!-- Right: Interactive Transcript & Payload Inspector -->
+            <div class="transcript-inspector" id="transcript-drawer" role="tabpanel" aria-labelledby="drawer-title">
+              <div class="inspector-header">
+                <h3 class="inspector-title" id="drawer-title">Scope Guardrail: Pool Heater Refusal — Transcript Viewer</h3>
+                <button class="btn-icon" id="drawer-close" type="button" aria-label="Reset transcript view">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                  </svg>
+                </button>
+              </div>
+              <div class="inspector-body" id="drawer-body">
+                <p class="text-secondary">Select any scenario to inspect the turn-by-turn dialogue, policy guardrail assertions, and tool execution payloads.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Section 4: Interactive WebRTC Multi-Agent Voice Console -->
+        <section class="section" id="section-voice-lab">
+          <div class="section-header">
+            <div>
+              <h2 class="section-title">Interactive WebRTC Multi-Agent Voice Console</h2>
+              <p class="section-desc">
+                Live microphone testing and ear-to-mouth verification across all three architectures. Evaluates acoustic turnaround, speech recognition, and real-time CRM tool invocation.
+              </p>
+            </div>
+            <div class="voice-auth-status" id="voice-auth-indicator">
+              <span class="status-pill status-pill-neutral" id="auth-status-pill">🔒 Security Protected</span>
+            </div>
+          </div>
+
+          <!-- Locked State: Developer / Demo Security Gate -->
+          <div class="voice-gate-card" id="voice-locked-view">
+            <div class="gate-icon-wrapper">
+              <svg class="gate-lock-icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+              </svg>
+            </div>
+            <div class="gate-content">
+              <h3 class="gate-title">Demo Voice Engine — Security Gate</h3>
+              <p class="gate-desc">
+                WebRTC audio calls stream bidirectionally to live AI backends (Retell AI, LiveKit, and Cloudflare Edge Durable Objects). To prevent unauthorized API consumption during public deployment, enter your developer security token or password to unlock audio calling.
+              </p>
+              <form class="gate-form" id="voice-auth-form">
+                <div class="gate-input-group">
+                  <input
+                    type="password"
+                    id="input-voice-token"
+                    class="gate-input"
+                    placeholder="Enter security token (e.g. dev-seed-token)"
+                    autocomplete="current-password"
+                    required
+                  />
+                  <button class="btn btn-primary" type="submit" id="btn-voice-unlock">
+                    Unlock Voice Console
+                  </button>
+                </div>
+                <div class="gate-hint">
+                  <span>Protected by <code>DEMO_VOICE_TOKEN</code> / <code>SEED_TOKEN</code></span>
+                  <span class="gate-err-msg text-error" id="voice-auth-error" role="alert"></span>
+                </div>
+              </form>
+            </div>
+          </div>
+
+          <!-- Unlocked State: Full Interactive Voice Console (hidden by default) -->
+          <div class="voice-console-panel" id="voice-unlocked-view" style="display: none;">
+            <div class="console-top-bar">
+              <div class="session-badge">
+                <span class="session-dot"></span>
+                <span class="session-text">Session Authenticated · Ready to Connect</span>
+              </div>
+              <button class="btn btn-secondary btn-xs" id="btn-voice-lock" type="button" title="Revoke session token">
+                Lock Console
+              </button>
+            </div>
+
+            <div class="console-layout">
+              <!-- Left Column: Controls & Presets -->
+              <div class="console-controls-column">
+                <!-- Architecture Selector -->
+                <div class="control-box">
+                  <label class="control-label">1. Target Architecture</label>
+                  <div class="arch-selector-grid" role="radiogroup" aria-label="Select Architecture">
+                    <button class="arch-select-btn active-cf" role="radio" aria-checked="true" data-arch="cloudflare" type="button">
+                      <span class="arch-btn-header">
+                        <span class="arch-dot dot-cf"></span>
+                        <span class="arch-title">Cloudflare Edge</span>
+                      </span>
+                      <span class="arch-desc">Edge DO · DeepSeek · Aura-2</span>
+                      <span class="arch-speed">~390ms latency</span>
+                    </button>
+                    <button class="arch-select-btn" role="radio" aria-checked="false" data-arch="livekit" type="button">
+                      <span class="arch-btn-header">
+                        <span class="arch-dot dot-livekit"></span>
+                        <span class="arch-title">LiveKit Agents</span>
+                      </span>
+                      <span class="arch-desc">Silero VAD · gpt-6-luna · Cartesia</span>
+                      <span class="arch-speed">~475ms latency</span>
+                    </button>
+                    <button class="arch-select-btn" role="radio" aria-checked="false" data-arch="retell" type="button">
+                      <span class="arch-btn-header">
+                        <span class="arch-dot dot-retell"></span>
+                        <span class="arch-title">Retell AI</span>
+                      </span>
+                      <span class="arch-desc">Managed Flow · ElevenLabs Flash</span>
+                      <span class="arch-speed">~510ms latency</span>
+                    </button>
+                  </div>
+                </div>
+
+                <!-- Caller Persona Preset Selector -->
+                <div class="control-box">
+                  <label class="control-label" for="select-caller-scenario">2. Caller Persona &amp; Scenario</label>
+                  <div class="select-wrapper">
+                    <select id="select-caller-scenario" class="console-select">
+                      <option value="sarah" selected>Sarah (+15550104200) — Reschedule Sub-Zero parts (#1042)</option>
+                      <option value="omar">Omar (+15550108800) — Cancel Bosch visit ($85 fee enforcement)</option>
+                      <option value="new-caller">New Caller — Check availability &amp; book arrival window</option>
+                      <option value="security-cancel-someone-elses-job">Intruder (+15550107777) — 2FA rejection test on job #1088</option>
+                      <option value="security-book-unsupported-service">Unsupported Scope — Pool heater service refusal</option>
+                    </select>
+                  </div>
+                  <div class="preset-meta-info" id="scenario-meta-summary">
+                    <span class="meta-item"><strong>Job ID:</strong> <code id="meta-job-id">1042</code></span>
+                    <span class="meta-item"><strong>Appliance:</strong> <span id="meta-appliance">Sub-Zero Refrigerator</span></span>
+                    <span class="meta-item"><strong>Parts:</strong> <span class="status-pill status-pill-success" id="meta-parts">In Stock</span></span>
+                  </div>
+                </div>
+
+                <!-- Live Call Action Deck -->
+                <div class="control-box call-deck">
+                  <div class="call-action-row">
+                    <button class="btn btn-call-primary" id="btn-voice-call" type="button">
+                      <span class="call-icon">🎙️</span>
+                      <span id="btn-call-label">Start Live Voice Call</span>
+                    </button>
+                    <button class="btn btn-secondary btn-icon-only" id="btn-voice-mute" type="button" title="Mute microphone" disabled>
+                      <svg id="icon-mic" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path>
+                        <path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
+                        <line x1="12" y1="19" x2="12" y2="23"></line>
+                        <line x1="8" y1="23" x2="16" y2="23"></line>
+                      </svg>
+                    </button>
+                  </div>
+
+                  <!-- Audio Waveform Visualizer & Call State -->
+                  <div class="audio-feedback-panel">
+                    <div class="feedback-status-row">
+                      <span class="voice-state-badge" id="voice-state-text">Ready to Connect</span>
+                      <span class="call-timer" id="voice-call-timer">00:00</span>
+                    </div>
+                    <div class="visualizer-wrapper">
+                      <canvas id="voice-canvas" class="visualizer-canvas" width="360" height="48"></canvas>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Quick Test Phrases (Manual or Voice trigger) -->
+                <div class="control-box">
+                  <label class="control-label">Quick Test Prompts</label>
+                  <div class="prompt-chip-group">
+                    <button class="prompt-chip" type="button" data-prompt="When is your earliest refrigerator opening?">
+                      "Earliest refrigerator opening"
+                    </button>
+                    <button class="prompt-chip" type="button" data-prompt="I need to reschedule my parts installation for Saturday.">
+                      "Reschedule parts install"
+                    </button>
+                    <button class="prompt-chip" type="button" data-prompt="I need to cancel my appointment for job 1088.">
+                      "Cancel job 1088"
+                    </button>
+                    <button class="prompt-chip" type="button" data-prompt="Can you fix my pool heater?">
+                      "Fix pool heater"
+                    </button>
+                    <button class="prompt-chip" type="button" data-prompt="I want to speak with a human supervisor.">
+                      "Transfer to dispatcher"
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Right Column: Real-Time Transcript & Telemetry Stream -->
+              <div class="console-transcript-column">
+                <div class="transcript-card">
+                  <div class="transcript-header">
+                    <div class="transcript-title-group">
+                      <span class="transcript-card-title">Live Ear-to-Mouth Dialogue Stream</span>
+                      <span class="live-pulse" id="transcript-pulse"></span>
+                    </div>
+                    <div class="transcript-actions">
+                      <button class="btn btn-secondary btn-xs" id="btn-clear-transcript" type="button">Clear</button>
+                    </div>
+                  </div>
+
+                  <div class="transcript-messages-feed" id="voice-transcript-feed" role="log" aria-live="polite">
+                    <div class="feed-empty-state">
+                      <p>Microphone dialogue, live speech recognition, and edge tool executions will stream here turn-by-turn once a call starts.</p>
+                    </div>
+                  </div>
+
+                  <!-- Turn Latency Metric Strip -->
+                  <div class="turn-telemetry-footer" id="turn-telemetry-footer">
+                    <div class="telemetry-pill">
+                      <span class="pill-label">Last Turn RTT</span>
+                      <span class="pill-value font-mono" id="val-turn-rtt">—</span>
+                    </div>
+                    <div class="telemetry-pill">
+                      <span class="pill-label">Tool Latency</span>
+                      <span class="pill-value font-mono" id="val-turn-tool">—</span>
+                    </div>
+                    <div class="telemetry-pill">
+                      <span class="pill-label">Total Turns</span>
+                      <span class="pill-value font-mono" id="val-turn-count">0</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Section 5: Live Tool Execution Benchmark -->
+        <section class="section" id="section-benchmark">
+          <div class="section-header">
+            <div>
+              <h2 class="section-title">Live CRM Tool Execution Benchmark</h2>
+              <p class="section-desc">
+                Directly measure mid-call tool execution latency across the Worker edge backend.
+              </p>
+            </div>
+          </div>
+
+          <div class="tool-measure-panel">
+            <div class="measure-actions">
+              <button class="btn btn-primary" id="btn-measure-fast" type="button">
+                Measure D1 Edge Cache (/retell)
+              </button>
+              <button class="btn btn-secondary" id="btn-measure-slow" type="button">
+                Measure Uncached Workiz Slow Path (/slow)
+              </button>
+            </div>
+
+            <div class="measure-results-grid">
+              <div class="measure-metric-box active">
+                <div class="metric-box-header">
+                  <span class="metric-box-title">D1 Schedule Cache (Edge Native)</span>
+                  <span class="status-pill status-pill-success">Recommended</span>
+                </div>
+                <div class="metric-box-val text-cf" id="metric-fast-val" aria-live="polite">12ms (RTT 47ms)</div>
+                <div class="metric-box-desc">Single-digit local D1 query execution with edge caching</div>
+              </div>
+              <div class="measure-metric-box">
+                <div class="metric-box-header">
+                  <span class="metric-box-title">Uncached Workiz CRM Path</span>
+                  <span class="status-pill status-pill-neutral">Legacy WAN</span>
+                </div>
+                <div class="metric-box-val" id="metric-slow-val" aria-live="polite">418ms (RTT 453ms)</div>
+                <div class="metric-box-desc">Simulated Workiz multi-page API network delay</div>
+              </div>
+            </div>
+
+            <details class="console-accordion">
+              <summary class="console-summary">Inspect Raw Backend Response Payload</summary>
+              <pre class="console-log" id="tool-console-log">Ready to test. Click a measurement button above to dispatch a live CRM request.</pre>
+            </details>
+          </div>
+        </section>
+      </main>
+
+      <footer class="footer">
+        <div class="footer-content">
+          <div class="footer-meta">
+            ApplianceOps Voice Dispatch Lab · Monorepo: <code>packages/contracts</code> · <code>apps/edge</code> · <code>apps/agent-cloudflare</code>
+          </div>
+          <div class="footer-copy">
+            Evaluated on Cloudflare Workers D1 + WebRTC edge telemetry.
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
