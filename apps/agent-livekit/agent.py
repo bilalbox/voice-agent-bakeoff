@@ -24,6 +24,7 @@ from typing import Any
 
 try:
     from dotenv import load_dotenv
+
     # Load root .env first, then local directory .env
     root_env = os.path.abspath(os.path.join(os.path.dirname(__file__), "../..", ".env"))
     if os.path.exists(root_env):
@@ -39,7 +40,9 @@ if os.environ.get("LIVEKIT_WS_URL") and not os.environ.get("LIVEKIT_URL"):
 logger = logging.getLogger("applianceops-livekit")
 logging.basicConfig(level=logging.INFO)
 
-EDGE_BASE_URL = os.environ.get("EDGE_BASE_URL", "https://applianceops-edge.23p.workers.dev").rstrip("/")
+EDGE_BASE_URL = os.environ.get("EDGE_BASE_URL", "https://applianceops-edge.23p.workers.dev").rstrip(
+    "/"
+)
 LIVEKIT_STT_MODEL = os.environ.get("LIVEKIT_STT_MODEL", "deepgram/nova-3")
 LIVEKIT_TTS_MODEL = os.environ.get("LIVEKIT_TTS_MODEL", "inworld/inworld-tts-2-flash")
 LIVEKIT_LLM_MODEL = os.environ.get("LIVEKIT_LLM_MODEL", "openai/gpt-6-luna")
@@ -127,24 +130,27 @@ async def call_edge_tool(name: str, args: dict[str, Any]) -> dict[str, Any]:
 
     try:
         import aiohttp
-        async with aiohttp.ClientSession() as session:
-            async with session.post(url, json=args, headers=headers) as resp:
-                text = await resp.text()
-                rtt_ms = round((time.perf_counter() - t0) * 1000)
-                header_ms = resp.headers.get("X-Tool-Latency-Ms")
-                try:
-                    body = json.loads(text)
-                except json.JSONDecodeError:
-                    body = {"raw": text}
-                return {
-                    "status": resp.status,
-                    "x_tool_latency_ms": header_ms,
-                    "rtt_ms": rtt_ms,
-                    "body": body,
-                }
+
+        async with (
+            aiohttp.ClientSession() as session,
+            session.post(url, json=args, headers=headers) as resp,
+        ):
+            text = await resp.text()
+            rtt_ms = round((time.perf_counter() - t0) * 1000)
+            header_ms = resp.headers.get("X-Tool-Latency-Ms")
+            try:
+                body = json.loads(text)
+            except json.JSONDecodeError:
+                body = {"raw": text}
+            return {
+                "status": resp.status,
+                "x_tool_latency_ms": header_ms,
+                "rtt_ms": rtt_ms,
+                "body": body,
+            }
     except ImportError:
-        import urllib.request
         import urllib.error
+        import urllib.request
 
         payload_bytes = json.dumps(args).encode("utf-8")
 
@@ -157,7 +163,11 @@ async def call_edge_tool(name: str, args: dict[str, Any]) -> dict[str, Any]:
             )
             try:
                 with urllib.request.urlopen(req, timeout=10) as resp:
-                    return resp.status, resp.headers.get("X-Tool-Latency-Ms"), resp.read().decode("utf-8")
+                    return (
+                        resp.status,
+                        resp.headers.get("X-Tool-Latency-Ms"),
+                        resp.read().decode("utf-8"),
+                    )
             except urllib.error.HTTPError as err:
                 return err.code, err.headers.get("X-Tool-Latency-Ms"), err.read().decode("utf-8")
             except Exception as err:
@@ -210,18 +220,21 @@ async def fetch_caller_context(phone: str) -> dict[str, Any]:
 
     try:
         import aiohttp
-        async with aiohttp.ClientSession() as session:
-            async with session.post(
+
+        async with (
+            aiohttp.ClientSession() as session,
+            session.post(
                 url,
                 json=payload_dict,
                 headers=headers,
-            ) as resp:
-                if resp.status == 200:
-                    data = await resp.json()
-                    return _extract_vars(data)
+            ) as resp,
+        ):
+            if resp.status == 200:
+                data = await resp.json()
+                return _extract_vars(data)
     except ImportError:
-        import urllib.request
         import urllib.error
+        import urllib.request
 
         payload_bytes = json.dumps(payload_dict).encode("utf-8")
 
@@ -258,7 +271,9 @@ async def run_tools_harness() -> None:
 
     # 2. Check Tech Availability
     print("\n--- 2. check_tech_availability (refrigeration) ---")
-    res1 = await call_edge_tool("check_tech_availability", {"skill": "refrigeration", "zone": "north"})
+    res1 = await call_edge_tool(
+        "check_tech_availability", {"skill": "refrigeration", "zone": "north"}
+    )
     print(json.dumps(res1, indent=2))
 
     # 3. Lookup Job by phone (Omar: +15550108800)
@@ -310,13 +325,34 @@ async def run_tools_harness() -> None:
 
 
 try:
-    from livekit.agents import AutoSubscribe, JobContext, WorkerOptions, cli, llm, inference
-    from livekit.agents.voice import Agent as VoiceAgent, AgentSession
-    from livekit.agents import function_tool
+    from livekit.agents import (
+        AutoSubscribe,
+        WorkerOptions,
+        cli,
+        function_tool,
+        inference,
+    )
+    from livekit.agents.voice import Agent as VoiceAgent
+    from livekit.agents.voice import AgentSession
     from livekit.plugins import openai, silero
+
     HAS_LIVEKIT = True
 except ImportError:
     HAS_LIVEKIT = False
+    AutoSubscribe: Any = None
+    WorkerOptions: Any = None
+    cli: Any = None
+    inference: Any = None
+    VoiceAgent: Any = None
+    AgentSession: Any = None
+    openai: Any = None
+    silero: Any = None
+
+    def function_tool(*args: Any, **_kwargs: Any) -> Any:  # type: ignore[no-redef]
+        def decorator(fn: Any) -> Any:
+            return fn
+
+        return decorator
 
 
 def build_tools_v1(caller_phone: str, on_tool_event=None):
@@ -437,7 +473,9 @@ def build_tools_v1(caller_phone: str, on_tool_event=None):
             "customer_name": customer_name or None,
             "confirmed": confirmed,
         }
-        res = await call_edge_tool("cancel_appointment", {k: v for k, v in args.items() if v is not None})
+        res = await call_edge_tool(
+            "cancel_appointment", {k: v for k, v in args.items() if v is not None}
+        )
         await _notify_tool("cancel_appointment", res)
         return json.dumps(res.get("body", res))
 
@@ -459,64 +497,48 @@ def build_tools_v1(caller_phone: str, on_tool_event=None):
     ]
 
 
-async def entrypoint(ctx: JobContext) -> None:
-    await ctx.connect(auto_subscribe=AutoSubscribe.AUDIO_ONLY)
-    participant = await ctx.wait_for_participant()
-
-    # 1. Caller Phone Hydration from Room Metadata / Participant Attribute
-    caller_phone = ""
+def _extract_caller_phone(ctx: Any, participant: Any) -> str:
     if ctx.room and ctx.room.metadata:
         try:
             meta = json.loads(ctx.room.metadata)
-            caller_phone = meta.get("caller_phone") or meta.get("from_number", "")
+            phone = meta.get("caller_phone") or meta.get("from_number", "")
+            if phone:
+                return phone
         except Exception:
-            caller_phone = ctx.room.metadata
+            return ctx.room.metadata
 
-    # Fallback: check participant metadata (passed in client JWT claims)
-    if not caller_phone and getattr(participant, "metadata", None):
+    if getattr(participant, "metadata", None):
         try:
             meta = json.loads(participant.metadata)
-            caller_phone = meta.get("caller_phone") or meta.get("from_number", "")
+            phone = meta.get("caller_phone") or meta.get("from_number", "")
+            if phone:
+                return phone
         except Exception:
             pass
 
-    if not caller_phone and ctx.room:
+    if ctx.room:
         for p in ctx.room.remote_participants.values():
             if getattr(p, "metadata", None):
                 try:
                     meta = json.loads(p.metadata)
-                    caller_phone = meta.get("caller_phone") or meta.get("from_number", "")
-                    if caller_phone:
-                        break
+                    phone = meta.get("caller_phone") or meta.get("from_number", "")
+                    if phone:
+                        return phone
                 except Exception:
                     pass
+    return ""
 
-    vars_ctx = await fetch_caller_context(caller_phone)
 
-    # 2. Build Formatted System Prompt
-    system_prompt = SYSTEM_PROMPT_TEMPLATE.format(
-        customer_name=vars_ctx.get("customer_name", "there"),
-        open_job_status=vars_ctx.get("open_job_status", "none"),
-        assigned_tech=vars_ctx.get("assigned_tech", ""),
-        job_id=vars_ctx.get("job_id", ""),
-        appliance=vars_ctx.get("appliance", ""),
-        model_serial=vars_ctx.get("model_serial", ""),
-        parts_status=vars_ctx.get("parts_status", ""),
-        known_caller=vars_ctx.get("known_caller", "false"),
-    )
-
-    # 3. Instantiate Voice Pipeline via LiveKit Cloud Inference
+def _resolve_providers():
     logger.info(
         "Configuring LiveKit Cloud Inference: STT=%s, TTS=%s, LLM=%s",
         LIVEKIT_STT_MODEL,
         LIVEKIT_TTS_MODEL,
         LIVEKIT_LLM_MODEL,
     )
-
     try:
         stt_provider = inference.STT(model=LIVEKIT_STT_MODEL)
         tts_provider = inference.TTS(model=LIVEKIT_TTS_MODEL)
-
         deepseek_key = os.getenv("DEEPSEEK_API_KEY")
         openai_key = os.getenv("OPENAI_API_KEY")
         if deepseek_key and (LIVEKIT_LLM_MODEL.startswith("deepseek") or not openai_key):
@@ -532,20 +554,53 @@ async def entrypoint(ctx: JobContext) -> None:
         else:
             logger.info("Using LiveKit Cloud Inference LLM: %s", LIVEKIT_LLM_MODEL)
             llm_provider = inference.LLM(model=LIVEKIT_LLM_MODEL)
+        return stt_provider, tts_provider, llm_provider
     except Exception as exc:
         logger.warning("Cloud inference initialization fallback: %s", exc)
-        stt_provider = openai.STT()
-        tts_provider = openai.TTS()
-        llm_provider = openai.LLM(model=LIVEKIT_LLM_MODEL)
+        return openai.STT(), openai.TTS(), openai.LLM(model=LIVEKIT_LLM_MODEL)
 
-    # 4. Opening Greeting based on caller recognition
+
+def _build_greeting(vars_ctx: dict[str, Any]) -> str:
     if vars_ctx.get("known_caller") == "true" and vars_ctx.get("job_id"):
         name = vars_ctx.get("customer_name", "")
         appliance = vars_ctx.get("appliance", "appliance")
         job_id = vars_ctx.get("job_id", "")
-        greeting = f"Hi {name}, are you calling about the {appliance} — job {job_id}?"
-    else:
-        greeting = "Thanks for calling ApplianceOps. How can I help you today?"
+        return f"Hi {name}, are you calling about the {appliance} — job {job_id}?"
+    return "Thanks for calling ApplianceOps. How can I help you today?"
+
+
+def _extract_item_text(item: Any) -> str:
+    text = (
+        getattr(item, "text_content", None)
+        or getattr(item, "raw_text_content", None)
+        or getattr(item, "text", "")
+        or ""
+    )
+    if not text and hasattr(item, "content") and isinstance(item.content, list):
+        text = " ".join([c if isinstance(c, str) else getattr(c, "text", "") for c in item.content])
+    return text.strip()
+
+
+async def entrypoint(ctx: Any) -> None:
+    await ctx.connect(auto_subscribe=AutoSubscribe.AUDIO_ONLY)
+    participant = await ctx.wait_for_participant()
+
+    caller_phone = _extract_caller_phone(ctx, participant)
+    vars_ctx = await fetch_caller_context(caller_phone)
+
+    system_prompt = SYSTEM_PROMPT_TEMPLATE.format(
+        customer_name=vars_ctx.get("customer_name", "there"),
+        open_job_status=vars_ctx.get("open_job_status", "none"),
+        assigned_tech=vars_ctx.get("assigned_tech", ""),
+        job_id=vars_ctx.get("job_id", ""),
+        appliance=vars_ctx.get("appliance", ""),
+        model_serial=vars_ctx.get("model_serial", ""),
+        parts_status=vars_ctx.get("parts_status", ""),
+        known_caller=vars_ctx.get("known_caller", "false"),
+    )
+
+    stt_provider, tts_provider, llm_provider = _resolve_providers()
+    greeting = _build_greeting(vars_ctx)
 
     last_tool_call: dict[str, Any] | None = None
 
@@ -555,12 +610,14 @@ async def entrypoint(ctx: JobContext) -> None:
         try:
             if ctx.room and ctx.room.local_participant:
                 await ctx.room.local_participant.publish_data(
-                    json.dumps({
-                        "type": "tool",
-                        "name": tool_name,
-                        "latency_ms": latency_ms,
-                        "status": "executed",
-                    }).encode("utf-8")
+                    json.dumps(
+                        {
+                            "type": "tool",
+                            "name": tool_name,
+                            "latency_ms": latency_ms,
+                            "status": "executed",
+                        }
+                    ).encode("utf-8")
                 )
         except Exception as err:
             logger.debug("Failed to publish tool event: %s", err)
@@ -582,11 +639,13 @@ async def entrypoint(ctx: JobContext) -> None:
         if transcript and is_final and ctx.room and ctx.room.local_participant:
             asyncio.create_task(
                 ctx.room.local_participant.publish_data(
-                    json.dumps({
-                        "type": "turn",
-                        "role": "user",
-                        "text": transcript.strip(),
-                    }).encode("utf-8")
+                    json.dumps(
+                        {
+                            "type": "turn",
+                            "role": "user",
+                            "text": transcript.strip(),
+                        }
+                    ).encode("utf-8")
                 )
             )
 
@@ -596,15 +655,7 @@ async def entrypoint(ctx: JobContext) -> None:
         try:
             item = getattr(ev, "item", None)
             if item and getattr(item, "role", "") == "assistant":
-                text = (
-                    getattr(item, "text_content", None)
-                    or getattr(item, "raw_text_content", None)
-                    or getattr(item, "text", "")
-                    or ""
-                )
-                if not text and hasattr(item, "content") and isinstance(item.content, list):
-                    text = " ".join([c if isinstance(c, str) else getattr(c, "text", "") for c in item.content])
-                text = text.strip()
+                text = _extract_item_text(item)
                 if text and ctx.room and ctx.room.local_participant:
                     payload: dict[str, Any] = {
                         "type": "turn",
@@ -615,9 +666,7 @@ async def entrypoint(ctx: JobContext) -> None:
                         payload["tool"] = last_tool_call
                         last_tool_call = None
                     asyncio.create_task(
-                        ctx.room.local_participant.publish_data(
-                            json.dumps(payload).encode("utf-8")
-                        )
+                        ctx.room.local_participant.publish_data(json.dumps(payload).encode("utf-8"))
                     )
         except Exception as err:
             logger.debug("Failed to publish turn data: %s", err)
@@ -628,11 +677,13 @@ async def entrypoint(ctx: JobContext) -> None:
     try:
         if ctx.room and ctx.room.local_participant:
             await ctx.room.local_participant.publish_data(
-                json.dumps({
-                    "type": "turn",
-                    "role": "assistant",
-                    "text": greeting,
-                }).encode("utf-8")
+                json.dumps(
+                    {
+                        "type": "turn",
+                        "role": "assistant",
+                        "text": greeting,
+                    }
+                ).encode("utf-8")
             )
     except Exception as err:
         logger.debug("Failed to publish opening greeting: %s", err)
@@ -669,12 +720,14 @@ def main() -> None:
 
     if args.command == "download-files":
         from livekit.plugins import silero
+
         print("Downloading Silero VAD weights...")
         silero.VAD.load()
         print("Silero VAD weights ready.")
         return
 
     import sys
+
     sys.argv = [sys.argv[0], args.command, *passthrough]
     run_livekit_worker()
 

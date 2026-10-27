@@ -1,28 +1,28 @@
 {
-  "cancellation_policy": {
-    "FEE_WINDOW_HOURS": 24,
-    "FEE_AMOUNT_DOLLARS": 85,
-    "MAX_VERIFICATION_ATTEMPTS": 3
-  },
-  "supported_skills": [
-    "refrigeration",
-    "dishwasher",
-    "laundry",
-    "cooking",
-    "bosch",
-    "miele",
-    "gaggenau",
-    "sub-zero",
-    "compressor"
-  ],
-  "unsupported_services": [
-    "pool heater",
-    "water heater",
-    "hvac",
-    "furnace",
-    "outdoor plumbing",
-    "commercial equipment",
-    "lawnmower",
-    "small countertop appliance"
-  ]
+	"cancellation_policy": {
+		"FEE_WINDOW_HOURS": 24,
+		"FEE_AMOUNT_DOLLARS": 85,
+		"MAX_VERIFICATION_ATTEMPTS": 3
+	},
+	"supported_skills": [
+		"refrigeration",
+		"dishwasher",
+		"laundry",
+		"cooking",
+		"bosch",
+		"miele",
+		"gaggenau",
+		"sub-zero",
+		"compressor"
+	],
+	"unsupported_services": [
+		"pool heater",
+		"water heater",
+		"hvac",
+		"furnace",
+		"outdoor plumbing",
+		"commercial equipment",
+		"lawnmower",
+		"small countertop appliance"
+	]
 }

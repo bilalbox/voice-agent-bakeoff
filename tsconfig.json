@@ -1,0 +1,35 @@
+{
+	"extends": "./tsconfig.base.json",
+	"compilerOptions": {
+		"target": "ES2022",
+		"module": "ESNext",
+		"moduleResolution": "bundler",
+		"resolveJsonModule": true,
+		"isolatedModules": true,
+		"noEmit": true,
+		"types": ["node", "@cloudflare/workers-types"],
+		"paths": {
+			"@applianceops/contracts": ["./packages/contracts/src/index.ts"],
+			"@applianceops/contracts/*": ["./packages/contracts/src/*"],
+			"@applianceops/schedule-store": ["./packages/schedule-store/src/index.ts"]
+		}
+	},
+	"include": [
+		"apps/edge/src/**/*",
+		"apps/edge/worker-configuration.d.ts",
+		"apps/agent-cloudflare/src/**/*",
+		"apps/agent-livekit/src/**/*",
+		"apps/agent-livekit/worker-configuration.d.ts",
+		"packages/contracts/src/**/*",
+		"packages/schedule-store/src/**/*",
+		"scripts/**/*"
+	],
+	"exclude": [
+		"node_modules",
+		"**/node_modules",
+		"**/dist",
+		"**/test/**",
+		"**/tests/**",
+		"apps/agent-livekit/.venv"
+	]
+}

@@ -1,0 +1,17 @@
+{
+	"compilerOptions": {
+		"strict": true,
+		"noUncheckedIndexedAccess": true,
+		"noImplicitReturns": true,
+		"noFallthroughCasesInSwitch": true,
+		"verbatimModuleSyntax": true,
+		"skipLibCheck": true,
+		"noEmit": true,
+		"target": "ES2022",
+		"module": "ESNext",
+		"moduleResolution": "Bundler",
+		"isolatedModules": true,
+		"esModuleInterop": true,
+		"forceConsistentCasingInFileNames": true
+	}
+}

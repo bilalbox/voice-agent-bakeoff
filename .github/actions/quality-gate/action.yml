@@ -1,0 +1,11 @@
+name: Quality gate
+description: Biome, rev-dep, complexity ratchet, typecheck, and tests
+runs:
+  using: composite
+  steps:
+    - name: Gate
+      run: pnpm gate
+      shell: bash
+    - name: Ratchet contract tests
+      run: pnpm test:ratchets
+      shell: bash

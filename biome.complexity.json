@@ -1,0 +1,35 @@
+{
+	"$schema": "https://biomejs.dev/schemas/2.6.3/schema.json",
+	"files": {
+		"includes": [
+			"apps/edge/src/**",
+			"apps/agent-cloudflare/src/**",
+			"apps/agent-livekit/src/**",
+			"apps/agent-retell/scripts/**",
+			"apps/benchmark/scripts/**",
+			"packages/contracts/src/**",
+			"packages/schedule-store/src/**",
+			"scripts/**"
+		]
+	},
+	"linter": {
+		"enabled": true,
+		"rules": {
+			"preset": "none",
+			"complexity": {
+				"noExcessiveCognitiveComplexity": {
+					"level": "error",
+					"options": {
+						"maxAllowedComplexity": 25
+					}
+				}
+			}
+		}
+	},
+	"formatter": {
+		"enabled": false
+	},
+	"assist": {
+		"enabled": false
+	}
+}

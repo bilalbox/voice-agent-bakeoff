@@ -1,0 +1,15 @@
+name: Setup pnpm and Node
+description: Install pnpm, Node from .nvmrc, and frozen lockfile deps
+runs:
+  using: composite
+  steps:
+    - uses: pnpm/action-setup@v6
+    - uses: actions/setup-node@v7
+      with:
+        node-version-file: .nvmrc
+        cache: pnpm
+    - name: Install dependencies
+      run: pnpm install --frozen-lockfile
+      shell: bash
+      env:
+        HUSKY: "0"

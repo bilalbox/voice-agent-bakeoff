@@ -1,0 +1,8 @@
+{
+	"version": 1,
+	"findings": [
+		{ "id": "exports|src/a.ts|foo", "note": "fixture", "issue": 273 },
+		{ "id": "types|src/a.ts|Bar", "note": "fixture", "issue": 273 },
+		{ "id": "exports|src/gone.ts|removed", "note": "stale row", "issue": 273 }
+	]
+}

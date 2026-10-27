@@ -1,0 +1,124 @@
+{
+	"configVersion": "2.2",
+	"$schema": "https://github.com/jayu/rev-dep/blob/master/config-schema/2.2.schema.json?raw=true",
+	"baselineSnapshotPath": ".rev-dep.baseline.json",
+	"ignoreFiles": [
+		"**/node_modules/**",
+		"**/dist/**",
+		"**/.git/**",
+		"**/.wrangler/**",
+		"**/baselines/**",
+		"**/tests/ratchets/fixtures/**",
+		"portfolio/**",
+		"apps/agent-livekit/.venv/**"
+	],
+	"nodeModulesResolution": {
+		"resolutionType": "entry-package",
+		"includeDevDepsFromRoot": false
+	},
+	"workspaces": [
+		{
+			"path": ".",
+			"prodEntryPoints": [
+				"apps/edge/src/**/*.ts",
+				"apps/agent-cloudflare/src/**/*.ts",
+				"apps/agent-livekit/src/**/*.ts",
+				"packages/contracts/src/**/*.ts",
+				"packages/schedule-store/src/**/*.ts",
+				"apps/benchmark/app.js"
+			],
+			"devEntryPoints": [
+				"apps/edge/test/**/*.ts",
+				"apps/edge/vitest.config.ts",
+				"apps/agent-retell/scripts/**/*.ts",
+				"apps/benchmark/scripts/**/*.ts",
+				"scripts/**/*.{ts,tsx,js,mjs,cjs}",
+				"tests/**/*.{ts,tsx,js,mjs,cjs,sh}",
+				"**/*.{test,spec}.{ts,tsx}"
+			],
+			"moduleBoundaries": [
+				{
+					"name": "contracts-pure",
+					"pattern": "packages/contracts/src/**/*",
+					"deny": ["apps/**/*", "packages/schedule-store/**/*", "scripts/**/*"]
+				},
+				{
+					"name": "schedule-store-isolated",
+					"pattern": "packages/schedule-store/src/**/*",
+					"deny": ["apps/**/*", "scripts/**/*"]
+				},
+				{
+					"name": "no-importing-scripts",
+					"pattern": "{apps,packages}/**/*",
+					"deny": ["scripts/**/*"]
+				}
+			],
+			"circularImportsDetection": {
+				"enabled": true,
+				"ignoreTypeImports": true
+			},
+			"orphanFilesDetection": {
+				"enabled": true,
+				"ignoreTypeImports": true,
+				"graphExclude": [
+					"scripts/**",
+					"tests/**",
+					"baselines/**",
+					"apps/agent-retell/scripts/**",
+					"apps/benchmark/scripts/**",
+					"apps/benchmark/app.js"
+				]
+			},
+			"unusedExportsDetection": {
+				"enabled": true,
+				"ignoreTypeExports": true,
+				"ignoreFiles": [
+					"scripts/**",
+					"tests/**",
+					"apps/agent-retell/scripts/**",
+					"apps/benchmark/scripts/**"
+				]
+			},
+			"unusedNodeModulesDetection": {
+				"enabled": true,
+				"excludeModules": ["@types/**", "@esbuild/**", "dotenv"],
+				"pkgJsonFieldsWithBinaries": ["scripts", "bin"],
+				"filesWithBinaries": [
+					"scripts/run-rev-dep.ts",
+					".husky/pre-commit",
+					".husky/pre-push"
+				],
+				"filesWithModules": [
+					"*.config.*",
+					"biome.json",
+					"biome.complexity.json",
+					"vitest.config.*",
+					"vite.config.*",
+					"apps/edge/vitest.config.ts"
+				]
+			},
+			"missingNodeModulesDetection": {
+				"enabled": true,
+				"excludeModules": ["@types/**"]
+			},
+			"unresolvedImportsDetection": {
+				"enabled": true
+			},
+			"devDepsUsageOnProdDetection": {
+				"enabled": true,
+				"ignoreTypeImports": true
+			},
+			"duplicatedCodeDetection": {
+				"enabled": true,
+				"minTokens": 50,
+				"snapshotPath": ".rev-dep.duplicates.json",
+				"ignoreFiles": [
+					"scripts/**",
+					"tests/**",
+					"**/node_modules/**",
+					"apps/benchmark/app.js"
+				]
+			}
+		}
+	]
+}

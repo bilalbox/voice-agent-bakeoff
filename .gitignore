@@ -79,6 +79,3 @@ Thumbs.db
 *.swo
 *~
 
-# Alternate package manager artifacts (npm / package-lock.json is project standard)
-pnpm-lock.yaml
-pnpm-workspace.yaml

@@ -1,0 +1,7 @@
+{
+	"version": 1,
+	"findings": [
+		{ "id": "exports|src/a.ts|foo", "note": "fixture exemption", "issue": 273 },
+		{ "id": "types|src/a.ts|Bar", "note": "fixture exemption", "issue": 273 }
+	]
+}

@@ -1,0 +1,198 @@
+{
+  "schemaVersion": "1.0",
+  "workspaces": {
+    ".": {
+      "missing-node-modules": [
+        {
+          "file": "apps/agent-livekit/src/index.ts",
+          "module": "cloudflare:workers"
+        },
+        {
+          "file": "apps/agent-livekit/src/index.ts",
+          "module": "hono"
+        },
+        {
+          "file": "apps/benchmark/app.js",
+          "module": "https:"
+        },
+        {
+          "file": "apps/benchmark/scripts/run-fidelity-suite.ts",
+          "module": "@applianceops/contracts"
+        },
+        {
+          "file": "apps/edge/src/handlers/book-appointment.ts",
+          "module": "hono"
+        },
+        {
+          "file": "apps/edge/src/handlers/cancel-job.ts",
+          "module": "hono"
+        },
+        {
+          "file": "apps/edge/src/handlers/check-availability.ts",
+          "module": "hono"
+        },
+        {
+          "file": "apps/edge/src/handlers/reschedule-parts.ts",
+          "module": "hono"
+        },
+        {
+          "file": "apps/edge/src/index.ts",
+          "module": "hono"
+        },
+        {
+          "file": "apps/edge/src/routes/admin.ts",
+          "module": "hono"
+        },
+        {
+          "file": "apps/edge/src/routes/benchmark.ts",
+          "module": "hono"
+        },
+        {
+          "file": "apps/edge/src/routes/mock-workiz.ts",
+          "module": "hono"
+        },
+        {
+          "file": "apps/edge/src/routes/retell.ts",
+          "module": "hono"
+        },
+        {
+          "file": "apps/edge/src/routes/slow.ts",
+          "module": "hono"
+        },
+        {
+          "file": "apps/edge/src/routes/tools.ts",
+          "module": "hono"
+        },
+        {
+          "file": "apps/edge/src/routes/voice.ts",
+          "module": "hono"
+        },
+        {
+          "file": "apps/edge/test/policies-domain.test.ts",
+          "module": "vitest"
+        },
+        {
+          "file": "apps/edge/test/security-contract.test.ts",
+          "module": "cloudflare:test"
+        },
+        {
+          "file": "apps/edge/test/security-contract.test.ts",
+          "module": "vitest"
+        },
+        {
+          "file": "apps/edge/test/telemetry-pipeline.test.ts",
+          "module": "cloudflare:test"
+        },
+        {
+          "file": "apps/edge/test/telemetry-pipeline.test.ts",
+          "module": "vitest"
+        },
+        {
+          "file": "apps/edge/test/tools-rest.test.ts",
+          "module": "cloudflare:test"
+        },
+        {
+          "file": "apps/edge/test/tools-rest.test.ts",
+          "module": "vitest"
+        },
+        {
+          "file": "apps/edge/test/voice-session.test.ts",
+          "module": "cloudflare:test"
+        },
+        {
+          "file": "apps/edge/test/voice-session.test.ts",
+          "module": "vitest"
+        },
+        {
+          "file": "apps/edge/vitest.config.ts",
+          "module": "@cloudflare/vitest-plugin"
+        },
+        {
+          "file": "apps/edge/vitest.config.ts",
+          "module": "vitest"
+        },
+        {
+          "file": "packages/contracts/src/evaluation.ts",
+          "module": "zod"
+        },
+        {
+          "file": "packages/contracts/src/telemetry.ts",
+          "module": "zod"
+        },
+        {
+          "file": "packages/contracts/src/tools.ts",
+          "module": "zod"
+        }
+      ],
+      "orphan-files": [
+        {
+          "file": "apps/agent-livekit/worker-configuration.d.ts"
+        },
+        {
+          "file": "apps/edge/worker-configuration.d.ts"
+        },
+        {
+          "file": "packages/contracts/scripts/export-json-schemas.ts"
+        }
+      ],
+      "unresolved-imports": [
+        {
+          "file": "apps/agent-livekit/src/index.ts",
+          "request": "cloudflare:workers",
+          "kind": "literal"
+        },
+        {
+          "file": "apps/benchmark/app.js",
+          "request": "https://esm.sh/livekit-client@2.23.0",
+          "kind": "literal"
+        },
+        {
+          "file": "apps/benchmark/app.js",
+          "request": "https://esm.sh/retell-client-js-sdk@3.0.3",
+          "kind": "literal"
+        },
+        {
+          "file": "apps/benchmark/scripts/run-fidelity-suite.ts",
+          "request": "@applianceops/contracts",
+          "kind": "literal"
+        },
+        {
+          "file": "apps/edge/test/security-contract.test.ts",
+          "request": "cloudflare:test",
+          "kind": "literal"
+        },
+        {
+          "file": "apps/edge/test/telemetry-pipeline.test.ts",
+          "request": "cloudflare:test",
+          "kind": "literal"
+        },
+        {
+          "file": "apps/edge/test/test-helper.ts",
+          "request": "../migrations/0001_init.sql?raw",
+          "kind": "literal"
+        },
+        {
+          "file": "apps/edge/test/test-helper.ts",
+          "request": "../migrations/0002_benchmark_telemetry.sql?raw",
+          "kind": "literal"
+        },
+        {
+          "file": "apps/edge/test/tools-rest.test.ts",
+          "request": "cloudflare:test",
+          "kind": "literal"
+        },
+        {
+          "file": "apps/edge/test/voice-session.test.ts",
+          "request": "cloudflare:test",
+          "kind": "literal"
+        }
+      ],
+      "unused-node-modules": [
+        {
+          "module": "@cloudflare/workers-types",
+          "packageJson": "package.json"
+        }
+      ]
+    }
+  }
+}

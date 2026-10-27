@@ -1,0 +1,1971 @@
+{
+  "schemaVersion": "1.0",
+  "canonicalFormVersion": "1.0",
+  "parameters": {
+    "blinding": "exact",
+    "blindIdentifiers": false,
+    "blindStrings": false,
+    "blindNumbers": false,
+    "minTokens": 50,
+    "minLines": 3,
+    "minDepth": 0,
+    "minStatements": 0,
+    "minDuplicates": 2,
+    "skipObjects": false,
+    "ignoreFiles": [
+      "scripts/**",
+      "tests/**",
+      "**/node_modules/**",
+      "apps/benchmark/app.js"
+    ],
+    "configLevelSettings": {
+      "configPath": "rev-dep.config.json",
+      "ignoreFiles": [
+        "**/node_modules/**",
+        "**/dist/**",
+        "**/.git/**",
+        "**/.wrangler/**",
+        "**/baselines/**",
+        "**/tests/ratchets/fixtures/**",
+        "portfolio/**",
+        "apps/agent-livekit/.venv/**"
+      ]
+    }
+  },
+  "duplications": [
+    {
+      "hash": "006bcdf8618f709c",
+      "occurrences": 2,
+      "files": {
+        "apps/agent-livekit/worker-configuration.d.ts": 1,
+        "apps/edge/worker-configuration.d.ts": 1
+      },
+      "label": "/** The ARIA role, e.g. `\"button\"`, `\"heading\"`, `\"RootWebArea\"`. */"
+    },
+    {
+      "hash": "006c0599bc698acb",
+      "occurrences": 2,
+      "files": {
+        "apps/agent-livekit/worker-configuration.d.ts": 1,
+        "apps/edge/worker-configuration.d.ts": 1
+      },
+      "label": "/**"
+    },
+    {
+      "hash": "044ebc91b781c083",
+      "occurrences": 4,
+      "files": {
+        "apps/agent-livekit/worker-configuration.d.ts": 2,
+        "apps/edge/worker-configuration.d.ts": 2
+      },
+      "label": "inputs: XOR<Omit<ResponsesInput, \"reasoning\"> & {"
+    },
+    {
+      "hash": "058d4a90f2385670",
+      "occurrences": 2,
+      "files": {
+        "apps/agent-livekit/worker-configuration.d.ts": 1,
+        "apps/edge/worker-configuration.d.ts": 1
+      },
+      "label": "id: string;"
+    },
+    {
+      "hash": "0783536db94793d3",
+      "occurrences": 2,
+      "files": {
+        "apps/agent-livekit/worker-configuration.d.ts": 1,
+        "apps/edge/worker-configuration.d.ts": 1
+      },
+      "label": "cwd?: string;"
+    },
+    {
+      "hash": "08a032100b43eb0a",
+      "occurrences": 2,
+      "files": {
+        "apps/agent-livekit/worker-configuration.d.ts": 1,
+        "apps/edge/worker-configuration.d.ts": 1
+      },
+      "label": "request: Request<unknown, IncomingRequestCfProperties<unknown>>;"
+    },
+    {
+      "hash": "0d820aa5e1e197d8",
+      "occurrences": 2,
+      "files": {
+        "apps/agent-livekit/worker-configuration.d.ts": 1,
+        "apps/edge/worker-configuration.d.ts": 1
+      },
+      "label": "readonly stdin: WritableStream | null;"
+    },
+    {
+      "hash": "0de6b2b0b3208813",
+      "occurrences": 2,
+      "files": {
+        "apps/agent-livekit/worker-configuration.d.ts": 1,
+        "apps/edge/worker-configuration.d.ts": 1
+      },
+      "label": "constructor(type: string, init?: ErrorEventErrorEventInit);"
+    },
+    {
+      "hash": "0e32f6c55cf910a2",
+      "occurrences": 2,
+      "files": {
+        "apps/agent-livekit/worker-configuration.d.ts": 1,
+        "apps/edge/worker-configuration.d.ts": 1
+      },
+      "label": "get running(): boolean;"
+    },
+    {
+      "hash": "10176e585c2d0398",
+      "occurrences": 2,
+      "files": {
+        "apps/agent-livekit/worker-configuration.d.ts": 1,
+        "apps/edge/worker-configuration.d.ts": 1
+      },
+      "label": "requests?: {"
+    },
+    {
+      "hash": "1052c9dd7781ac70",
+      "occurrences": 2,
+      "files": {
+        "apps/agent-livekit/worker-configuration.d.ts": 1,
+        "apps/edge/worker-configuration.d.ts": 1
+      },
+      "label": "/**"
+    },
+    {
+      "hash": "110ccf058a9932e7",
+      "occurrences": 2,
+      "files": {
+        "apps/agent-livekit/worker-configuration.d.ts": 1,
+        "apps/edge/worker-configuration.d.ts": 1
+      },
+      "label": "constructor(label?: string, options?: TextDecoderConstructorOptions);"
+    },
+    {
+      "hash": "113fa2921acd4efc",
+      "occurrences": 2,
+      "files": {
+        "apps/agent-livekit/worker-configuration.d.ts": 1,
+        "apps/edge/worker-configuration.d.ts": 1
+      },
+      "label": "/**"
+    },
+    {
+      "hash": "115ac7a22afa17c6",
+      "occurrences": 2,
+      "files": {
+        "apps/agent-livekit/worker-configuration.d.ts": 1,
+        "apps/edge/worker-configuration.d.ts": 1
+      },
+      "label": "/**"
+    },
+    {
+      "hash": "126e9755ac7b5542",
+      "occurrences": 2,
+      "files": {
+        "apps/agent-livekit/worker-configuration.d.ts": 1,
+        "apps/edge/worker-configuration.d.ts": 1
+      },
+      "label": "/**"
+    },
+    {
+      "hash": "139686f75eee50e0",
+      "occurrences": 2,
+      "files": {
+        "apps/agent-livekit/worker-configuration.d.ts": 1,
+        "apps/edge/worker-configuration.d.ts": 1
+      },
+      "label": "prototype: WebSocket;"
+    },
+    {
+      "hash": "145e7e588e52f9bd",
+      "occurrences": 2,
+      "files": {
+        "apps/agent-livekit/worker-configuration.d.ts": 1,
+        "apps/edge/worker-configuration.d.ts": 1
+      },
+      "label": "constructor(input?: (string | URLPatternInit), baseURL?: (string | URLPa..."
+    },
+    {
+      "hash": "1527b324e80e1146",
+      "occurrences": 2,
+      "files": {
+        "apps/agent-livekit/worker-configuration.d.ts": 1,
+        "apps/edge/worker-configuration.d.ts": 1
+      },
+      "label": "readableType?: string;"
+    },
+    {
+      "hash": "16465d8925bccbb3",
+      "occurrences": 2,
+      "files": {
+        "apps/agent-livekit/worker-configuration.d.ts": 1,
+        "apps/edge/worker-configuration.d.ts": 1
+      },
+      "label": "/**"
+    },
+    {
+      "hash": "165d3d2e8aaa162a",
+      "occurrences": 2,
+      "files": {
+        "apps/agent-livekit/worker-configuration.d.ts": 1,
+        "apps/edge/worker-configuration.d.ts": 1
+      },
+      "label": "/**"
+    },
+    {
+      "hash": "166dc0fd907ee33e",
+      "occurrences": 2,
+      "files": {
+        "apps/agent-livekit/worker-configuration.d.ts": 1,
+        "apps/edge/worker-configuration.d.ts": 1
+      },
+      "label": "patchLog(logId: string, data: AiGatewayPatchLog): Promise<void>;"
+    },
+    {
+      "hash": "17f7fb4a76b6fae1",
+      "occurrences": 2,
+      "files": {
+        "apps/agent-livekit/worker-configuration.d.ts": 1,
+        "apps/edge/worker-configuration.d.ts": 1
+      },
+      "label": "/**"
+    },
+    {
+      "hash": "18ef2a5baccbafff",
+      "occurrences": 2,
+      "files": {
+        "apps/agent-livekit/worker-configuration.d.ts": 1,
+        "apps/edge/worker-configuration.d.ts": 1
+      },
+      "label": "get<T = unknown>(key: string, options?: DurableObjectGetOptions): Promis..."
+    },
+    {
+      "hash": "1a71b8a03e72bdb8",
+      "occurrences": 2,
+      "files": {
+        "apps/agent-livekit/worker-configuration.d.ts": 1,
+        "apps/edge/worker-configuration.d.ts": 1
+      },
+      "label": "/* [Cloudflare Docs Reference](https://developers.cloudflare.com/workers..."
+    },
+    {
+      "hash": "1ae3bd084c34a01b",
+      "occurrences": 2,
+      "files": {
+        "apps/agent-livekit/worker-configuration.d.ts": 1,
+        "apps/edge/worker-configuration.d.ts": 1
+      },
+      "label": "// Message ID"
+    },
+    {
+      "hash": "1d221476aaa86710",
+      "occurrences": 2,
+      "files": {
+        "apps/edge/src/workiz/types.ts": 1,
+        "packages/schedule-store/src/types.ts": 1
+      },
+      "label": "id?: string;"
+    },
+    {
+      "hash": "1e513aaeb895a35f",
+      "occurrences": 2,
+      "files": {
+        "apps/agent-livekit/worker-configuration.d.ts": 1,
+        "apps/edge/worker-configuration.d.ts": 1
+      },
+      "label": "tagName: string;"
+    },
+    {
+      "hash": "1e53b0440cf89f39",
+      "occurrences": 2,
+      "files": {
+        "apps/agent-livekit/worker-configuration.d.ts": 1,
+        "apps/edge/worker-configuration.d.ts": 1
+      },
+      "label": "/* [MDN Reference](https://developer.mozilla.org/docs/Web/API/Request/bo..."
+    },
+    {
+      "hash": "1e6b5d8d4fac7db3",
+      "occurrences": 4,
+      "files": {
+        "apps/agent-livekit/worker-configuration.d.ts": 2,
+        "apps/edge/worker-configuration.d.ts": 2
+      },
+      "label": "/**"
+    },
+    {
+      "hash": "22563b635a746244",
+      "occurrences": 2,
+      "files": {
+        "apps/agent-livekit/worker-configuration.d.ts": 1,
+        "apps/edge/worker-configuration.d.ts": 1
+      },
+      "label": "/**"
+    },
+    {
+      "hash": "244d033242d1b9fe",
+      "occurrences": 2,
+      "files": {
+        "apps/agent-livekit/worker-configuration.d.ts": 1,
+        "apps/edge/worker-configuration.d.ts": 1
+      },
+      "label": "/**"
+    },
+    {
+      "hash": "2492678826dbc5b6",
+      "occurrences": 2,
+      "files": {
+        "apps/agent-livekit/worker-configuration.d.ts": 1,
+        "apps/edge/worker-configuration.d.ts": 1
+      },
+      "label": "type: \"function\" | (string & NonNullable<unknown>);"
+    },
+    {
+      "hash": "2743feddfd8f6e67",
+      "occurrences": 2,
+      "files": {
+        "apps/agent-livekit/worker-configuration.d.ts": 1,
+        "apps/edge/worker-configuration.d.ts": 1
+      },
+      "label": "/**"
+    },
+    {
+      "hash": "288dff85e3b03178",
+      "occurrences": 2,
+      "files": {
+        "apps/edge/src/workiz/mappers/fromWorkizApi.ts": 1,
+        "packages/schedule-store/src/workiz/mappers/fromWorkizApi.ts": 1
+      },
+      "label": "const partsRaw ="
+    },
+    {
+      "hash": "2a358128de4e4d28",
+      "occurrences": 4,
+      "files": {
+        "apps/agent-livekit/worker-configuration.d.ts": 2,
+        "apps/edge/worker-configuration.d.ts": 2
+      },
+      "label": "/**"
+    },
+    {
+      "hash": "2cd49f7d5050722e",
+      "occurrences": 2,
+      "files": {
+        "apps/agent-livekit/worker-configuration.d.ts": 1,
+        "apps/edge/worker-configuration.d.ts": 1
+      },
+      "label": "head(key: string): Promise<R2Object | null>;"
+    },
+    {
+      "hash": "2cdb8b1e1c600c05",
+      "occurrences": 2,
+      "files": {
+        "apps/agent-livekit/worker-configuration.d.ts": 1,
+        "apps/edge/worker-configuration.d.ts": 1
+      },
+      "label": "/**"
+    },
+    {
+      "hash": "2d85a4d6448f6d03",
+      "occurrences": 2,
+      "files": {
+        "apps/agent-livekit/worker-configuration.d.ts": 1,
+        "apps/edge/worker-configuration.d.ts": 1
+      },
+      "label": "getVersion(sessionId: string): Promise<BrowserRunDevToolsVersion>;"
+    },
+    {
+      "hash": "2ef606dc8179d632",
+      "occurrences": 2,
+      "files": {
+        "apps/edge/src/db/rows.ts": 1,
+        "packages/schedule-store/src/db-rows.ts": 1
+      },
+      "label": "return {"
+    },
+    {
+      "hash": "2fac8b55418047dd",
+      "occurrences": 2,
+      "files": {
+        "apps/edge/src/db/rows.ts": 1,
+        "packages/schedule-store/src/db-rows.ts": 1
+      },
+      "label": "return {"
+    },
+    {
+      "hash": "2ffed29eb8aed1c0",
+      "occurrences": 2,
+      "files": {
+        "apps/agent-livekit/worker-configuration.d.ts": 1,
+        "apps/edge/worker-configuration.d.ts": 1
+      },
+      "label": "id: string;"
+    },
+    {
+      "hash": "327b7143ea291010",
+      "occurrences": 2,
+      "files": {
+        "apps/agent-livekit/worker-configuration.d.ts": 1,
+        "apps/edge/worker-configuration.d.ts": 1
+      },
+      "label": "audio: {"
+    },
+    {
+      "hash": "32e72820fc1e0a12",
+      "occurrences": 2,
+      "files": {
+        "apps/agent-livekit/worker-configuration.d.ts": 1,
+        "apps/edge/worker-configuration.d.ts": 1
+      },
+      "label": "/**"
+    },
+    {
+      "hash": "3352090b759a1fe8",
+      "occurrences": 2,
+      "files": {
+        "apps/agent-livekit/worker-configuration.d.ts": 1,
+        "apps/edge/worker-configuration.d.ts": 1
+      },
+      "label": "/**"
+    },
+    {
+      "hash": "33c50a84ceaa6c85",
+      "occurrences": 2,
+      "files": {
+        "apps/edge/src/lib/spoken.ts": 1,
+        "packages/schedule-store/src/spoken.ts": 1
+      },
+      "label": "const raw = input.trim();"
+    },
+    {
+      "hash": "33d617e497725e49",
+      "occurrences": 2,
+      "files": {
+        "apps/agent-livekit/worker-configuration.d.ts": 1,
+        "apps/edge/worker-configuration.d.ts": 1
+      },
+      "label": "type: \"text\" | \"image_url\" | \"input_audio\" | \"file\";"
+    },
+    {
+      "hash": "361a279d9ab3b679",
+      "occurrences": 2,
+      "files": {
+        "apps/agent-livekit/worker-configuration.d.ts": 1,
+        "apps/edge/worker-configuration.d.ts": 1
+      },
+      "label": "constructor(stream: ReadableStream);"
+    },
+    {
+      "hash": "36229cc145280a76",
+      "occurrences": 2,
+      "files": {
+        "apps/agent-livekit/worker-configuration.d.ts": 1,
+        "apps/edge/worker-configuration.d.ts": 1
+      },
+      "label": "exec<T extends Record<string, SqlStorageValue>>(query: string, ...bindin..."
+    },
+    {
+      "hash": "377ca9d566d705d3",
+      "occurrences": 2,
+      "files": {
+        "apps/agent-livekit/worker-configuration.d.ts": 1,
+        "apps/edge/worker-configuration.d.ts": 1
+      },
+      "label": "readonly text: string;"
+    },
+    {
+      "hash": "379178db54c2f0a6",
+      "occurrences": 2,
+      "files": {
+        "apps/agent-livekit/worker-configuration.d.ts": 1,
+        "apps/edge/worker-configuration.d.ts": 1
+      },
+      "label": "retrieval?: {"
+    },
+    {
+      "hash": "388a5a7c86028e37",
+      "occurrences": 2,
+      "files": {
+        "apps/agent-livekit/worker-configuration.d.ts": 1,
+        "apps/edge/worker-configuration.d.ts": 1
+      },
+      "label": "prompt?: string;"
+    },
+    {
+      "hash": "39d36ca90d6e4e8a",
+      "occurrences": 2,
+      "files": {
+        "apps/agent-livekit/worker-configuration.d.ts": 1,
+        "apps/edge/worker-configuration.d.ts": 1
+      },
+      "label": "id: string;"
+    },
+    {
+      "hash": "3a23ad1e0fd57995",
+      "occurrences": 2,
+      "files": {
+        "apps/agent-livekit/worker-configuration.d.ts": 1,
+        "apps/edge/worker-configuration.d.ts": 1
+      },
+      "label": "duration: number;"
+    },
+    {
+      "hash": "3c54b9127c338178",
+      "occurrences": 2,
+      "files": {
+        "apps/agent-livekit/worker-configuration.d.ts": 1,
+        "apps/edge/worker-configuration.d.ts": 1
+      },
+      "label": "/** Adds `<script>` tags into the page with the desired URL or content."
+    },
+    {
+      "hash": "3d4abd73d0dd8c1d",
+      "occurrences": 2,
+      "files": {
+        "apps/edge/src/workiz/types.ts": 1,
+        "packages/schedule-store/src/types.ts": 1
+      },
+      "label": "id: string;"
+    },
+    {
+      "hash": "3e2573f53f8aa1e5",
+      "occurrences": 2,
+      "files": {
+        "apps/agent-livekit/worker-configuration.d.ts": 1,
+        "apps/edge/worker-configuration.d.ts": 1
+      },
+      "label": "fetch?: ExportedHandlerFetchHandler<Env, CfHostMetadata, Props>;"
+    },
+    {
+      "hash": "3eb5b68188679078",
+      "occurrences": 2,
+      "files": {
+        "apps/edge/src/services/availability-query.ts": 1,
+        "packages/schedule-store/src/availability-query.ts": 1
+      },
+      "label": "const rawSkill = input.skill ?? input.appliance_type;"
+    },
+    {
+      "hash": "3f4f247a67ab3d1a",
+      "occurrences": 2,
+      "files": {
+        "apps/agent-livekit/worker-configuration.d.ts": 1,
+        "apps/edge/worker-configuration.d.ts": 1
+      },
+      "label": "role: \"assistant\";"
+    },
+    {
+      "hash": "4018f32fb12d728e",
+      "occurrences": 2,
+      "files": {
+        "apps/agent-livekit/worker-configuration.d.ts": 1,
+        "apps/edge/worker-configuration.d.ts": 1
+      },
+      "label": "/**"
+    },
+    {
+      "hash": "4284b610bdad8e77",
+      "occurrences": 2,
+      "files": {
+        "apps/agent-livekit/worker-configuration.d.ts": 1,
+        "apps/edge/worker-configuration.d.ts": 1
+      },
+      "label": "text: string;"
+    },
+    {
+      "hash": "42e3d22d76705150",
+      "occurrences": 2,
+      "files": {
+        "apps/agent-livekit/worker-configuration.d.ts": 1,
+        "apps/edge/worker-configuration.d.ts": 1
+      },
+      "label": "/**"
+    },
+    {
+      "hash": "444d50a96437bfc7",
+      "occurrences": 2,
+      "files": {
+        "apps/agent-livekit/worker-configuration.d.ts": 1,
+        "apps/edge/worker-configuration.d.ts": 1
+      },
+      "label": "/**"
+    },
+    {
+      "hash": "44aba2e9bbcb7666",
+      "occurrences": 2,
+      "files": {
+        "apps/agent-livekit/worker-configuration.d.ts": 1,
+        "apps/edge/worker-configuration.d.ts": 1
+      },
+      "label": "transcription_info?: {"
+    },
+    {
+      "hash": "45b2a54457256411",
+      "occurrences": 2,
+      "files": {
+        "apps/agent-livekit/worker-configuration.d.ts": 1,
+        "apps/edge/worker-configuration.d.ts": 1
+      },
+      "label": "/**"
+    },
+    {
+      "hash": "46064cb2d19a4811",
+      "occurrences": 2,
+      "files": {
+        "apps/agent-livekit/worker-configuration.d.ts": 1,
+        "apps/edge/worker-configuration.d.ts": 1
+      },
+      "label": "constructor(type: string, init?: EventInit);"
+    },
+    {
+      "hash": "47272c71ffc964e2",
+      "occurrences": 2,
+      "files": {
+        "apps/agent-livekit/worker-configuration.d.ts": 1,
+        "apps/edge/worker-configuration.d.ts": 1
+      },
+      "label": "// Branded types for identifying `WorkerEntrypoint`/`DurableObject`/`Tar..."
+    },
+    {
+      "hash": "472f16505e1b8490",
+      "occurrences": 2,
+      "files": {
+        "apps/agent-livekit/worker-configuration.d.ts": 1,
+        "apps/edge/worker-configuration.d.ts": 1
+      },
+      "label": "page?: number;"
+    },
+    {
+      "hash": "482ccf68d70cfdc8",
+      "occurrences": 2,
+      "files": {
+        "apps/agent-livekit/worker-configuration.d.ts": 1,
+        "apps/edge/worker-configuration.d.ts": 1
+      },
+      "label": "/**"
+    },
+    {
+      "hash": "4b8c8bc8e81e3119",
+      "occurrences": 2,
+      "files": {
+        "apps/agent-livekit/worker-configuration.d.ts": 1,
+        "apps/edge/worker-configuration.d.ts": 1
+      },
+      "label": "/**"
+    },
+    {
+      "hash": "4da11b4be53332c2",
+      "occurrences": 2,
+      "files": {
+        "apps/agent-livekit/worker-configuration.d.ts": 1,
+        "apps/edge/worker-configuration.d.ts": 1
+      },
+      "label": "constructor(url: string | URL, base?: string | URL);"
+    },
+    {
+      "hash": "4dd31208d0589661",
+      "occurrences": 2,
+      "files": {
+        "apps/agent-livekit/worker-configuration.d.ts": 1,
+        "apps/edge/worker-configuration.d.ts": 1
+      },
+      "label": "/** Lowercase, 40-character SHA-1 commit ID. */"
+    },
+    {
+      "hash": "4dda852e1585bd59",
+      "occurrences": 2,
+      "files": {
+        "apps/agent-livekit/worker-configuration.d.ts": 1,
+        "apps/edge/worker-configuration.d.ts": 1
+      },
+      "label": "/**"
+    },
+    {
+      "hash": "503e530f1690301f",
+      "occurrences": 2,
+      "files": {
+        "apps/edge/src/db/rows.ts": 1,
+        "packages/schedule-store/src/db-rows.ts": 1
+      },
+      "label": "id: string;"
+    },
+    {
+      "hash": "50abdbc35f7fed28",
+      "occurrences": 2,
+      "files": {
+        "apps/agent-livekit/worker-configuration.d.ts": 1,
+        "apps/edge/worker-configuration.d.ts": 1
+      },
+      "label": "get readable(): ReadableStream;"
+    },
+    {
+      "hash": "50e0117b057bd236",
+      "occurrences": 2,
+      "files": {
+        "apps/agent-livekit/worker-configuration.d.ts": 1,
+        "apps/edge/worker-configuration.d.ts": 1
+      },
+      "label": "export type RpcStub<T extends Rpc.Stubable> = Rpc.Stub<T>;"
+    },
+    {
+      "hash": "5284646568b977de",
+      "occurrences": 2,
+      "files": {
+        "apps/agent-livekit/worker-configuration.d.ts": 1,
+        "apps/edge/worker-configuration.d.ts": 1
+      },
+      "label": "compatibilityDate: string;"
+    },
+    {
+      "hash": "544754ef0747d66c",
+      "occurrences": 2,
+      "files": {
+        "apps/agent-livekit/worker-configuration.d.ts": 1,
+        "apps/edge/worker-configuration.d.ts": 1
+      },
+      "label": "/**"
+    },
+    {
+      "hash": "54d372ef157cc6be",
+      "occurrences": 2,
+      "files": {
+        "apps/agent-livekit/worker-configuration.d.ts": 1,
+        "apps/edge/worker-configuration.d.ts": 1
+      },
+      "label": "/**"
+    },
+    {
+      "hash": "56b562f71d0be288",
+      "occurrences": 2,
+      "files": {
+        "apps/agent-livekit/worker-configuration.d.ts": 1,
+        "apps/edge/worker-configuration.d.ts": 1
+      },
+      "label": "model?: string;"
+    },
+    {
+      "hash": "584790c616fa17ae",
+      "occurrences": 2,
+      "files": {
+        "apps/agent-livekit/worker-configuration.d.ts": 1,
+        "apps/edge/worker-configuration.d.ts": 1
+      },
+      "label": "get<T = unknown>(key: string, options?: DurableObjectGetOptions): Promis..."
+    },
+    {
+      "hash": "589c88823744643e",
+      "occurrences": 2,
+      "files": {
+        "apps/agent-livekit/worker-configuration.d.ts": 1,
+        "apps/edge/worker-configuration.d.ts": 1
+      },
+      "label": "/**"
+    },
+    {
+      "hash": "59248765d93f8144",
+      "occurrences": 2,
+      "files": {
+        "apps/agent-livekit/worker-configuration.d.ts": 1,
+        "apps/edge/worker-configuration.d.ts": 1
+      },
+      "label": "cacheEverything?: boolean;"
+    },
+    {
+      "hash": "59a7b0d03c3a325e",
+      "occurrences": 2,
+      "files": {
+        "apps/agent-livekit/worker-configuration.d.ts": 1,
+        "apps/edge/worker-configuration.d.ts": 1
+      },
+      "label": "certPresented: \"0\";"
+    },
+    {
+      "hash": "5b3b3f993d92aef3",
+      "occurrences": 2,
+      "files": {
+        "apps/agent-livekit/worker-configuration.d.ts": 1,
+        "apps/edge/worker-configuration.d.ts": 1
+      },
+      "label": "readonly key: string;"
+    },
+    {
+      "hash": "5c4b2ec35d465f06",
+      "occurrences": 2,
+      "files": {
+        "apps/agent-livekit/worker-configuration.d.ts": 1,
+        "apps/edge/worker-configuration.d.ts": 1
+      },
+      "label": "/**"
+    },
+    {
+      "hash": "5eb1cee8f52ff437",
+      "occurrences": 24,
+      "files": {
+        "apps/agent-livekit/worker-configuration.d.ts": 12,
+        "apps/edge/worker-configuration.d.ts": 12
+      },
+      "label": "/**"
+    },
+    {
+      "hash": "6029f00ba7729f12",
+      "occurrences": 2,
+      "files": {
+        "apps/agent-livekit/worker-configuration.d.ts": 1,
+        "apps/edge/worker-configuration.d.ts": 1
+      },
+      "label": "output?: ConversionOutputOptions;"
+    },
+    {
+      "hash": "605e5c5d911f08e4",
+      "occurrences": 2,
+      "files": {
+        "apps/agent-livekit/worker-configuration.d.ts": 1,
+        "apps/edge/worker-configuration.d.ts": 1
+      },
+      "label": "id: string;"
+    },
+    {
+      "hash": "62202efd7aad199c",
+      "occurrences": 2,
+      "files": {
+        "apps/agent-livekit/worker-configuration.d.ts": 1,
+        "apps/edge/worker-configuration.d.ts": 1
+      },
+      "label": "/**"
+    },
+    {
+      "hash": "65b4ec7b2e81971e",
+      "occurrences": 2,
+      "files": {
+        "apps/agent-livekit/worker-configuration.d.ts": 1,
+        "apps/edge/worker-configuration.d.ts": 1
+      },
+      "label": "class CompileError extends Error {"
+    },
+    {
+      "hash": "65d017c627d923e7",
+      "occurrences": 2,
+      "files": {
+        "apps/agent-livekit/worker-configuration.d.ts": 1,
+        "apps/edge/worker-configuration.d.ts": 1
+      },
+      "label": "aiGatewayLogId: string | null;"
+    },
+    {
+      "hash": "66c9f8193d07a2f9",
+      "occurrences": 2,
+      "files": {
+        "apps/agent-livekit/worker-configuration.d.ts": 1,
+        "apps/edge/worker-configuration.d.ts": 1
+      },
+      "label": "width?: number;"
+    },
+    {
+      "hash": "67b372ef832169b2",
+      "occurrences": 2,
+      "files": {
+        "apps/agent-livekit/worker-configuration.d.ts": 1,
+        "apps/edge/worker-configuration.d.ts": 1
+      },
+      "label": "object: 'vector_store.search_results.page';"
+    },
+    {
+      "hash": "6ae082d115f59d35",
+      "occurrences": 2,
+      "files": {
+        "apps/agent-livekit/worker-configuration.d.ts": 1,
+        "apps/edge/worker-configuration.d.ts": 1
+      },
+      "label": "/** Instance ID (1-32 chars, pattern: ^[a-z0-9_]+(?:-[a-z0-9_]+)*$) */"
+    },
+    {
+      "hash": "6b4c7f4b1bb3d276",
+      "occurrences": 2,
+      "files": {
+        "apps/agent-livekit/worker-configuration.d.ts": 1,
+        "apps/edge/worker-configuration.d.ts": 1
+      },
+      "label": "public id: string;"
+    },
+    {
+      "hash": "6bd5ad47e6a8f6ac",
+      "occurrences": 2,
+      "files": {
+        "apps/agent-livekit/worker-configuration.d.ts": 1,
+        "apps/edge/worker-configuration.d.ts": 1
+      },
+      "label": "/**"
+    },
+    {
+      "hash": "6c6022a6250246c4",
+      "occurrences": 2,
+      "files": {
+        "apps/agent-livekit/worker-configuration.d.ts": 1,
+        "apps/edge/worker-configuration.d.ts": 1
+      },
+      "label": "query: string;"
+    },
+    {
+      "hash": "6e1aa81ef27ddd2f",
+      "occurrences": 2,
+      "files": {
+        "apps/agent-livekit/worker-configuration.d.ts": 1,
+        "apps/edge/worker-configuration.d.ts": 1
+      },
+      "label": "get<T extends Rpc.DurableObjectBranded | undefined = undefined>(name: st..."
+    },
+    {
+      "hash": "73dfd192ef6b9977",
+      "occurrences": 2,
+      "files": {
+        "apps/agent-livekit/worker-configuration.d.ts": 1,
+        "apps/edge/worker-configuration.d.ts": 1
+      },
+      "label": "/**"
+    },
+    {
+      "hash": "75c80a651f91a832",
+      "occurrences": 2,
+      "files": {
+        "apps/agent-livekit/worker-configuration.d.ts": 1,
+        "apps/edge/worker-configuration.d.ts": 1
+      },
+      "label": "doctype?(doctype: Doctype): void | Promise<void>;"
+    },
+    {
+      "hash": "77f4fc27a6a00144",
+      "occurrences": 2,
+      "files": {
+        "apps/agent-livekit/worker-configuration.d.ts": 1,
+        "apps/edge/worker-configuration.d.ts": 1
+      },
+      "label": "/**"
+    },
+    {
+      "hash": "79b03f3a601e732a",
+      "occurrences": 2,
+      "files": {
+        "apps/agent-livekit/worker-configuration.d.ts": 1,
+        "apps/edge/worker-configuration.d.ts": 1
+      },
+      "label": "image: string;"
+    },
+    {
+      "hash": "7b802380e0f98bb3",
+      "occurrences": 2,
+      "files": {
+        "apps/agent-livekit/worker-configuration.d.ts": 1,
+        "apps/edge/worker-configuration.d.ts": 1
+      },
+      "label": "onlyIf?: (R2Conditional | Headers);"
+    },
+    {
+      "hash": "7e00a5a67d9b3a17",
+      "occurrences": 6,
+      "files": {
+        "apps/agent-livekit/worker-configuration.d.ts": 3,
+        "apps/edge/worker-configuration.d.ts": 3
+      },
+      "label": "/**"
+    },
+    {
+      "hash": "7e12c8a4e7bd7804",
+      "occurrences": 2,
+      "files": {
+        "apps/agent-livekit/worker-configuration.d.ts": 1,
+        "apps/edge/worker-configuration.d.ts": 1
+      },
+      "label": "/** Get metadata about this item. */"
+    },
+    {
+      "hash": "7e820b2358a37760",
+      "occurrences": 2,
+      "files": {
+        "apps/agent-livekit/worker-configuration.d.ts": 1,
+        "apps/edge/worker-configuration.d.ts": 1
+      },
+      "label": "type?: \"\" | undefined;"
+    },
+    {
+      "hash": "7f0d601f406cfcf5",
+      "occurrences": 2,
+      "files": {
+        "apps/agent-livekit/worker-configuration.d.ts": 1,
+        "apps/edge/worker-configuration.d.ts": 1
+      },
+      "label": "role: \"assistant\";"
+    },
+    {
+      "hash": "800ca9986f5b845e",
+      "occurrences": 2,
+      "files": {
+        "apps/agent-livekit/worker-configuration.d.ts": 1,
+        "apps/edge/worker-configuration.d.ts": 1
+      },
+      "label": "id?: string;"
+    },
+    {
+      "hash": "817ed01ddc6b762a",
+      "occurrences": 2,
+      "files": {
+        "apps/edge/src/services/verification.ts": 1,
+        "packages/schedule-store/src/verification.ts": 1
+      },
+      "label": "// Check D1 if table exists"
+    },
+    {
+      "hash": "82ec163e27ee4964",
+      "occurrences": 2,
+      "files": {
+        "apps/agent-livekit/worker-configuration.d.ts": 1,
+        "apps/edge/worker-configuration.d.ts": 1
+      },
+      "label": "constructor();"
+    },
+    {
+      "hash": "84383eb2e0b8d47f",
+      "occurrences": 2,
+      "files": {
+        "apps/agent-livekit/worker-configuration.d.ts": 1,
+        "apps/edge/worker-configuration.d.ts": 1
+      },
+      "label": "/** @default \"png\" */"
+    },
+    {
+      "hash": "850fce3bc6d03043",
+      "occurrences": 2,
+      "files": {
+        "apps/agent-livekit/worker-configuration.d.ts": 1,
+        "apps/edge/worker-configuration.d.ts": 1
+      },
+      "label": "type: \"bytes\";"
+    },
+    {
+      "hash": "860409680acc3ee8",
+      "occurrences": 2,
+      "files": {
+        "apps/edge/src/workiz/mappers/toWorkizApi.ts": 1,
+        "packages/schedule-store/src/workiz/mappers/toWorkizApi.ts": 1
+      },
+      "label": "const body: Record<string, unknown> = {};"
+    },
+    {
+      "hash": "8645b90172bdebb1",
+      "occurrences": 2,
+      "files": {
+        "apps/agent-livekit/worker-configuration.d.ts": 1,
+        "apps/edge/worker-configuration.d.ts": 1
+      },
+      "label": "image: number[];"
+    },
+    {
+      "hash": "89fb05199011a480",
+      "occurrences": 2,
+      "files": {
+        "apps/agent-livekit/worker-configuration.d.ts": 1,
+        "apps/edge/worker-configuration.d.ts": 1
+      },
+      "label": "/**"
+    },
+    {
+      "hash": "8b89cac4d28307bb",
+      "occurrences": 2,
+      "files": {
+        "apps/agent-livekit/worker-configuration.d.ts": 1,
+        "apps/edge/worker-configuration.d.ts": 1
+      },
+      "label": "interface NodeStyleServer {"
+    },
+    {
+      "hash": "8d654236b66fde59",
+      "occurrences": 2,
+      "files": {
+        "apps/edge/src/workiz/real-client.ts": 1,
+        "packages/schedule-store/src/workiz/real-client.ts": 1
+      },
+      "label": "const baseUrl = env.WORKIZ_BASE_URL;"
+    },
+    {
+      "hash": "8ee31a987ee13001",
+      "occurrences": 2,
+      "files": {
+        "apps/agent-livekit/worker-configuration.d.ts": 1,
+        "apps/edge/worker-configuration.d.ts": 1
+      },
+      "label": "name: string;"
+    },
+    {
+      "hash": "8f01b10d0bff4358",
+      "occurrences": 2,
+      "files": {
+        "apps/agent-livekit/worker-configuration.d.ts": 1,
+        "apps/edge/worker-configuration.d.ts": 1
+      },
+      "label": "/**"
+    },
+    {
+      "hash": "91131ecef16b11e9",
+      "occurrences": 2,
+      "files": {
+        "apps/agent-livekit/worker-configuration.d.ts": 1,
+        "apps/edge/worker-configuration.d.ts": 1
+      },
+      "label": "/**"
+    },
+    {
+      "hash": "91c55f155b4fe6d6",
+      "occurrences": 2,
+      "files": {
+        "apps/agent-livekit/worker-configuration.d.ts": 1,
+        "apps/edge/worker-configuration.d.ts": 1
+      },
+      "label": "constructor(bits?: ((ArrayBuffer | ArrayBufferView) | string | Blob)[], ..."
+    },
+    {
+      "hash": "9473b44bd01bf5fd",
+      "occurrences": 2,
+      "files": {
+        "apps/agent-livekit/worker-configuration.d.ts": 1,
+        "apps/edge/worker-configuration.d.ts": 1
+      },
+      "label": "/**"
+    },
+    {
+      "hash": "94daac2a1897f053",
+      "occurrences": 4,
+      "files": {
+        "apps/agent-livekit/worker-configuration.d.ts": 2,
+        "apps/edge/worker-configuration.d.ts": 2
+      },
+      "label": "/**"
+    },
+    {
+      "hash": "951f3b242e111d6a",
+      "occurrences": 2,
+      "files": {
+        "apps/agent-livekit/worker-configuration.d.ts": 1,
+        "apps/edge/worker-configuration.d.ts": 1
+      },
+      "label": "\"@cf/huggingface/distilbert-sst-2-int8\": BaseAiTextClassification;"
+    },
+    {
+      "hash": "97e5149fba50b3da",
+      "occurrences": 2,
+      "files": {
+        "apps/agent-livekit/worker-configuration.d.ts": 1,
+        "apps/edge/worker-configuration.d.ts": 1
+      },
+      "label": "/**"
+    },
+    {
+      "hash": "9c05450e0d9dcce5",
+      "occurrences": 2,
+      "files": {
+        "apps/agent-livekit/worker-configuration.d.ts": 1,
+        "apps/edge/worker-configuration.d.ts": 1
+      },
+      "label": "/**"
+    },
+    {
+      "hash": "9cfa365bb866cb21",
+      "occurrences": 2,
+      "files": {
+        "apps/edge/src/services/availability-query.ts": 1,
+        "packages/schedule-store/src/availability-query.ts": 1
+      },
+      "label": "dishwasher: [\"dishwasher\", \"bosch\", \"general\"],"
+    },
+    {
+      "hash": "9d1aeac05cd9d692",
+      "occurrences": 2,
+      "files": {
+        "apps/agent-livekit/worker-configuration.d.ts": 1,
+        "apps/edge/worker-configuration.d.ts": 1
+      },
+      "label": "/**"
+    },
+    {
+      "hash": "a189d213f6fff911",
+      "occurrences": 2,
+      "files": {
+        "apps/agent-livekit/worker-configuration.d.ts": 1,
+        "apps/edge/worker-configuration.d.ts": 1
+      },
+      "label": "domain: string;"
+    },
+    {
+      "hash": "a1beb34d2fd9b41a",
+      "occurrences": 2,
+      "files": {
+        "apps/agent-livekit/worker-configuration.d.ts": 1,
+        "apps/edge/worker-configuration.d.ts": 1
+      },
+      "label": "/**"
+    },
+    {
+      "hash": "a23a049818932556",
+      "occurrences": 2,
+      "files": {
+        "packages/contracts/scripts/export-json-schemas.ts": 2
+      },
+      "label": "const jsonSchema = zodToJsonSchema(schema, {"
+    },
+    {
+      "hash": "a26af89fb7b4b741",
+      "occurrences": 2,
+      "files": {
+        "apps/agent-livekit/worker-configuration.d.ts": 1,
+        "apps/edge/worker-configuration.d.ts": 1
+      },
+      "label": "get(key: Key, options?: Partial<KVNamespaceGetOptions<undefined>>): Prom..."
+    },
+    {
+      "hash": "a3c3d8c302074fb0",
+      "occurrences": 2,
+      "files": {
+        "apps/agent-livekit/worker-configuration.d.ts": 1,
+        "apps/edge/worker-configuration.d.ts": 1
+      },
+      "label": "prototype: ReadableStream;"
+    },
+    {
+      "hash": "a4a5e219a65e6ede",
+      "occurrences": 2,
+      "files": {
+        "apps/agent-livekit/worker-configuration.d.ts": 1,
+        "apps/edge/worker-configuration.d.ts": 1
+      },
+      "label": "success: true;"
+    },
+    {
+      "hash": "a4bb708f845bfb4c",
+      "occurrences": 2,
+      "files": {
+        "apps/agent-livekit/worker-configuration.d.ts": 1,
+        "apps/edge/worker-configuration.d.ts": 1
+      },
+      "label": "type?: string;"
+    },
+    {
+      "hash": "a54a66f35219704a",
+      "occurrences": 2,
+      "files": {
+        "apps/agent-livekit/worker-configuration.d.ts": 1,
+        "apps/edge/worker-configuration.d.ts": 1
+      },
+      "label": "/**"
+    },
+    {
+      "hash": "a6e9176c11a91dc9",
+      "occurrences": 2,
+      "files": {
+        "apps/agent-livekit/worker-configuration.d.ts": 1,
+        "apps/edge/worker-configuration.d.ts": 1
+      },
+      "label": "/**"
+    },
+    {
+      "hash": "a9e7109c9cba64e2",
+      "occurrences": 2,
+      "files": {
+        "apps/agent-livekit/worker-configuration.d.ts": 1,
+        "apps/edge/worker-configuration.d.ts": 1
+      },
+      "label": "getEntrypoint<T extends Rpc.WorkerEntrypointBranded | undefined>(name?: ..."
+    },
+    {
+      "hash": "aa5c817955587a3b",
+      "occurrences": 2,
+      "files": {
+        "apps/agent-livekit/worker-configuration.d.ts": 1,
+        "apps/edge/worker-configuration.d.ts": 1
+      },
+      "label": "/**"
+    },
+    {
+      "hash": "ab71b0c22f45037e",
+      "occurrences": 2,
+      "files": {
+        "apps/agent-livekit/worker-configuration.d.ts": 1,
+        "apps/edge/worker-configuration.d.ts": 1
+      },
+      "label": "id: string;"
+    },
+    {
+      "hash": "ad39b600e59bceff",
+      "occurrences": 2,
+      "files": {
+        "apps/agent-livekit/worker-configuration.d.ts": 1,
+        "apps/edge/worker-configuration.d.ts": 1
+      },
+      "label": "id: string;"
+    },
+    {
+      "hash": "ae839c0022a379fb",
+      "occurrences": 2,
+      "files": {
+        "apps/agent-livekit/worker-configuration.d.ts": 1,
+        "apps/edge/worker-configuration.d.ts": 1
+      },
+      "label": "/**"
+    },
+    {
+      "hash": "af8f18a804f2e661",
+      "occurrences": 2,
+      "files": {
+        "apps/agent-livekit/worker-configuration.d.ts": 1,
+        "apps/edge/worker-configuration.d.ts": 1
+      },
+      "label": "prompt: string;"
+    },
+    {
+      "hash": "b19cbf0ba3fc9247",
+      "occurrences": 2,
+      "files": {
+        "apps/agent-livekit/worker-configuration.d.ts": 1,
+        "apps/edge/worker-configuration.d.ts": 1
+      },
+      "label": "next(): IteratorResult<T, undefined>;"
+    },
+    {
+      "hash": "b371680eaf5a3fda",
+      "occurrences": 2,
+      "files": {
+        "apps/agent-livekit/worker-configuration.d.ts": 1,
+        "apps/edge/worker-configuration.d.ts": 1
+      },
+      "label": "get isTraced(): boolean;"
+    },
+    {
+      "hash": "b3ec27ab364414c9",
+      "occurrences": 10,
+      "files": {
+        "apps/agent-livekit/worker-configuration.d.ts": 5,
+        "apps/edge/worker-configuration.d.ts": 5
+      },
+      "label": "/**"
+    },
+    {
+      "hash": "b5de8522dfb375f9",
+      "occurrences": 2,
+      "files": {
+        "apps/agent-livekit/worker-configuration.d.ts": 1,
+        "apps/edge/worker-configuration.d.ts": 1
+      },
+      "label": "/**"
+    },
+    {
+      "hash": "b5edda2cfe0b1b60",
+      "occurrences": 2,
+      "files": {
+        "apps/agent-livekit/worker-configuration.d.ts": 1,
+        "apps/edge/worker-configuration.d.ts": 1
+      },
+      "label": "metrics(): Promise<QueueMetrics>;"
+    },
+    {
+      "hash": "b7500a2aa3ac9aac",
+      "occurrences": 2,
+      "files": {
+        "apps/agent-livekit/worker-configuration.d.ts": 1,
+        "apps/edge/worker-configuration.d.ts": 1
+      },
+      "label": "transform(files: MarkdownDocument[], options?: ConversionRequestOptions)..."
+    },
+    {
+      "hash": "b8ef6413d88c797e",
+      "occurrences": 4,
+      "files": {
+        "apps/agent-livekit/worker-configuration.d.ts": 2,
+        "apps/edge/worker-configuration.d.ts": 2
+      },
+      "label": "/**"
+    },
+    {
+      "hash": "b9f66f2486dd36ac",
+      "occurrences": 2,
+      "files": {
+        "apps/agent-livekit/worker-configuration.d.ts": 1,
+        "apps/edge/worker-configuration.d.ts": 1
+      },
+      "label": "interface Header {"
+    },
+    {
+      "hash": "bab6e206c3669999",
+      "occurrences": 2,
+      "files": {
+        "apps/agent-livekit/worker-configuration.d.ts": 1,
+        "apps/edge/worker-configuration.d.ts": 1
+      },
+      "label": "search_query: string;"
+    },
+    {
+      "hash": "bc04c52462807455",
+      "occurrences": 2,
+      "files": {
+        "apps/agent-livekit/worker-configuration.d.ts": 1,
+        "apps/edge/worker-configuration.d.ts": 1
+      },
+      "label": "readonly event: (TraceItemFetchEventInfo | TraceItemJsRpcEventInfo | Tra..."
+    },
+    {
+      "hash": "bf143965dce1ef79",
+      "occurrences": 4,
+      "files": {
+        "apps/agent-livekit/worker-configuration.d.ts": 2,
+        "apps/edge/worker-configuration.d.ts": 2
+      },
+      "label": "top?: number;"
+    },
+    {
+      "hash": "bf8fadee0bca701d",
+      "occurrences": 2,
+      "files": {
+        "apps/agent-livekit/worker-configuration.d.ts": 1,
+        "apps/edge/worker-configuration.d.ts": 1
+      },
+      "label": "/** @see https://pptr.dev/api/puppeteer.pdfoptions */"
+    },
+    {
+      "hash": "bfed119ea4ac350e",
+      "occurrences": 2,
+      "files": {
+        "apps/agent-livekit/worker-configuration.d.ts": 1,
+        "apps/edge/worker-configuration.d.ts": 1
+      },
+      "label": "'cf-aig-metadata': Record<string, number | string | boolean | null | big..."
+    },
+    {
+      "hash": "c03a586defac0782",
+      "occurrences": 2,
+      "files": {
+        "apps/edge/src/workiz/mappers/fromWorkizApi.ts": 1,
+        "packages/schedule-store/src/workiz/mappers/fromWorkizApi.ts": 1
+      },
+      "label": "if (!raw) return \"none\";"
+    },
+    {
+      "hash": "c2317c84e14dc02b",
+      "occurrences": 2,
+      "files": {
+        "apps/agent-livekit/worker-configuration.d.ts": 1,
+        "apps/edge/worker-configuration.d.ts": 1
+      },
+      "label": "constructor(stream: ReadableStream);"
+    },
+    {
+      "hash": "c2578ab6b3f9a93d",
+      "occurrences": 2,
+      "files": {
+        "apps/agent-livekit/worker-configuration.d.ts": 1,
+        "apps/edge/worker-configuration.d.ts": 1
+      },
+      "label": "/**"
+    },
+    {
+      "hash": "c364de1caeae2a2b",
+      "occurrences": 4,
+      "files": {
+        "apps/agent-livekit/worker-configuration.d.ts": 2,
+        "apps/edge/worker-configuration.d.ts": 2
+      },
+      "label": "/**"
+    },
+    {
+      "hash": "c4fc04df1f5198a9",
+      "occurrences": 2,
+      "files": {
+        "apps/agent-livekit/worker-configuration.d.ts": 1,
+        "apps/edge/worker-configuration.d.ts": 1
+      },
+      "label": "/** The user's email address, if available from the identity provider. *..."
+    },
+    {
+      "hash": "c74c3ee166ed4191",
+      "occurrences": 2,
+      "files": {
+        "apps/edge/src/services/availability-query.ts": 1,
+        "packages/schedule-store/src/availability-query.ts": 1
+      },
+      "label": "north: \"north\","
+    },
+    {
+      "hash": "c76665ca62f01a77",
+      "occurrences": 2,
+      "files": {
+        "apps/agent-livekit/worker-configuration.d.ts": 1,
+        "apps/edge/worker-configuration.d.ts": 1
+      },
+      "label": "readonly key: string;"
+    },
+    {
+      "hash": "cd6fba8d5bd28261",
+      "occurrences": 2,
+      "files": {
+        "apps/edge/src/lib/timezone.ts": 1,
+        "packages/schedule-store/src/timezone.ts": 1
+      },
+      "label": "const start = new Date(startIso);"
+    },
+    {
+      "hash": "cdc0905916e85366",
+      "occurrences": 2,
+      "files": {
+        "apps/edge/src/workiz/mappers/fromWorkizApi.ts": 1,
+        "packages/contracts/src/policies.ts": 1
+      },
+      "label": "const digits = phone.replace(/\\D/g, \"\");"
+    },
+    {
+      "hash": "cf6dc3015fcadd3d",
+      "occurrences": 2,
+      "files": {
+        "apps/agent-livekit/worker-configuration.d.ts": 1,
+        "apps/edge/worker-configuration.d.ts": 1
+      },
+      "label": "constructor(message?: string, name?: string);"
+    },
+    {
+      "hash": "d027aeb7f1fd4a53",
+      "occurrences": 2,
+      "files": {
+        "apps/agent-livekit/worker-configuration.d.ts": 1,
+        "apps/edge/worker-configuration.d.ts": 1
+      },
+      "label": "constructor(stream: WritableStream);"
+    },
+    {
+      "hash": "d216e3668a9bbf13",
+      "occurrences": 2,
+      "files": {
+        "apps/agent-livekit/worker-configuration.d.ts": 1,
+        "apps/edge/worker-configuration.d.ts": 1
+      },
+      "label": "get body(): ReadableStream;"
+    },
+    {
+      "hash": "d485751992aab999",
+      "occurrences": 2,
+      "files": {
+        "apps/agent-livekit/worker-configuration.d.ts": 1,
+        "apps/edge/worker-configuration.d.ts": 1
+      },
+      "label": "/**"
+    },
+    {
+      "hash": "d665fe8ed7d425bb",
+      "occurrences": 2,
+      "files": {
+        "apps/agent-livekit/worker-configuration.d.ts": 1,
+        "apps/edge/worker-configuration.d.ts": 1
+      },
+      "label": "/**"
+    },
+    {
+      "hash": "d67c5afb6e39e146",
+      "occurrences": 2,
+      "files": {
+        "apps/agent-livekit/worker-configuration.d.ts": 1,
+        "apps/edge/worker-configuration.d.ts": 1
+      },
+      "label": "// Type of `env`."
+    },
+    {
+      "hash": "d69ad63907059418",
+      "occurrences": 2,
+      "files": {
+        "apps/agent-livekit/worker-configuration.d.ts": 1,
+        "apps/edge/worker-configuration.d.ts": 1
+      },
+      "label": "/**"
+    },
+    {
+      "hash": "d8680c5d794887b4",
+      "occurrences": 2,
+      "files": {
+        "apps/agent-livekit/worker-configuration.d.ts": 1,
+        "apps/edge/worker-configuration.d.ts": 1
+      },
+      "label": "/* A string to set request's method. */"
+    },
+    {
+      "hash": "d90b3fbc6063ec26",
+      "occurrences": 2,
+      "files": {
+        "apps/agent-livekit/worker-configuration.d.ts": 1,
+        "apps/edge/worker-configuration.d.ts": 1
+      },
+      "label": "/**"
+    },
+    {
+      "hash": "d923df4e08b32db4",
+      "occurrences": 2,
+      "files": {
+        "apps/agent-livekit/worker-configuration.d.ts": 1,
+        "apps/edge/worker-configuration.d.ts": 1
+      },
+      "label": "prepare(query: string): D1PreparedStatement;"
+    },
+    {
+      "hash": "d95ae241edd333fe",
+      "occurrences": 4,
+      "files": {
+        "apps/agent-livekit/worker-configuration.d.ts": 2,
+        "apps/edge/worker-configuration.d.ts": 2
+      },
+      "label": "name: string;"
+    },
+    {
+      "hash": "da25b57e68a75298",
+      "occurrences": 2,
+      "files": {
+        "apps/agent-livekit/worker-configuration.d.ts": 1,
+        "apps/edge/worker-configuration.d.ts": 1
+      },
+      "label": "/**"
+    },
+    {
+      "hash": "dad42af054c864cd",
+      "occurrences": 2,
+      "files": {
+        "apps/agent-livekit/worker-configuration.d.ts": 1,
+        "apps/edge/worker-configuration.d.ts": 1
+      },
+      "label": "/**"
+    },
+    {
+      "hash": "dc6c98bd0d9060d3",
+      "occurrences": 2,
+      "files": {
+        "apps/agent-livekit/worker-configuration.d.ts": 1,
+        "apps/edge/worker-configuration.d.ts": 1
+      },
+      "label": "results?: {"
+    },
+    {
+      "hash": "de409c0a6dd17838",
+      "occurrences": 2,
+      "files": {
+        "apps/agent-livekit/worker-configuration.d.ts": 1,
+        "apps/edge/worker-configuration.d.ts": 1
+      },
+      "label": "/** Always `\"1\"`, indicating that the certificate was presented */"
+    },
+    {
+      "hash": "deaa47412989aec2",
+      "occurrences": 2,
+      "files": {
+        "apps/agent-livekit/worker-configuration.d.ts": 1,
+        "apps/edge/worker-configuration.d.ts": 1
+      },
+      "label": "background?: boolean | null;"
+    },
+    {
+      "hash": "df30d3ea34c0c169",
+      "occurrences": 2,
+      "files": {
+        "apps/agent-livekit/worker-configuration.d.ts": 1,
+        "apps/edge/worker-configuration.d.ts": 1
+      },
+      "label": "bind(...values: unknown[]): D1PreparedStatement;"
+    },
+    {
+      "hash": "e44553840371a927",
+      "occurrences": 2,
+      "files": {
+        "apps/agent-livekit/worker-configuration.d.ts": 1,
+        "apps/edge/worker-configuration.d.ts": 1
+      },
+      "label": "sessionId: string;"
+    },
+    {
+      "hash": "e4522b0f2759d84e",
+      "occurrences": 2,
+      "files": {
+        "apps/agent-livekit/worker-configuration.d.ts": 1,
+        "apps/edge/worker-configuration.d.ts": 1
+      },
+      "label": "entrypoint?: string[];"
+    },
+    {
+      "hash": "e4950cb81f70331d",
+      "occurrences": 2,
+      "files": {
+        "apps/agent-livekit/worker-configuration.d.ts": 1,
+        "apps/edge/worker-configuration.d.ts": 1
+      },
+      "label": "constructor();"
+    },
+    {
+      "hash": "e49d82152fc56cec",
+      "occurrences": 2,
+      "files": {
+        "apps/agent-livekit/worker-configuration.d.ts": 1,
+        "apps/edge/worker-configuration.d.ts": 1
+      },
+      "label": "accept(options?: WebSocketAcceptOptions): void;"
+    },
+    {
+      "hash": "e4e43a5d804c4048",
+      "occurrences": 2,
+      "files": {
+        "apps/agent-livekit/worker-configuration.d.ts": 1,
+        "apps/edge/worker-configuration.d.ts": 1
+      },
+      "label": "export abstract class PipelineTransformationEntrypoint<Env = unknown, I ..."
+    },
+    {
+      "hash": "e5c9b565676949f4",
+      "occurrences": 2,
+      "files": {
+        "apps/agent-livekit/worker-configuration.d.ts": 1,
+        "apps/edge/worker-configuration.d.ts": 1
+      },
+      "label": "request: Request<unknown, IncomingRequestCfProperties<unknown>>;"
+    },
+    {
+      "hash": "e601b16fc1bd0b51",
+      "occurrences": 2,
+      "files": {
+        "apps/agent-livekit/worker-configuration.d.ts": 1,
+        "apps/edge/worker-configuration.d.ts": 1
+      },
+      "label": "constructor(underlyingSink?: UnderlyingSink, queuingStrategy?: QueuingSt..."
+    },
+    {
+      "hash": "e622fe0cdad0d6f1",
+      "occurrences": 2,
+      "files": {
+        "apps/agent-livekit/worker-configuration.d.ts": 1,
+        "apps/edge/worker-configuration.d.ts": 1
+      },
+      "label": "DOMException: typeof DOMException;"
+    },
+    {
+      "hash": "e7b10acb39f262d7",
+      "occurrences": 2,
+      "files": {
+        "apps/agent-livekit/worker-configuration.d.ts": 1,
+        "apps/edge/worker-configuration.d.ts": 1
+      },
+      "label": "id?: string;"
+    },
+    {
+      "hash": "e7d924d3fd24d661",
+      "occurrences": 2,
+      "files": {
+        "apps/agent-livekit/worker-configuration.d.ts": 1,
+        "apps/edge/worker-configuration.d.ts": 1
+      },
+      "label": "kty: string;"
+    },
+    {
+      "hash": "e80f63ea8c1c7dc8",
+      "occurrences": 2,
+      "files": {
+        "apps/agent-livekit/worker-configuration.d.ts": 1,
+        "apps/edge/worker-configuration.d.ts": 1
+      },
+      "label": "/**"
+    },
+    {
+      "hash": "e980153dd800ae69",
+      "occurrences": 4,
+      "files": {
+        "apps/agent-livekit/worker-configuration.d.ts": 2,
+        "apps/edge/worker-configuration.d.ts": 2
+      },
+      "label": "inputs: Omit<ChatCompletionsInput, \"reasoning_effort\" | \"chat_template_k..."
+    },
+    {
+      "hash": "e9b8c2db9c6084c4",
+      "occurrences": 2,
+      "files": {
+        "apps/agent-livekit/worker-configuration.d.ts": 1,
+        "apps/edge/worker-configuration.d.ts": 1
+      },
+      "label": "get<T = unknown>(key: string): T | undefined;"
+    },
+    {
+      "hash": "ea6117a67487aa2c",
+      "occurrences": 2,
+      "files": {
+        "apps/agent-livekit/worker-configuration.d.ts": 1,
+        "apps/edge/worker-configuration.d.ts": 1
+      },
+      "label": "constructor(init?: HeadersInit);"
+    },
+    {
+      "hash": "ecb5b10e430f051d",
+      "occurrences": 2,
+      "files": {
+        "apps/agent-livekit/worker-configuration.d.ts": 1,
+        "apps/edge/worker-configuration.d.ts": 1
+      },
+      "label": "/**"
+    },
+    {
+      "hash": "eed417e63cd75fc5",
+      "occurrences": 2,
+      "files": {
+        "apps/agent-livekit/worker-configuration.d.ts": 1,
+        "apps/edge/worker-configuration.d.ts": 1
+      },
+      "label": "fetch(request: Request): Response | Promise<Response>;"
+    },
+    {
+      "hash": "f06092af59e87555",
+      "occurrences": 2,
+      "files": {
+        "apps/agent-livekit/worker-configuration.d.ts": 1,
+        "apps/edge/worker-configuration.d.ts": 1
+      },
+      "label": "/**"
+    },
+    {
+      "hash": "f0ff7355173ba609",
+      "occurrences": 2,
+      "files": {
+        "apps/agent-livekit/worker-configuration.d.ts": 1,
+        "apps/edge/worker-configuration.d.ts": 1
+      },
+      "label": "newUniqueId(options?: DurableObjectNamespaceNewUniqueIdOptions): Durable..."
+    },
+    {
+      "hash": "f1079336d2fd1d60",
+      "occurrences": 2,
+      "files": {
+        "apps/agent-livekit/worker-configuration.d.ts": 1,
+        "apps/edge/worker-configuration.d.ts": 1
+      },
+      "label": "/**"
+    },
+    {
+      "hash": "f17d96ab19c1185f",
+      "occurrences": 2,
+      "files": {
+        "apps/agent-livekit/worker-configuration.d.ts": 1,
+        "apps/edge/worker-configuration.d.ts": 1
+      },
+      "label": "enterSpan<T, A extends unknown[]>(name: string, callback: (span: Span, ...."
+    },
+    {
+      "hash": "f36d5b94675d8bae",
+      "occurrences": 2,
+      "files": {
+        "apps/agent-livekit/worker-configuration.d.ts": 1,
+        "apps/edge/worker-configuration.d.ts": 1
+      },
+      "label": "/**"
+    },
+    {
+      "hash": "f42e4e7cc0e637d8",
+      "occurrences": 2,
+      "files": {
+        "apps/agent-livekit/worker-configuration.d.ts": 1,
+        "apps/edge/worker-configuration.d.ts": 1
+      },
+      "label": "constructor(url: string, init?: EventSourceEventSourceInit);"
+    },
+    {
+      "hash": "f49509c580bf90a5",
+      "occurrences": 2,
+      "files": {
+        "apps/agent-livekit/worker-configuration.d.ts": 1,
+        "apps/edge/worker-configuration.d.ts": 1
+      },
+      "label": "constructor(init?: (Iterable<Iterable<string>> | Record<string, string> ..."
+    },
+    {
+      "hash": "f64bd05ab8d35a44",
+      "occurrences": 2,
+      "files": {
+        "apps/agent-livekit/worker-configuration.d.ts": 1,
+        "apps/edge/worker-configuration.d.ts": 1
+      },
+      "label": "[field: string]: Exclude<VectorizeVectorMetadataValue, string[]> | null ..."
+    },
+    {
+      "hash": "f78b90638f15f2da",
+      "occurrences": 2,
+      "files": {
+        "apps/agent-livekit/worker-configuration.d.ts": 1,
+        "apps/edge/worker-configuration.d.ts": 1
+      },
+      "label": "/** List items in this instance. */"
+    },
+    {
+      "hash": "f891296b8893a41b",
+      "occurrences": 2,
+      "files": {
+        "apps/agent-livekit/worker-configuration.d.ts": 1,
+        "apps/edge/worker-configuration.d.ts": 1
+      },
+      "label": "audio: string | {"
+    },
+    {
+      "hash": "fc73aa6896f7d6ac",
+      "occurrences": 2,
+      "files": {
+        "apps/agent-livekit/worker-configuration.d.ts": 1,
+        "apps/edge/worker-configuration.d.ts": 1
+      },
+      "label": "/**"
+    },
+    {
+      "hash": "fcd6b91ee943fb26",
+      "occurrences": 2,
+      "files": {
+        "apps/agent-livekit/worker-configuration.d.ts": 1,
+        "apps/edge/worker-configuration.d.ts": 1
+      },
+      "label": "queued?: number;"
+    },
+    {
+      "hash": "fd0a74db201ec9f0",
+      "occurrences": 2,
+      "files": {
+        "apps/agent-livekit/worker-configuration.d.ts": 1,
+        "apps/edge/worker-configuration.d.ts": 1
+      },
+      "label": "constructor(transformer?: Transformer<I, O>, writableStrategy?: QueuingS..."
+    },
+    {
+      "hash": "fd8bef2aa69484c8",
+      "occurrences": 2,
+      "files": {
+        "apps/agent-livekit/worker-configuration.d.ts": 1,
+        "apps/edge/worker-configuration.d.ts": 1
+      },
+      "label": "\"assert\"(condition?: boolean, ...data: any[]): void;"
+    },
+    {
+      "hash": "fdf0fcb1309f4e21",
+      "occurrences": 2,
+      "files": {
+        "apps/agent-livekit/worker-configuration.d.ts": 1,
+        "apps/edge/worker-configuration.d.ts": 1
+      },
+      "label": "/**"
+    },
+    {
+      "hash": "fec4a466ac7a5282",
+      "occurrences": 2,
+      "files": {
+        "apps/agent-livekit/worker-configuration.d.ts": 1,
+        "apps/edge/worker-configuration.d.ts": 1
+      },
+      "label": "prototype: Response;"
+    },
+    {
+      "hash": "ffff14bfb542d0e5",
+      "occurrences": 2,
+      "files": {
+        "apps/edge/src/workiz/types.ts": 1,
+        "packages/schedule-store/src/types.ts": 1
+      },
+      "label": "findJobsByPhone(phone: string): Promise<Job[]>;"
+    }
+  ]
+}

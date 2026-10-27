@@ -1,0 +1,7 @@
+{
+	"findings": [
+		{ "id": "exports|src/a.ts|foo" },
+		{ "id": "types|src/a.ts|Bar" },
+		{ "id": "exports|src/b.ts|newThing" }
+	]
+}

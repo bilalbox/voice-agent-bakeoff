@@ -1,8 +1,10 @@
 ---
+
 title: Caller verification and service-scope guardrails for the dispatch agent
 status: draft
 labels:
-  - ready-for-agent
+- ready-for-agent
+
 ---
 
 # Caller verification and service-scope guardrails

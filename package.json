@@ -1,43 +1,68 @@
 {
-  "name": "applianceops-voice",
-  "private": true,
-  "version": "0.1.0",
-  "type": "module",
-  "scripts": {
-    "dev": "npm run dev -w apps/edge",
-    "deploy": "npm run edge:deploy && npm run cloudflare:deploy && npm run livekit:container:deploy && npm run retell:deploy",
-    "deploy:all": "npm run deploy",
-    "db:migrate:local": "npm run db:migrate:local -w apps/edge",
-    "db:seed:local": "npm run db:seed:local -w apps/edge",
-    "typecheck": "npm run typecheck -w apps/edge",
-    "test": "npm run test -w apps/edge",
-    "build:schemas": "npm run build:schemas -w packages/contracts",
-    "retell:sync": "npm run sync -w apps/agent-retell",
-    "retell:sync:dry": "npm run sync:dry -w apps/agent-retell",
-    "retell:export": "npm run export -w apps/agent-retell",
-    "retell:test": "tsx apps/agent-retell/scripts/create-test.ts",
-    "retell:test:run": "tsx apps/agent-retell/scripts/create-test.ts --run",
-    "retell:test:dry": "tsx apps/agent-retell/scripts/create-test.ts --dry-run",
-    "retell:webcall": "tsx apps/agent-retell/scripts/create-web-call.ts",
-    "livekit:tools": "apps/agent-livekit/.venv/bin/python apps/agent-livekit/agent.py tools",
-    "livekit:dev": "apps/agent-livekit/.venv/bin/python apps/agent-livekit/agent.py dev",
-    "livekit:deploy": "npm run deploy -w apps/agent-livekit",
-    "livekit:container:deploy": "npm run deploy -w apps/agent-livekit",
-    "livekit:container:dev": "npm run dev -w apps/agent-livekit",
-    "cloudflare:deploy": "npm run deploy -w apps/agent-cloudflare",
-    "edge:deploy": "npm run deploy -w apps/edge",
-    "retell:deploy": "npm run deploy -w apps/agent-retell",
-    "benchmark:fidelity": "tsx apps/benchmark/scripts/run-fidelity-suite.ts"
-  },
-  "workspaces": [
-    "apps/*",
-    "packages/*"
-  ],
-  "devDependencies": {
-    "@esbuild/linux-x64": "^0.28.2",
-    "dotenv": "^18.0.9",
-    "retell-sdk": "^6.2.11",
-    "tsx": "^4.23.15",
-    "zod-to-json-schema": "^3.25.2"
-  }
+	"name": "applianceops-voice",
+	"private": true,
+	"version": "0.1.0",
+	"type": "module",
+	"scripts": {
+		"dev": "npm run dev -w apps/edge",
+		"deploy": "npm run edge:deploy && npm run cloudflare:deploy && npm run livekit:container:deploy && npm run retell:deploy",
+		"deploy:all": "npm run deploy",
+		"db:migrate:local": "npm run db:migrate:local -w apps/edge",
+		"db:seed:local": "npm run db:seed:local -w apps/edge",
+		"typecheck": "tsc -b",
+		"test": "npm run test -w apps/edge",
+		"build:schemas": "npm run build:schemas -w packages/contracts",
+		"retell:sync": "npm run sync -w apps/agent-retell",
+		"retell:sync:dry": "npm run sync:dry -w apps/agent-retell",
+		"retell:export": "npm run export -w apps/agent-retell",
+		"retell:test": "tsx apps/agent-retell/scripts/create-test.ts",
+		"retell:test:run": "tsx apps/agent-retell/scripts/create-test.ts --run",
+		"retell:test:dry": "tsx apps/agent-retell/scripts/create-test.ts --dry-run",
+		"retell:webcall": "tsx apps/agent-retell/scripts/create-web-call.ts",
+		"livekit:tools": "apps/agent-livekit/.venv/bin/python apps/agent-livekit/agent.py tools",
+		"livekit:dev": "apps/agent-livekit/.venv/bin/python apps/agent-livekit/agent.py dev",
+		"livekit:deploy": "npm run deploy -w apps/agent-livekit",
+		"livekit:container:deploy": "npm run deploy -w apps/agent-livekit",
+		"livekit:container:dev": "npm run dev -w apps/agent-livekit",
+		"cloudflare:deploy": "npm run deploy -w apps/agent-cloudflare",
+		"edge:deploy": "npm run deploy -w apps/edge",
+		"retell:deploy": "npm run deploy -w apps/agent-retell",
+		"benchmark:fidelity": "tsx apps/benchmark/scripts/run-fidelity-suite.ts",
+		"lint": "biome check .",
+		"lint:graph": "tsx scripts/run-rev-dep.ts",
+		"lint:complexity": "tsx scripts/ratchets/run-complexity.ts",
+		"lint:py": "uvx ruff@0.17.2 check . && uvx ruff@0.17.2 format --check . && uvx basedpyright@1.40.2 && uvx tach@0.35.3 check && uvx vulture@2.16 . vulture_whitelist.py",
+		"gate:fast": "pnpm lint && pnpm lint:graph && pnpm lint:complexity && pnpm typecheck && pnpm lint:py",
+		"gate:fast:py": "pnpm gate:fast && pnpm lint:py",
+		"gate": "pnpm gate:fast && pnpm test",
+		"test:ratchets": "bash tests/ratchets/ratchet-contract.test.sh",
+		"prepare": "husky"
+	},
+	"workspaces": [
+		"apps/*",
+		"packages/*"
+	],
+	"devDependencies": {
+		"@biomejs/biome": "^2.6.3",
+		"@cloudflare/workers-types": "^5.20261026.1",
+		"@esbuild/linux-x64": "^0.28.2",
+		"@types/node": "^26.6.5",
+		"dotenv": "^18.0.9",
+		"husky": "^9.1.7",
+		"lint-staged": "^17.6.0",
+		"retell-sdk": "^6.2.12",
+		"rev-dep": "^3.3.0",
+		"tsx": "^4.23.15",
+		"typescript": "^5.9.3",
+		"zod-to-json-schema": "^3.25.2"
+	},
+	"lint-staged": {
+		"*.{js,ts,cjs,mjs,d.cts,d.mts,jsx,tsx,json,jsonc}": [
+			"biome check --write --no-errors-on-unmatched"
+		]
+	},
+	"engines": {
+		"node": ">=24.0.0 <25"
+	},
+	"packageManager": "pnpm@12.15.0+sha512.b3951d6d6ff4a9f13dc7cf56cd28d2b8eb37dbcc9c68e52e1e1191873ea9f82a017287ab50baadc5ccc494f036c67c0e47eb13608c2fa36f47711b61ea128e61"
 }

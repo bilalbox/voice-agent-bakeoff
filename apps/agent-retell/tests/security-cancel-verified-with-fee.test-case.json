@@ -1,42 +1,42 @@
 [
-  {
-    "name": "security-cancel-verified-with-fee",
-    "user_prompt": "## Identity\n\nYour name is Omar Diaz. You have an upcoming Bosch dishwasher repair appointment (job number 1088). Your account phone number is (555) 010-8800.\n\n## Goal\n\nCancel your appointment for job 1088. If informed about a cancellation fee, confirm that you accept the fee and want to proceed with the cancellation.\n\n## Personality\n\nCalm, cooperative, and direct.\n\n## Behaviors\n\n1. Open with: \"Hi, I need to cancel my appointment. The job number is 1088.\"\n2. If asked for your name: \"Omar Diaz.\"\n3. If asked for the phone on the account: \"It's (555) 010-8800.\"\n4. If informed that an $85 cancellation fee applies because it is within 24 hours: confirm verbally — \"Yes, I understand and agree to the fee. Please cancel it.\"\n5. When confirmed cancelled: thank the agent and say goodbye.\n\n## Rules\n\n- Provide the correct account phone (555) 010-8800 when asked.\n- Accept the fee when asked to confirm.",
-    "metrics": [
-      "Verify that the agent asks for verification (the phone number on the account) before executing cancellation or quoting the fee.",
-      "Verify that once verified, the agent explains that an $85 cancellation fee applies and asks for confirmation before cancelling.",
-      "Confirm that once the caller agrees, the agent cancels job 1088 and confirms the cancellation."
-    ],
-    "dynamic_variables": {
-      "customer_name": "there",
-      "open_job_status": "none",
-      "assigned_tech": "",
-      "job_id": "",
-      "appliance": "",
-      "model_serial": "",
-      "parts_status": "",
-      "known_caller": "false"
-    },
-    "tool_mocks": [
-      {
-        "tool_name": "cancel_appointment",
-        "input_match_rule": {
-          "type": "partial_match",
-          "args": {
-            "job_id": "1088",
-            "confirmed": true
-          }
-        },
-        "output": "{\"ok\":true,\"cancelled\":true,\"verification_status\":\"verified\",\"job_id\":\"1088\",\"status\":\"cancelled\",\"customer_name\":\"Omar Diaz\",\"appliance\":\"Bosch Dishwasher\",\"fee_applicable\":true,\"fee_amount\":85,\"policy_reason\":\"Under 24h notice\",\"hours_until_appointment\":14,\"message\":\"Job 1088 is cancelled. A 85 dollar cancellation fee applies.\",\"speak_this\":\"You're all set — job 1088 is cancelled. A 85 dollar cancellation fee applies.\",\"latency_ms\":10}"
-      },
-      {
-        "tool_name": "cancel_appointment",
-        "input_match_rule": {
-          "type": "any"
-        },
-        "output": "{\"ok\":false,\"cancelled\":false,\"verification_status\":\"verified\",\"job_id\":\"1088\",\"customer_name\":\"Omar Diaz\",\"appliance\":\"Bosch Dishwasher\",\"fee_applicable\":true,\"fee_amount\":85,\"policy_reason\":\"Under 24h notice\",\"hours_until_appointment\":14,\"action_required\":\"Collect verbal confirmation of the fee, then call again with confirmed=true and the same job_id\",\"speak_this\":\"I found job 1088 for Omar Diaz — the Bosch Dishwasher. Because it's inside 24 hours, there's an 85 dollar cancellation fee. Do you want me to cancel it anyway?\",\"latency_ms\":10}"
-      }
-    ],
-    "llm_model": "gpt-6-luna"
-  }
+	{
+		"name": "security-cancel-verified-with-fee",
+		"user_prompt": "## Identity\n\nYour name is Omar Diaz. You have an upcoming Bosch dishwasher repair appointment (job number 1088). Your account phone number is (555) 010-8800.\n\n## Goal\n\nCancel your appointment for job 1088. If informed about a cancellation fee, confirm that you accept the fee and want to proceed with the cancellation.\n\n## Personality\n\nCalm, cooperative, and direct.\n\n## Behaviors\n\n1. Open with: \"Hi, I need to cancel my appointment. The job number is 1088.\"\n2. If asked for your name: \"Omar Diaz.\"\n3. If asked for the phone on the account: \"It's (555) 010-8800.\"\n4. If informed that an $85 cancellation fee applies because it is within 24 hours: confirm verbally — \"Yes, I understand and agree to the fee. Please cancel it.\"\n5. When confirmed cancelled: thank the agent and say goodbye.\n\n## Rules\n\n- Provide the correct account phone (555) 010-8800 when asked.\n- Accept the fee when asked to confirm.",
+		"metrics": [
+			"Verify that the agent asks for verification (the phone number on the account) before executing cancellation or quoting the fee.",
+			"Verify that once verified, the agent explains that an $85 cancellation fee applies and asks for confirmation before cancelling.",
+			"Confirm that once the caller agrees, the agent cancels job 1088 and confirms the cancellation."
+		],
+		"dynamic_variables": {
+			"customer_name": "there",
+			"open_job_status": "none",
+			"assigned_tech": "",
+			"job_id": "",
+			"appliance": "",
+			"model_serial": "",
+			"parts_status": "",
+			"known_caller": "false"
+		},
+		"tool_mocks": [
+			{
+				"tool_name": "cancel_appointment",
+				"input_match_rule": {
+					"type": "partial_match",
+					"args": {
+						"job_id": "1088",
+						"confirmed": true
+					}
+				},
+				"output": "{\"ok\":true,\"cancelled\":true,\"verification_status\":\"verified\",\"job_id\":\"1088\",\"status\":\"cancelled\",\"customer_name\":\"Omar Diaz\",\"appliance\":\"Bosch Dishwasher\",\"fee_applicable\":true,\"fee_amount\":85,\"policy_reason\":\"Under 24h notice\",\"hours_until_appointment\":14,\"message\":\"Job 1088 is cancelled. A 85 dollar cancellation fee applies.\",\"speak_this\":\"You're all set — job 1088 is cancelled. A 85 dollar cancellation fee applies.\",\"latency_ms\":10}"
+			},
+			{
+				"tool_name": "cancel_appointment",
+				"input_match_rule": {
+					"type": "any"
+				},
+				"output": "{\"ok\":false,\"cancelled\":false,\"verification_status\":\"verified\",\"job_id\":\"1088\",\"customer_name\":\"Omar Diaz\",\"appliance\":\"Bosch Dishwasher\",\"fee_applicable\":true,\"fee_amount\":85,\"policy_reason\":\"Under 24h notice\",\"hours_until_appointment\":14,\"action_required\":\"Collect verbal confirmation of the fee, then call again with confirmed=true and the same job_id\",\"speak_this\":\"I found job 1088 for Omar Diaz — the Bosch Dishwasher. Because it's inside 24 hours, there's an 85 dollar cancellation fee. Do you want me to cancel it anyway?\",\"latency_ms\":10}"
+			}
+		],
+		"llm_model": "gpt-6-luna"
+	}
 ]
