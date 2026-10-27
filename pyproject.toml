@@ -10,8 +10,6 @@ max-complexity = 15
 
 [tool.basedpyright]
 typeCheckingMode = "standard"
-venvPath = "apps/agent-livekit"
-venv = ".venv"
 reportMissingImports = false
 
 [tool.vulture]
