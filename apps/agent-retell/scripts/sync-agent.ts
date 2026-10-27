@@ -52,6 +52,9 @@ type AgentConfig = {
   voice_id: string;
   language?: string;
   llm_model?: string;
+  llm_tier?: "standard" | "fast" | "ultrafast";
+  llm_temperature?: number;
+  model_config?: Retell.LlmCreateParams.CascadingModelConfig | Retell.LlmCreateParams.S2SModelConfig;
   responsiveness?: number;
   interruption_sensitivity?: number;
   begin_message?: string;
@@ -316,8 +319,17 @@ async function main() {
     return;
   }
 
-  const llmBody = {
-    model: cfg.llm_model ?? "gpt-4o",
+  const llmModel = cfg.llm_model ?? "gpt-6-luna";
+  const llmTier = cfg.llm_tier ?? "standard";
+  const llmBody: Retell.LlmCreateParams = {
+    model_config: cfg.model_config ?? {
+      type: "cascading",
+      primary: {
+        model: llmModel as any,
+        tier: llmTier,
+      },
+      ...(cfg.llm_temperature !== undefined ? { temperature: cfg.llm_temperature } : {}),
+    },
     general_prompt: prompt,
     general_tools: buildGeneralTools(functionsFile.functions, cfg),
     begin_message: cfg.begin_message ?? "",

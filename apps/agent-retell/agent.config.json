@@ -64,6 +64,7 @@
   "speak_during_tool_execution": true,
   "conversation_flow": {
     "model": "gpt-6-luna",
+    "model_tier": "standard",
     "post_call_analysis_model": "gpt-4.1",
     "include_slow_tool": true,
     "timezone": "America/Los_Angeles"

@@ -66,6 +66,20 @@ type AgentConfig = {
   speak_during_tool_execution?: boolean;
   conversation_flow?: {
     model?: string;
+    model_tier?: "standard" | "fast" | "ultrafast";
+    model_config?: {
+      type: "cascading" | "s2s";
+      primary: {
+        model: string;
+        tier?: "standard" | "fast" | "ultrafast";
+      };
+      backup?: {
+        model: string;
+        tier?: "standard" | "fast" | "ultrafast";
+        kick_in_timeout_ms?: number;
+      } | null;
+      temperature?: number;
+    };
     post_call_analysis_model?: string;
     include_slow_tool?: boolean;
     timezone?: string;
@@ -566,7 +580,15 @@ export function buildConversationFlowDoc(baseDir = retellDir, now = Date.now()) 
   const speakDuring = cfg.speak_during_tool_execution !== false;
   const cf = cfg.conversation_flow ?? {};
   const model = cf.model ?? "gpt-6-luna";
+  const modelTier = cf.model_tier ?? "standard";
   const analysisModel = cf.post_call_analysis_model ?? "gpt-4.1";
+  const modelConfig = cf.model_config ?? {
+    type: "cascading" as const,
+    primary: {
+      model,
+      tier: modelTier,
+    },
+  };
   const dispatcherPhone =
     process.env.DISPATCHER_PHONE_NUMBER ??
     cfg.dispatcher_phone_number ??
@@ -692,25 +714,13 @@ export function buildConversationFlowDoc(baseDir = retellDir, now = Date.now()) 
     conversationFlow: {
       conversation_flow_id: "",
       version: 0,
-      model_config: {
-        type: "cascading",
-        primary: {
-          model,
-          tier: "standard",
-        },
-      },
+      model_config: modelConfig,
       last_modification_timestamp: now,
       global_prompt: prompt.endsWith("\n") ? prompt : `${prompt}\n`,
       nodes,
       start_node_id,
       start_speaker: "agent",
       tools,
-      model_choice: {
-        type: "cascading",
-        model,
-        high_priority: false,
-        ultrafast: false,
-      },
       tool_call_strict_mode: true,
       knowledge_base_ids: [],
       kb_config: {
