@@ -1,28 +1,28 @@
 {
-  "name": "@applianceops/edge",
-  "private": true,
-  "version": "0.1.0",
-  "type": "module",
-  "scripts": {
-    "dev": "wrangler dev",
-    "deploy": "wrangler deploy",
-    "db:migrate:local": "wrangler d1 migrations apply applianceops --local",
-    "db:migrate:remote": "wrangler d1 migrations apply applianceops --remote",
-    "db:seed:local": "wrangler d1 execute applianceops --local --file=./seed.sql",
-    "typecheck": "tsc --noEmit",
-    "test": "vitest run",
-    "cf-typegen": "wrangler types"
-  },
-  "dependencies": {
-    "@applianceops/contracts": "workspace:*",
-    "@applianceops/schedule-store": "workspace:*",
-    "hono": "^4.13.13"
-  },
-  "devDependencies": {
-    "@cloudflare/vitest-plugin": "^1.4.6",
-    "@cloudflare/workers-types": "^4.20260702.1",
-    "typescript": "^5.9.3",
-    "vitest": "^4.1.12",
-    "wrangler": "^4.151.3"
-  }
+	"name": "@applianceops/edge",
+	"private": true,
+	"version": "0.1.0",
+	"type": "module",
+	"scripts": {
+		"dev": "wrangler dev",
+		"deploy": "wrangler deploy",
+		"db:migrate:local": "wrangler d1 migrations apply applianceops --local",
+		"db:migrate:remote": "wrangler d1 migrations apply applianceops --remote",
+		"db:seed:local": "wrangler d1 execute applianceops --local --file=./seed.sql",
+		"typecheck": "tsc --noEmit",
+		"test": "vitest run",
+		"cf-typegen": "wrangler types"
+	},
+	"dependencies": {
+		"@applianceops/contracts": "workspace:*",
+		"@applianceops/schedule-store": "workspace:*",
+		"hono": "^4.13.14"
+	},
+	"devDependencies": {
+		"@cloudflare/vitest-plugin": "^1.4.7",
+		"@cloudflare/workers-types": "^5.20261026.1",
+		"typescript": "^5.9.3",
+		"vitest": "^4.1.12",
+		"wrangler": "^4.152.0"
+	}
 }

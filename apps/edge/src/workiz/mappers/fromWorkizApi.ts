@@ -26,68 +26,94 @@ import type { Job, PartsStatus, Technician } from "../types";
  * - Active → active
  */
 
-export function mapWorkizPartsStatus(raw: string | undefined | null): PartsStatus {
-  if (!raw) return "none";
-  const n = raw.toLowerCase();
-  if (n.includes("backorder")) return "backordered";
-  if (n.includes("in stock") || n.includes("received") || n.includes("arrived")) {
-    return "in_stock";
-  }
-  if (n === "in_stock" || n === "backordered" || n === "none") return n;
-  return "none";
+export function mapWorkizPartsStatus(
+	raw: string | undefined | null,
+): PartsStatus {
+	if (!raw) return "none";
+	const n = raw.toLowerCase();
+	if (n.includes("backorder")) return "backordered";
+	if (
+		n.includes("in stock") ||
+		n.includes("received") ||
+		n.includes("arrived")
+	) {
+		return "in_stock";
+	}
+	if (n === "in_stock" || n === "backordered" || n === "none") return n;
+	return "none";
 }
 
 /** Placeholder mapper for live Workiz job payloads — refine against trial responses. */
 export function jobFromWorkizApi(raw: Record<string, unknown>): Job {
-  const partsRaw =
-    (raw.PartsStatus as string) ??
-    (raw.parts_status as string) ??
-    (raw["Parts Status"] as string);
+	const partsRaw =
+		(raw.PartsStatus as string) ??
+		(raw.parts_status as string) ??
+		(raw["Parts Status"] as string);
 
-  return {
-    id: String(raw.UUID ?? raw.uuid ?? raw.id ?? ""),
-    phone: normalizePhone(String(raw.Phone ?? raw.phone ?? raw.ClientPhone ?? "")),
-    customerName: String(raw.ClientName ?? raw.client_name ?? raw.customerName ?? ""),
-    appliance: String(raw.JobType ?? raw.job_type ?? raw.appliance ?? raw.Description ?? ""),
-    modelSerial: optionalString(raw.ModelSerial ?? raw.model_serial ?? raw["Model Serial"]),
-    status: String(raw.Status ?? raw.status ?? "open"),
-    partsStatus: mapWorkizPartsStatus(partsRaw),
-    partsEta: optionalString(raw.PartsETA ?? raw.parts_eta ?? raw["Parts ETA"]),
-    assignedTechId: optionalString(raw.TechUUID ?? raw.tech_uuid ?? raw.assignedTechId),
-    assignedTechName: optionalString(raw.TechName ?? raw.tech_name ?? raw.assignedTechName),
-    scheduledAt: optionalString(raw.JobDateTime ?? raw.job_date_time ?? raw.scheduledAt),
-    zone: optionalString(raw.Postal ?? raw.zone ?? raw.ServiceArea),
-    skill: optionalString(raw.Skill ?? raw.skill ?? raw.Trade),
-  };
+	return {
+		id: String(raw.UUID ?? raw.uuid ?? raw.id ?? ""),
+		phone: normalizePhone(
+			String(raw.Phone ?? raw.phone ?? raw.ClientPhone ?? ""),
+		),
+		customerName: String(
+			raw.ClientName ?? raw.client_name ?? raw.customerName ?? "",
+		),
+		appliance: String(
+			raw.JobType ?? raw.job_type ?? raw.appliance ?? raw.Description ?? "",
+		),
+		modelSerial: optionalString(
+			raw.ModelSerial ?? raw.model_serial ?? raw["Model Serial"],
+		),
+		status: String(raw.Status ?? raw.status ?? "open"),
+		partsStatus: mapWorkizPartsStatus(partsRaw),
+		partsEta: optionalString(raw.PartsETA ?? raw.parts_eta ?? raw["Parts ETA"]),
+		assignedTechId: optionalString(
+			raw.TechUUID ?? raw.tech_uuid ?? raw.assignedTechId,
+		),
+		assignedTechName: optionalString(
+			raw.TechName ?? raw.tech_name ?? raw.assignedTechName,
+		),
+		scheduledAt: optionalString(
+			raw.JobDateTime ?? raw.job_date_time ?? raw.scheduledAt,
+		),
+		zone: optionalString(raw.Postal ?? raw.zone ?? raw.ServiceArea),
+		skill: optionalString(raw.Skill ?? raw.skill ?? raw.Trade),
+	};
 }
 
 export function techFromWorkizApi(raw: Record<string, unknown>): Technician {
-  const skillsRaw = raw.Skills ?? raw.skills ?? raw.Tags ?? "";
-  const skills =
-    typeof skillsRaw === "string"
-      ? skillsRaw.split(",").map((s) => s.trim()).filter(Boolean)
-      : Array.isArray(skillsRaw)
-        ? skillsRaw.map(String)
-        : [];
+	const skillsRaw = raw.Skills ?? raw.skills ?? raw.Tags ?? "";
+	const skills =
+		typeof skillsRaw === "string"
+			? skillsRaw
+					.split(",")
+					.map((s) => s.trim())
+					.filter(Boolean)
+			: Array.isArray(skillsRaw)
+				? skillsRaw.map(String)
+				: [];
 
-  return {
-    id: String(raw.UUID ?? raw.uuid ?? raw.id ?? ""),
-    name: String(raw.Name ?? raw.name ?? ""),
-    skills,
-    zone: String(raw.Area ?? raw.zone ?? raw.Postal ?? ""),
-    active: raw.Active === false || raw.active === 0 || raw.active === false ? false : true,
-  };
+	return {
+		id: String(raw.UUID ?? raw.uuid ?? raw.id ?? ""),
+		name: String(raw.Name ?? raw.name ?? ""),
+		skills,
+		zone: String(raw.Area ?? raw.zone ?? raw.Postal ?? ""),
+		active:
+			raw.Active === false || raw.active === 0 || raw.active === false
+				? false
+				: true,
+	};
 }
 
 function optionalString(v: unknown): string | undefined {
-  if (v === null || v === undefined || v === "") return undefined;
-  return String(v);
+	if (v === null || v === undefined || v === "") return undefined;
+	return String(v);
 }
 
 export function normalizePhone(phone: string): string {
-  const digits = phone.replace(/\D/g, "");
-  if (digits.length === 11 && digits.startsWith("1")) return `+${digits}`;
-  if (digits.length === 10) return `+1${digits}`;
-  if (phone.startsWith("+")) return `+${digits}`;
-  return digits ? `+${digits}` : phone;
+	const digits = phone.replace(/\D/g, "");
+	if (digits.length === 11 && digits.startsWith("1")) return `+${digits}`;
+	if (digits.length === 10) return `+1${digits}`;
+	if (phone.startsWith("+")) return `+${digits}`;
+	return digits ? `+${digits}` : phone;
 }

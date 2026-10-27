@@ -1,48 +1,48 @@
 {
-  "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "applianceops-agent-livekit",
-  "main": "src/index.ts",
-  "compatibility_date": "2025-10-08",
-  "compatibility_flags": ["nodejs_compat"],
-  "observability": {
-    "enabled": true
-  },
-  "triggers": {
-    "crons": ["*/10 * * * *"]
-  },
-  // Secrets (LIVEKIT_API_KEY, LIVEKIT_API_SECRET, RETELL_API_KEY, DEMO_VOICE_TOKEN):
-  // set via `wrangler secret put` or local `.dev.vars` / `.env` — never commit values here.
-  "vars": {
-    "EDGE_BASE_URL": "https://applianceops-edge.23p.workers.dev",
-    "LIVEKIT_URL": "wss://demo1-fhb0ecf7.livekit.cloud",
-    "LIVEKIT_STT_MODEL": "deepgram/nova-3",
-    "LIVEKIT_TTS_MODEL": "inworld/inworld-tts-2-flash",
-    "LIVEKIT_LLM_MODEL": "openai/gpt-6-luna"
-  },
-  "containers": [
-    {
-      "class_name": "LiveKitWorkerContainer",
-      "scheduling_policy": "durable_object",
-      "images": {
-        "base": {
-          "dockerfile": "./Dockerfile"
-        }
-      }
-    }
-  ],
-  "durable_objects": {
-    "bindings": [
-      {
-        "class_name": "LiveKitWorkerContainer",
-        "name": "LIVEKIT_WORKER"
-      }
-    ]
-  },
-  "upload_source_maps": true,
-  "exports": {
-    "LiveKitWorkerContainer": {
-      "type": "durable-object",
-      "storage": "sqlite"
-    }
-  }
+	"$schema": "node_modules/wrangler/config-schema.json",
+	"name": "applianceops-agent-livekit",
+	"main": "src/index.ts",
+	"compatibility_date": "2025-10-08",
+	"compatibility_flags": ["nodejs_compat"],
+	"observability": {
+		"enabled": true
+	},
+	"triggers": {
+		"crons": ["*/10 * * * *"]
+	},
+	// Secrets (LIVEKIT_API_KEY, LIVEKIT_API_SECRET, RETELL_API_KEY, DEMO_VOICE_TOKEN):
+	// set via `wrangler secret put` or local `.dev.vars` / `.env` — never commit values here.
+	"vars": {
+		"EDGE_BASE_URL": "https://applianceops-edge.23p.workers.dev",
+		"LIVEKIT_URL": "wss://demo1-fhb0ecf7.livekit.cloud",
+		"LIVEKIT_STT_MODEL": "deepgram/nova-3",
+		"LIVEKIT_TTS_MODEL": "inworld/inworld-tts-2-flash",
+		"LIVEKIT_LLM_MODEL": "openai/gpt-6-luna"
+	},
+	"containers": [
+		{
+			"class_name": "LiveKitWorkerContainer",
+			"scheduling_policy": "durable_object",
+			"images": {
+				"base": {
+					"dockerfile": "./Dockerfile"
+				}
+			}
+		}
+	],
+	"durable_objects": {
+		"bindings": [
+			{
+				"class_name": "LiveKitWorkerContainer",
+				"name": "LIVEKIT_WORKER"
+			}
+		]
+	},
+	"upload_source_maps": true,
+	"exports": {
+		"LiveKitWorkerContainer": {
+			"type": "durable-object",
+			"storage": "sqlite"
+		}
+	}
 }

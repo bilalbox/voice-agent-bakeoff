@@ -1,23 +1,23 @@
 {
-  "name": "@applianceops/agent-retell",
-  "version": "0.1.0",
-  "private": true,
-  "type": "module",
-  "scripts": {
-    "deploy": "tsx scripts/sync-agent.ts",
-    "export": "tsx scripts/export-import.ts",
-    "sync": "tsx scripts/sync-agent.ts",
-    "sync:dry": "tsx scripts/sync-agent.ts --dry-run",
-    "test:simulation": "tsx scripts/create-test.ts",
-    "test:simulation:dry": "tsx scripts/create-test.ts --dry-run"
-  },
-  "dependencies": {
-    "@applianceops/contracts": "workspace:*",
-    "dotenv": "^18.0.8",
-    "retell-sdk": "^6.2.9"
-  },
-  "devDependencies": {
-    "tsx": "^4.23.15",
-    "typescript": "^5.8.2"
-  }
+	"name": "@applianceops/agent-retell",
+	"version": "0.1.0",
+	"private": true,
+	"type": "module",
+	"scripts": {
+		"deploy": "tsx scripts/sync-agent.ts",
+		"export": "tsx scripts/export-import.ts",
+		"sync": "tsx scripts/sync-agent.ts",
+		"sync:dry": "tsx scripts/sync-agent.ts --dry-run",
+		"test:simulation": "tsx scripts/create-test.ts",
+		"test:simulation:dry": "tsx scripts/create-test.ts --dry-run"
+	},
+	"dependencies": {
+		"@applianceops/contracts": "workspace:*",
+		"dotenv": "^18.0.9",
+		"retell-sdk": "^6.2.12"
+	},
+	"devDependencies": {
+		"tsx": "^4.23.15",
+		"typescript": "^5.9.3"
+	}
 }

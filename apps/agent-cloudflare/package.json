@@ -1,21 +1,21 @@
 {
-  "name": "@applianceops/agent-cloudflare",
-  "version": "0.1.0",
-  "private": true,
-  "type": "module",
-  "scripts": {
-    "dev": "wrangler dev",
-    "deploy": "wrangler deploy",
-    "typecheck": "tsc --noEmit"
-  },
-  "dependencies": {
-    "@applianceops/contracts": "workspace:*",
-    "@applianceops/schedule-store": "workspace:*",
-    "ai": "^4.1.41"
-  },
-  "devDependencies": {
-    "@cloudflare/workers-types": "^4.20250317.0",
-    "typescript": "^5.8.2",
-    "wrangler": "^4.4.0"
-  }
+	"name": "@applianceops/agent-cloudflare",
+	"version": "0.1.0",
+	"private": true,
+	"type": "module",
+	"scripts": {
+		"dev": "wrangler dev",
+		"deploy": "wrangler deploy",
+		"typecheck": "tsc --noEmit"
+	},
+	"dependencies": {
+		"@applianceops/contracts": "workspace:*",
+		"@applianceops/schedule-store": "workspace:*",
+		"ai": "^4.3.19"
+	},
+	"devDependencies": {
+		"@cloudflare/workers-types": "^5.20261026.1",
+		"typescript": "^5.9.3",
+		"wrangler": "^4.152.0"
+	}
 }

@@ -1,0 +1,73 @@
+{
+	"$schema": "https://biomejs.dev/schemas/2.6.3/schema.json",
+	"vcs": {
+		"enabled": true,
+		"clientKind": "git",
+		"useIgnoreFile": true
+	},
+	"files": {
+		"ignoreUnknown": true,
+		"includes": [
+			"**",
+			"!!**/dist",
+			"!!**/node_modules",
+			"!!**/.wrangler",
+			"!!**/pnpm-lock.yaml",
+			"!!.rev-dep.baseline.json",
+			"!!.rev-dep.duplicates.json",
+			"!!**/worker-configuration.d.ts",
+			"!!apps/agent-livekit/.venv",
+			"!!apps/benchmark/index.html",
+			"!!portfolio"
+		]
+	},
+	"formatter": {
+		"enabled": true,
+		"indentStyle": "tab"
+	},
+	"linter": {
+		"enabled": true,
+		"rules": {
+			"preset": "recommended",
+			"style": {
+				"noNonNullAssertion": "off"
+			},
+			"suspicious": {
+				"noConsole": "error"
+			}
+		}
+	},
+	"overrides": [
+		{
+			"includes": [
+				"scripts/**",
+				"**/scripts/**",
+				"tests/**",
+				"**/tests/**",
+				"**/*.test.*",
+				"**/*.spec.*",
+				"apps/**"
+			],
+			"linter": {
+				"rules": {
+					"suspicious": {
+						"noConsole": "off"
+					}
+				}
+			}
+		}
+	],
+	"javascript": {
+		"formatter": {
+			"quoteStyle": "double"
+		}
+	},
+	"assist": {
+		"enabled": true,
+		"actions": {
+			"source": {
+				"organizeImports": "on"
+			}
+		}
+	}
+}

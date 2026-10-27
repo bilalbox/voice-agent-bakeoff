@@ -23,10 +23,10 @@ Open the bakeoff page (served as Worker assets): [http://127.0.0.1:8787/](http:/
 
 ### Demo phones
 
-| Phone | Caller | Scenario |
-|-------|--------|----------|
-| `+15550104200` | Sarah | Job **1042** — Sub-Zero parts in stock → reschedule |
-| `+15550108800` | Omar | Job **1088** — Bosch visit in ~14h → **$85** cancel fee |
+| Phone          | Caller | Scenario                                                |
+| -------------- | ------ | ------------------------------------------------------- |
+| `+15550104200` | Sarah  | Job **1042** — Sub-Zero parts in stock → reschedule     |
+| `+15550108800` | Omar   | Job **1088** — Bosch visit in ~14h → **$85** cancel fee |
 
 ## Architecture
 
@@ -39,16 +39,16 @@ WORKIZ_MODE=mock  → MockWorkizClient (D1 source tables)
 WORKIZ_MODE=live  → RealWorkizClient (stub in v1 — fill against trial)
 ```
 
-| Path | Role |
-|------|------|
-| `POST /retell/call-inbound` | Dynamic variables for known callers |
-| `POST /retell/check-availability` | Cached slots + `X-Tool-Latency-Ms` |
-| `POST /retell/reschedule-parts` | Parts status rules + write-through |
-| `POST /retell/cancel-job` | Deterministic &lt;24h fee |
-| `POST /slow/check-availability` | Stack 1: paginated uncached CRM |
-| `GET /mock-workiz/job/all` | Workiz-shaped pagination façade |
-| `POST /admin/seed` | Mock CRM seed (mock mode only) |
-| `POST /admin/sync` | `syncFromWorkiz` → D1 cache |
+| Path                              | Role                                |
+| --------------------------------- | ----------------------------------- |
+| `POST /retell/call-inbound`       | Dynamic variables for known callers |
+| `POST /retell/check-availability` | Cached slots + `X-Tool-Latency-Ms`  |
+| `POST /retell/reschedule-parts`   | Parts status rules + write-through  |
+| `POST /retell/cancel-job`         | Deterministic &lt;24h fee           |
+| `POST /slow/check-availability`   | Stack 1: paginated uncached CRM     |
+| `GET /mock-workiz/job/all`        | Workiz-shaped pagination façade     |
+| `POST /admin/seed`                | Mock CRM seed (mock mode only)      |
+| `POST /admin/sync`                | `syncFromWorkiz` → D1 cache         |
 
 Retell configs live in [`apps/agent-retell/`](apps/agent-retell/) (`agent-prompt.md`, `custom-functions.json`, `agent.config.json`, `pronunciation-notes.md`, `tests/`).
 
@@ -104,14 +104,14 @@ Handlers must **not** import mock/real clients — only `WorkizClient` / `Schedu
 
 ## Env
 
-| Var | Purpose |
-|-----|---------|
-| `RETELL_API_KEY` | `X-Retell-Signature` verify |
-| `RETELL_VERIFY` | `false` skips verify when key unset / local curl |
-| `WORKIZ_MODE` | `mock` (default) \| `live` |
-| `WORKIZ_API_TOKEN` / `WORKIZ_BASE_URL` | Live only |
-| `SEED_TOKEN` | Protect `/admin/*` |
-| `MOCK_PAGE_DELAY_MS` | Artificial pagination delay (Stack 1) |
+| Var                                    | Purpose                                          |
+| -------------------------------------- | ------------------------------------------------ |
+| `RETELL_API_KEY`                       | `X-Retell-Signature` verify                      |
+| `RETELL_VERIFY`                        | `false` skips verify when key unset / local curl |
+| `WORKIZ_MODE`                          | `mock` (default) \| `live`                       |
+| `WORKIZ_API_TOKEN` / `WORKIZ_BASE_URL` | Live only                                        |
+| `SEED_TOKEN`                           | Protect `/admin/*`                               |
+| `MOCK_PAGE_DELAY_MS`                   | Artificial pagination delay (Stack 1)            |
 
 ## Triple Architectures
 

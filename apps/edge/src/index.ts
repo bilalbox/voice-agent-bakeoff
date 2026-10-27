@@ -5,17 +5,17 @@ import { benchmarkRoutes } from "./routes/benchmark";
 import { mockWorkizRoutes } from "./routes/mock-workiz";
 import { retellRoutes } from "./routes/retell";
 import { slowRoutes } from "./routes/slow";
-import { voiceRoutes } from "./routes/voice";
 import { toolRoutes } from "./routes/tools";
+import { voiceRoutes } from "./routes/voice";
 
 const app = new Hono<{ Bindings: Env }>();
 
 app.get("/health", (c) =>
-  c.json({
-    ok: true,
-    service: "applianceops-edge",
-    workiz_mode: c.env.WORKIZ_MODE ?? "mock",
-  }),
+	c.json({
+		ok: true,
+		service: "applianceops-edge",
+		workiz_mode: c.env.WORKIZ_MODE ?? "mock",
+	}),
 );
 
 app.route("/retell", retellRoutes);
@@ -27,48 +27,48 @@ app.route("/api/voice", voiceRoutes);
 app.route("/api/tools", toolRoutes);
 
 app.get("/api/benchmark-meta", (c) =>
-  c.json({
-    stacks: {
-      stack1: {
-        path: "/slow/check-availability",
-        note: "Uncached paginated WorkizClient (mock delay)",
-      },
-      stack2: {
-        path: "/retell/check-availability",
-        note: "D1 schedule cache + write-through WorkizClient",
-      },
-      stack3: {
-        path: "apps/livekit-slice",
-        note: "Thin LiveKit Agents slice calling same tool URLs",
-      },
-    },
-  }),
+	c.json({
+		stacks: {
+			stack1: {
+				path: "/slow/check-availability",
+				note: "Uncached paginated WorkizClient (mock delay)",
+			},
+			stack2: {
+				path: "/retell/check-availability",
+				note: "D1 schedule cache + write-through WorkizClient",
+			},
+			stack3: {
+				path: "apps/livekit-slice",
+				note: "Thin LiveKit Agents slice calling same tool URLs",
+			},
+		},
+	}),
 );
 
 export default {
-  async fetch(
-    request: Request,
-    env: Env,
-    ctx: ExecutionContext,
-  ): Promise<Response> {
-    const url = new URL(request.url);
-    const isApi =
-      url.pathname.startsWith("/retell") ||
-      url.pathname.startsWith("/slow") ||
-      url.pathname.startsWith("/mock-workiz") ||
-      url.pathname.startsWith("/admin") ||
-      url.pathname.startsWith("/health") ||
-      url.pathname.startsWith("/benchmark") ||
-      url.pathname.startsWith("/api/");
+	async fetch(
+		request: Request,
+		env: Env,
+		ctx: ExecutionContext,
+	): Promise<Response> {
+		const url = new URL(request.url);
+		const isApi =
+			url.pathname.startsWith("/retell") ||
+			url.pathname.startsWith("/slow") ||
+			url.pathname.startsWith("/mock-workiz") ||
+			url.pathname.startsWith("/admin") ||
+			url.pathname.startsWith("/health") ||
+			url.pathname.startsWith("/benchmark") ||
+			url.pathname.startsWith("/api/");
 
-    if (isApi) {
-      return app.fetch(request, env, ctx);
-    }
+		if (isApi) {
+			return app.fetch(request, env, ctx);
+		}
 
-    if (env.ASSETS) {
-      return env.ASSETS.fetch(request);
-    }
+		if (env.ASSETS) {
+			return env.ASSETS.fetch(request);
+		}
 
-    return app.fetch(request, env, ctx);
-  },
+		return app.fetch(request, env, ctx);
+	},
 };

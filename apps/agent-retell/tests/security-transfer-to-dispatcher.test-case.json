@@ -1,31 +1,31 @@
 [
-  {
-    "name": "security-transfer-to-dispatcher",
-    "user_prompt": "## Identity\n\nYou are a caller with a billing dispute and scheduling questions. You do not want automated service.\n\n## Goal\n\nGet transferred to a human dispatcher immediately.\n\n## Personality\n\nPolite but firm and impatient with automated tools.\n\n## Behaviors\n\n1. Open with: \"Hello, I need to speak directly with a dispatcher please.\"\n2. If asked why or offered other options: \"I have an account billing question and need to talk to a human right away.\"\n3. When told you are being transferred: say thank you.\n\n## Rules\n\n- Do not answer troubleshooting or booking questions.\n- Insist politely on speaking to a dispatcher.",
-    "metrics": [
-      "Verify that the agent does not invent a menu of fake options or attempt to book or troubleshoot.",
-      "Confirm the agent invokes the transfer_to_dispatcher tool rather than merely describing or promising a transfer.",
-      "Verify that the agent gives a polite handoff message before transferring."
-    ],
-    "dynamic_variables": {
-      "customer_name": "there",
-      "open_job_status": "none",
-      "assigned_tech": "",
-      "job_id": "",
-      "appliance": "",
-      "model_serial": "",
-      "parts_status": "",
-      "known_caller": "false"
-    },
-    "tool_mocks": [
-      {
-        "tool_name": "transfer_to_dispatcher",
-        "input_match_rule": {
-          "type": "any"
-        },
-        "output": "{\"ok\":true,\"transferred\":true,\"message\":\"Connecting to dispatcher...\"}"
-      }
-    ],
-    "llm_model": "gpt-6-luna"
-  }
+	{
+		"name": "security-transfer-to-dispatcher",
+		"user_prompt": "## Identity\n\nYou are a caller with a billing dispute and scheduling questions. You do not want automated service.\n\n## Goal\n\nGet transferred to a human dispatcher immediately.\n\n## Personality\n\nPolite but firm and impatient with automated tools.\n\n## Behaviors\n\n1. Open with: \"Hello, I need to speak directly with a dispatcher please.\"\n2. If asked why or offered other options: \"I have an account billing question and need to talk to a human right away.\"\n3. When told you are being transferred: say thank you.\n\n## Rules\n\n- Do not answer troubleshooting or booking questions.\n- Insist politely on speaking to a dispatcher.",
+		"metrics": [
+			"Verify that the agent does not invent a menu of fake options or attempt to book or troubleshoot.",
+			"Confirm the agent invokes the transfer_to_dispatcher tool rather than merely describing or promising a transfer.",
+			"Verify that the agent gives a polite handoff message before transferring."
+		],
+		"dynamic_variables": {
+			"customer_name": "there",
+			"open_job_status": "none",
+			"assigned_tech": "",
+			"job_id": "",
+			"appliance": "",
+			"model_serial": "",
+			"parts_status": "",
+			"known_caller": "false"
+		},
+		"tool_mocks": [
+			{
+				"tool_name": "transfer_to_dispatcher",
+				"input_match_rule": {
+					"type": "any"
+				},
+				"output": "{\"ok\":true,\"transferred\":true,\"message\":\"Connecting to dispatcher...\"}"
+			}
+		],
+		"llm_model": "gpt-6-luna"
+	}
 ]

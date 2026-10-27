@@ -1,0 +1,11 @@
+{
+	"version": 1,
+	"findings": [
+		{
+			"id": "src/app/foo.ts|handler",
+			"score": 30,
+			"note": "fixture",
+			"issue": 273
+		}
+	]
+}

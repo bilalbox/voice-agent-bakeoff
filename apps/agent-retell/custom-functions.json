@@ -1,170 +1,170 @@
 {
-  "functions": [
-    {
-      "name": "check_tech_availability",
-      "description": "Return open 2-hour technician arrival windows for supported appliances (refrigeration, dishwasher, laundry, cooking, Bosch, Miele, Gaggenau, Sub-Zero). Do NOT call for unsupported services like pool heaters or water heaters. Zone is OPTIONAL — omit it (preferred default) to search all service areas when the caller says check/go ahead without a zone.",
-      "url": "https://applianceops-edge.23p.workers.dev/retell/check-availability",
-      "method": "POST",
-      "timeout_ms": 10000,
-      "parameters": {
-        "type": "object",
-        "properties": {
-          "zone": {
-            "type": "string",
-            "description": "Optional. north | central | south. Omit entirely for all zones. Do not pass 'all' or 'any'."
-          },
-          "skill": {
-            "type": "string",
-            "description": "Canonical skill: dishwasher, refrigeration, laundry, cooking, bosch, miele, gaggenau, general"
-          },
-          "appliance_type": {
-            "type": "string",
-            "description": "Same as skill when caller names an appliance (e.g. dishwasher)"
-          },
-          "preferred_date": {
-            "type": "string",
-            "description": "Optional ISO date YYYY-MM-DD only (e.g. 2026-10-22)"
-          }
-        }
-      }
-    },
-    {
-      "name": "lookup_job",
-      "description": "Look up an appointment / job ID when the caller does not know their job ID. Call this with the caller's confirmed account phone number (e.g. +15550108800) to find their job ID, appliance, and scheduled arrival window.",
-      "url": "https://applianceops-edge.23p.workers.dev/retell/lookup-job",
-      "method": "POST",
-      "timeout_ms": 10000,
-      "parameters": {
-        "type": "object",
-        "properties": {
-          "phone": {
-            "type": "string",
-            "description": "Account phone number for caller verification (e.g. +15550108800 or spoken digits)."
-          },
-          "customer_name": {
-            "type": "string",
-            "description": "Optional caller name on the account to assist lookup."
-          },
-          "job_id": {
-            "type": "string",
-            "description": "Optional job ID if verifying a specific appointment."
-          }
-        }
-      }
-    },
-    {
-      "name": "reschedule_parts_install",
-      "description": "Reschedule a parts installation after validating parts status. Keeps the primary technician from the diagnostic visit when parts are in stock.",
-      "url": "https://applianceops-edge.23p.workers.dev/retell/reschedule-parts",
-      "method": "POST",
-      "timeout_ms": 10000,
-      "parameters": {
-        "type": "object",
-        "required": ["job_id", "preferred_date"],
-        "properties": {
-          "job_id": {
-            "type": "string",
-            "description": "Workiz / ApplianceOps job id"
-          },
-          "preferred_date": {
-            "type": "string",
-            "description": "Desired install datetime in ISO-8601"
-          }
-        }
-      }
-    },
-    {
-      "name": "cancel_appointment",
-      "description": "Cancel an appointment with verified caller ownership. Requires BOTH job_id AND account phone number (or matching caller ID). Name alone is never sufficient. Enforces 24h fee — if fee_applicable and not yet confirmed, read speak_this, get verbal yes, then call again with the same job_id and confirmed=true. Never invent lookup failures.",
-      "url": "https://applianceops-edge.23p.workers.dev/retell/cancel-job",
-      "method": "POST",
-      "timeout_ms": 10000,
-      "parameters": {
-        "type": "object",
-        "properties": {
-          "job_id": {
-            "type": "string",
-            "description": "Job id (digits ok, e.g. 1088). Required alongside phone for cancellation."
-          },
-          "phone": {
-            "type": "string",
-            "description": "Account phone number for caller verification (e.g. +15550108800 or spoken digits). Required to verify ownership."
-          },
-          "customer_name": {
-            "type": "string",
-            "description": "Optional caller name to assist lookup."
-          },
-          "confirmed": {
-            "type": "boolean",
-            "description": "True only after caller verbally accepts the fee when fee_applicable was returned."
-          }
-        }
-      }
-    },
-    {
-      "name": "book_appointment",
-      "description": "Book a technician for an open arrival window for supported appliances. Requires tech_id + window_start from open_windows. Unavailable/stale windows are rejected. Writes a Scheduled job into the CRM cache.",
-      "url": "https://applianceops-edge.23p.workers.dev/retell/book-appointment",
-      "method": "POST",
-      "timeout_ms": 10000,
-      "parameters": {
-        "type": "object",
-        "properties": {
-          "tech_id": {
-            "type": "string",
-            "description": "Technician id from open_windows (e.g. tech-lee)"
-          },
-          "technician": {
-            "type": "string",
-            "description": "Technician display name if tech_id missing (e.g. Lee P.)"
-          },
-          "window_start": {
-            "type": "string",
-            "description": "arrival_window_start ISO from open_windows (must match an open slot)"
-          },
-          "window_end": {
-            "type": "string",
-            "description": "Optional arrival_window_end ISO"
-          },
-          "zone": {
-            "type": "string",
-            "description": "Service zone (north|central|south)"
-          },
-          "skill": {
-            "type": "string",
-            "description": "Canonical skill e.g. dishwasher"
-          },
-          "appliance": {
-            "type": "string",
-            "description": "Appliance description for the job"
-          },
-          "appliance_type": {
-            "type": "string",
-            "description": "Alias for skill/appliance category"
-          },
-          "phone": {
-            "type": "string",
-            "description": "Caller phone if not available on the call object"
-          },
-          "customer_name": {
-            "type": "string",
-            "description": "Caller name when known"
-          },
-          "model_serial": {
-            "type": "string",
-            "description": "Appliance model/serial if the caller provided one"
-          }
-        }
-      }
-    }
-  ],
-  "inbound_webhook": {
-    "url": "https://applianceops-edge.23p.workers.dev/retell/call-inbound",
-    "notes": "Maps from_number → dynamic_variables for known callers (e.g. Sarah / job 1042)."
-  },
-  "stack1_contrast": {
-    "name": "check_tech_availability_slow",
-    "url": "https://applianceops-edge.23p.workers.dev/slow/check-availability",
-    "notes": "Optional second agent or A/B tool URL to demo uncached pagination latency."
-  }
+	"functions": [
+		{
+			"name": "check_tech_availability",
+			"description": "Return open 2-hour technician arrival windows for supported appliances (refrigeration, dishwasher, laundry, cooking, Bosch, Miele, Gaggenau, Sub-Zero). Do NOT call for unsupported services like pool heaters or water heaters. Zone is OPTIONAL — omit it (preferred default) to search all service areas when the caller says check/go ahead without a zone.",
+			"url": "https://applianceops-edge.23p.workers.dev/retell/check-availability",
+			"method": "POST",
+			"timeout_ms": 10000,
+			"parameters": {
+				"type": "object",
+				"properties": {
+					"zone": {
+						"type": "string",
+						"description": "Optional. north | central | south. Omit entirely for all zones. Do not pass 'all' or 'any'."
+					},
+					"skill": {
+						"type": "string",
+						"description": "Canonical skill: dishwasher, refrigeration, laundry, cooking, bosch, miele, gaggenau, general"
+					},
+					"appliance_type": {
+						"type": "string",
+						"description": "Same as skill when caller names an appliance (e.g. dishwasher)"
+					},
+					"preferred_date": {
+						"type": "string",
+						"description": "Optional ISO date YYYY-MM-DD only (e.g. 2026-10-22)"
+					}
+				}
+			}
+		},
+		{
+			"name": "lookup_job",
+			"description": "Look up an appointment / job ID when the caller does not know their job ID. Call this with the caller's confirmed account phone number (e.g. +15550108800) to find their job ID, appliance, and scheduled arrival window.",
+			"url": "https://applianceops-edge.23p.workers.dev/retell/lookup-job",
+			"method": "POST",
+			"timeout_ms": 10000,
+			"parameters": {
+				"type": "object",
+				"properties": {
+					"phone": {
+						"type": "string",
+						"description": "Account phone number for caller verification (e.g. +15550108800 or spoken digits)."
+					},
+					"customer_name": {
+						"type": "string",
+						"description": "Optional caller name on the account to assist lookup."
+					},
+					"job_id": {
+						"type": "string",
+						"description": "Optional job ID if verifying a specific appointment."
+					}
+				}
+			}
+		},
+		{
+			"name": "reschedule_parts_install",
+			"description": "Reschedule a parts installation after validating parts status. Keeps the primary technician from the diagnostic visit when parts are in stock.",
+			"url": "https://applianceops-edge.23p.workers.dev/retell/reschedule-parts",
+			"method": "POST",
+			"timeout_ms": 10000,
+			"parameters": {
+				"type": "object",
+				"required": ["job_id", "preferred_date"],
+				"properties": {
+					"job_id": {
+						"type": "string",
+						"description": "Workiz / ApplianceOps job id"
+					},
+					"preferred_date": {
+						"type": "string",
+						"description": "Desired install datetime in ISO-8601"
+					}
+				}
+			}
+		},
+		{
+			"name": "cancel_appointment",
+			"description": "Cancel an appointment with verified caller ownership. Requires BOTH job_id AND account phone number (or matching caller ID). Name alone is never sufficient. Enforces 24h fee — if fee_applicable and not yet confirmed, read speak_this, get verbal yes, then call again with the same job_id and confirmed=true. Never invent lookup failures.",
+			"url": "https://applianceops-edge.23p.workers.dev/retell/cancel-job",
+			"method": "POST",
+			"timeout_ms": 10000,
+			"parameters": {
+				"type": "object",
+				"properties": {
+					"job_id": {
+						"type": "string",
+						"description": "Job id (digits ok, e.g. 1088). Required alongside phone for cancellation."
+					},
+					"phone": {
+						"type": "string",
+						"description": "Account phone number for caller verification (e.g. +15550108800 or spoken digits). Required to verify ownership."
+					},
+					"customer_name": {
+						"type": "string",
+						"description": "Optional caller name to assist lookup."
+					},
+					"confirmed": {
+						"type": "boolean",
+						"description": "True only after caller verbally accepts the fee when fee_applicable was returned."
+					}
+				}
+			}
+		},
+		{
+			"name": "book_appointment",
+			"description": "Book a technician for an open arrival window for supported appliances. Requires tech_id + window_start from open_windows. Unavailable/stale windows are rejected. Writes a Scheduled job into the CRM cache.",
+			"url": "https://applianceops-edge.23p.workers.dev/retell/book-appointment",
+			"method": "POST",
+			"timeout_ms": 10000,
+			"parameters": {
+				"type": "object",
+				"properties": {
+					"tech_id": {
+						"type": "string",
+						"description": "Technician id from open_windows (e.g. tech-lee)"
+					},
+					"technician": {
+						"type": "string",
+						"description": "Technician display name if tech_id missing (e.g. Lee P.)"
+					},
+					"window_start": {
+						"type": "string",
+						"description": "arrival_window_start ISO from open_windows (must match an open slot)"
+					},
+					"window_end": {
+						"type": "string",
+						"description": "Optional arrival_window_end ISO"
+					},
+					"zone": {
+						"type": "string",
+						"description": "Service zone (north|central|south)"
+					},
+					"skill": {
+						"type": "string",
+						"description": "Canonical skill e.g. dishwasher"
+					},
+					"appliance": {
+						"type": "string",
+						"description": "Appliance description for the job"
+					},
+					"appliance_type": {
+						"type": "string",
+						"description": "Alias for skill/appliance category"
+					},
+					"phone": {
+						"type": "string",
+						"description": "Caller phone if not available on the call object"
+					},
+					"customer_name": {
+						"type": "string",
+						"description": "Caller name when known"
+					},
+					"model_serial": {
+						"type": "string",
+						"description": "Appliance model/serial if the caller provided one"
+					}
+				}
+			}
+		}
+	],
+	"inbound_webhook": {
+		"url": "https://applianceops-edge.23p.workers.dev/retell/call-inbound",
+		"notes": "Maps from_number → dynamic_variables for known callers (e.g. Sarah / job 1042)."
+	},
+	"stack1_contrast": {
+		"name": "check_tech_availability_slow",
+		"url": "https://applianceops-edge.23p.workers.dev/slow/check-availability",
+		"notes": "Optional second agent or A/B tool URL to demo uncached pagination latency."
+	}
 }

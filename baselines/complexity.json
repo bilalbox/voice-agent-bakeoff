@@ -1,0 +1,50 @@
+{
+	"version": 1,
+	"findings": [
+		{
+			"id": "apps/agent-cloudflare/src/agent.ts|processTurn",
+			"score": 57,
+			"note": "Added via --update; replace with owning issue note."
+		},
+		{
+			"id": "apps/agent-retell/scripts/sync-agent.ts|main",
+			"score": 66,
+			"note": "Added via --update; replace with owning issue note."
+		},
+		{
+			"id": "apps/edge/src/handlers/book-appointment.ts|handleBookAppointment",
+			"score": 37,
+			"note": "Added via --update; replace with owning issue note."
+		},
+		{
+			"id": "apps/edge/src/handlers/cancel-job.ts|handleCancelJob",
+			"score": 36,
+			"note": "Added via --update; replace with owning issue note."
+		},
+		{
+			"id": "apps/edge/src/routes/voice.ts|(anonymous)|227",
+			"score": 51,
+			"note": "Added via --update; replace with owning issue note."
+		},
+		{
+			"id": "apps/edge/src/services/sync.ts|rebuildAvailabilitySlots",
+			"score": 26,
+			"note": "Added via --update; replace with owning issue note."
+		},
+		{
+			"id": "packages/contracts/src/policies.ts|evaluateCancellationPolicy",
+			"score": 37,
+			"note": "Added via --update; replace with owning issue note."
+		},
+		{
+			"id": "packages/schedule-store/src/repository.ts|bookAppointment",
+			"score": 35,
+			"note": "Added via --update; replace with owning issue note."
+		},
+		{
+			"id": "packages/schedule-store/src/repository.ts|checkAvailabilityUncached",
+			"score": 42,
+			"note": "Added via --update; replace with owning issue note."
+		}
+	]
+}

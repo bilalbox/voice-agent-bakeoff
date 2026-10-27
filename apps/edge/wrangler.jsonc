@@ -1,35 +1,35 @@
 {
-  "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "applianceops-edge",
-  "main": "src/index.ts",
-  "compatibility_date": "2026-10-20",
-  "compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],
-  "observability": {
-    "enabled": true,
-    "head_sampling_rate": 1
-  },
-  "vars": {
-    "WORKIZ_MODE": "mock",
-    "CANCEL_FEE_AMOUNT": "85",
-    "CANCEL_FEE_HOURS": "24",
-    "RETELL_VERIFY": "true",
-    "MOCK_PAGE_DELAY_MS": "400",
-    "LIVEKIT_WS_URL": "wss://demo1-fhb0ecf7.livekit.cloud",
-    "LIVEKIT_CONTAINER_URL": "https://applianceops-agent-livekit.23p.workers.dev",
-    "CLOUDFLARE_AGENT_URL": "https://applianceops-agent-cloudflare.23p.workers.dev"
-  },
-  // LIVEKIT_API_KEY / LIVEKIT_API_SECRET: wrangler secret put or apps/edge/.dev.vars
-  "d1_databases": [
-    {
-      "binding": "DB",
-      "database_name": "applianceops",
-      "database_id": "b838e891-7246-4986-a682-a14d8c85650d",
-      "migrations_dir": "migrations"
-    }
-  ],
-  "assets": {
-    "directory": "../benchmark",
-    "binding": "ASSETS",
-    "not_found_handling": "single-page-application"
-  }
+	"$schema": "node_modules/wrangler/config-schema.json",
+	"name": "applianceops-edge",
+	"main": "src/index.ts",
+	"compatibility_date": "2026-10-20",
+	"compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],
+	"observability": {
+		"enabled": true,
+		"head_sampling_rate": 1
+	},
+	"vars": {
+		"WORKIZ_MODE": "mock",
+		"CANCEL_FEE_AMOUNT": "85",
+		"CANCEL_FEE_HOURS": "24",
+		"RETELL_VERIFY": "true",
+		"MOCK_PAGE_DELAY_MS": "400",
+		"LIVEKIT_WS_URL": "wss://demo1-fhb0ecf7.livekit.cloud",
+		"LIVEKIT_CONTAINER_URL": "https://applianceops-agent-livekit.23p.workers.dev",
+		"CLOUDFLARE_AGENT_URL": "https://applianceops-agent-cloudflare.23p.workers.dev"
+	},
+	// LIVEKIT_API_KEY / LIVEKIT_API_SECRET: wrangler secret put or apps/edge/.dev.vars
+	"d1_databases": [
+		{
+			"binding": "DB",
+			"database_name": "applianceops",
+			"database_id": "b838e891-7246-4986-a682-a14d8c85650d",
+			"migrations_dir": "migrations"
+		}
+	],
+	"assets": {
+		"directory": "../benchmark",
+		"binding": "ASSETS",
+		"not_found_handling": "single-page-application"
+	}
 }

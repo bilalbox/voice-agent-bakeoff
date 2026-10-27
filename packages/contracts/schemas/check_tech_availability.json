@@ -1,33 +1,29 @@
 {
-  "$ref": "#/definitions/check_tech_availability",
-  "definitions": {
-    "check_tech_availability": {
-      "type": "object",
-      "properties": {
-        "zone": {
-          "type": "string",
-          "enum": [
-            "north",
-            "central",
-            "south"
-          ],
-          "description": "Optional service zone. Omit entirely to search all service areas."
-        },
-        "skill": {
-          "type": "string",
-          "description": "Canonical skill: refrigeration, dishwasher, laundry, cooking, bosch, miele, gaggenau, sub-zero."
-        },
-        "appliance_type": {
-          "type": "string",
-          "description": "Appliance type/category requested by caller (e.g. dishwasher, refrigerator)."
-        },
-        "preferred_date": {
-          "type": "string",
-          "description": "Optional ISO date YYYY-MM-DD or datetime."
-        }
-      },
-      "additionalProperties": false
-    }
-  },
-  "$schema": "http://json-schema.org/draft-07/schema#"
+	"$ref": "#/definitions/check_tech_availability",
+	"definitions": {
+		"check_tech_availability": {
+			"type": "object",
+			"properties": {
+				"zone": {
+					"type": "string",
+					"enum": ["north", "central", "south"],
+					"description": "Optional service zone. Omit entirely to search all service areas."
+				},
+				"skill": {
+					"type": "string",
+					"description": "Canonical skill: refrigeration, dishwasher, laundry, cooking, bosch, miele, gaggenau, sub-zero."
+				},
+				"appliance_type": {
+					"type": "string",
+					"description": "Appliance type/category requested by caller (e.g. dishwasher, refrigerator)."
+				},
+				"preferred_date": {
+					"type": "string",
+					"description": "Optional ISO date YYYY-MM-DD or datetime."
+				}
+			},
+			"additionalProperties": false
+		}
+	},
+	"$schema": "http://json-schema.org/draft-07/schema#"
 }

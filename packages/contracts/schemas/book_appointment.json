@@ -1,59 +1,57 @@
 {
-  "$ref": "#/definitions/book_appointment",
-  "definitions": {
-    "book_appointment": {
-      "type": "object",
-      "properties": {
-        "tech_id": {
-          "type": "string",
-          "description": "Technician id from open_windows (e.g. tech-lee)."
-        },
-        "technician": {
-          "type": "string",
-          "description": "Technician display name if tech_id is missing."
-        },
-        "window_start": {
-          "type": "string",
-          "description": "arrival_window_start ISO from open_windows (must match an open slot)."
-        },
-        "window_end": {
-          "type": "string",
-          "description": "Optional arrival_window_end ISO."
-        },
-        "zone": {
-          "type": "string",
-          "description": "Service zone (north|central|south)."
-        },
-        "skill": {
-          "type": "string",
-          "description": "Canonical skill e.g. dishwasher, refrigeration."
-        },
-        "appliance": {
-          "type": "string",
-          "description": "Appliance description for the job."
-        },
-        "appliance_type": {
-          "type": "string",
-          "description": "Alias for appliance category."
-        },
-        "phone": {
-          "type": "string",
-          "description": "Caller phone number for the booking record."
-        },
-        "customer_name": {
-          "type": "string",
-          "description": "Caller name when known."
-        },
-        "model_serial": {
-          "type": "string",
-          "description": "Appliance model or serial number if provided."
-        }
-      },
-      "required": [
-        "window_start"
-      ],
-      "additionalProperties": false
-    }
-  },
-  "$schema": "http://json-schema.org/draft-07/schema#"
+	"$ref": "#/definitions/book_appointment",
+	"definitions": {
+		"book_appointment": {
+			"type": "object",
+			"properties": {
+				"tech_id": {
+					"type": "string",
+					"description": "Technician id from open_windows (e.g. tech-lee)."
+				},
+				"technician": {
+					"type": "string",
+					"description": "Technician display name if tech_id is missing."
+				},
+				"window_start": {
+					"type": "string",
+					"description": "arrival_window_start ISO from open_windows (must match an open slot)."
+				},
+				"window_end": {
+					"type": "string",
+					"description": "Optional arrival_window_end ISO."
+				},
+				"zone": {
+					"type": "string",
+					"description": "Service zone (north|central|south)."
+				},
+				"skill": {
+					"type": "string",
+					"description": "Canonical skill e.g. dishwasher, refrigeration."
+				},
+				"appliance": {
+					"type": "string",
+					"description": "Appliance description for the job."
+				},
+				"appliance_type": {
+					"type": "string",
+					"description": "Alias for appliance category."
+				},
+				"phone": {
+					"type": "string",
+					"description": "Caller phone number for the booking record."
+				},
+				"customer_name": {
+					"type": "string",
+					"description": "Caller name when known."
+				},
+				"model_serial": {
+					"type": "string",
+					"description": "Appliance model or serial number if provided."
+				}
+			},
+			"required": ["window_start"],
+			"additionalProperties": false
+		}
+	},
+	"$schema": "http://json-schema.org/draft-07/schema#"
 }

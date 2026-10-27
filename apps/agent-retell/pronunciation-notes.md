@@ -13,10 +13,10 @@ Machine-synced fields live in [`agent.config.json`](agent.config.json) and are a
 
 Defaults in `agent.config.json` (lower = less barge-in mid-serial):
 
-| Setting | Default | Rationale |
-|---------|---------|-----------|
-| `responsiveness` | `0.65` | Wait for caller to finish model/serial |
-| `interruption_sensitivity` | `0.55` | Avoid cutting off European brand names |
+| Setting                    | Default | Rationale                              |
+| -------------------------- | ------- | -------------------------------------- |
+| `responsiveness`           | `0.65`  | Wait for caller to finish model/serial |
+| `interruption_sensitivity` | `0.55`  | Avoid cutting off European brand names |
 
 Tune on a live call with `WRF535SWHZ04` spoken quickly with a non-US accent.
 
@@ -26,7 +26,7 @@ Synced via `boosted_keywords` in agent.config.json (Miele, Gaggenau, Bosch, Sub-
 
 ## Demo phones (mock CRM)
 
-| Phone | Caller | Job |
-|-------|--------|-----|
-| `+15550104200` | Sarah | #1042 Sub-Zero parts install |
-| `+15550108800` | Omar | #1088 Bosch — cancels under 24h |
+| Phone          | Caller | Job                             |
+| -------------- | ------ | ------------------------------- |
+| `+15550104200` | Sarah  | #1042 Sub-Zero parts install    |
+| `+15550108800` | Omar   | #1088 Bosch — cancels under 24h |
