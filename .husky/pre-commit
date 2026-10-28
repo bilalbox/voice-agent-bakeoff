@@ -1,1 +1,2 @@
+pnpm lint:secrets -- --staged
 pnpm exec lint-staged

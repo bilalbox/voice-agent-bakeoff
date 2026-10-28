@@ -1,5 +1,5 @@
 name: Quality gate
-description: Biome, rev-dep, complexity ratchet, typecheck, and tests
+description: Biome, secrets (Betterleaks), rev-dep, complexity ratchet, typecheck, and tests
 runs:
   using: composite
   steps:

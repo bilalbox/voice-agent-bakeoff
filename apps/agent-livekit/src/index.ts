@@ -81,8 +81,7 @@ export class LiveKitWorkerContainer extends DurableObject<Env> {
 						this.env.LIVEKIT_URL || "wss://demo1-fhb0ecf7.livekit.cloud",
 					LIVEKIT_API_KEY: this.env.LIVEKIT_API_KEY || "",
 					LIVEKIT_API_SECRET: this.env.LIVEKIT_API_SECRET || "",
-					RETELL_API_KEY:
-						this.env.RETELL_API_KEY || "REDACTED",
+					RETELL_API_KEY: this.env.RETELL_API_KEY || "",
 					DEMO_VOICE_TOKEN:
 						this.env.DEMO_VOICE_TOKEN || "ada-ada-aja-token-123",
 					EDGE_BASE_URL:

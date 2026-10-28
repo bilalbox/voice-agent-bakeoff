@@ -7,10 +7,11 @@ Before considering any code change or task done (even when not pushing), **alway
 Do not declare completion with only piecemeal checks (`biome`, bare `tsc --noEmit`, or a single lint script). `pnpm gate:fast` bundles:
 
 1. `biome check` (format + lint)
-2. `lint:graph` (`rev-dep` — cycles, orphans, unused exports/deps, duplicates)
-3. `lint:complexity` (Biome cognitive-complexity shrink-only ratchet)
-4. `typecheck` (`tsc -b`)
-5. `lint:py` (`ruff`, `basedpyright`, `tach`, `vulture`)
+2. `lint:secrets` (`betterleaks` — secrets, tokens, API key leaks)
+3. `lint:graph` (`rev-dep` — cycles, orphans, unused exports/deps, duplicates)
+4. `lint:complexity` (Biome cognitive-complexity shrink-only ratchet)
+5. `typecheck` (`tsc -b`)
+6. `lint:py` (`ruff`, `basedpyright`, `tach`, `vulture`)
 
 `pnpm gate` = `pnpm gate:fast && pnpm test` (CI and pre-push).
 

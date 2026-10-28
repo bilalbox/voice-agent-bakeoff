@@ -32,11 +32,12 @@
 		"lint:graph": "tsx scripts/run-rev-dep.ts",
 		"lint:complexity": "tsx scripts/ratchets/run-complexity.ts",
 		"lint:py": "uvx ruff@0.17.2 check . && uvx ruff@0.17.2 format --check . && uvx basedpyright@1.40.2 && uvx tach@0.35.3 check && uvx vulture@2.16 . vulture_whitelist.py",
-		"gate:fast": "pnpm lint && pnpm lint:graph && pnpm lint:complexity && pnpm typecheck && pnpm lint:py",
+		"gate:fast": "pnpm lint && pnpm lint:secrets && pnpm lint:graph && pnpm lint:complexity && pnpm typecheck && pnpm lint:py",
 		"gate:fast:py": "pnpm gate:fast && pnpm lint:py",
 		"gate": "pnpm gate:fast && pnpm test",
 		"test:ratchets": "bash tests/ratchets/ratchet-contract.test.sh",
-		"prepare": "husky"
+		"prepare": "husky",
+		"lint:secrets": "tsx scripts/run-secret-scan.ts"
 	},
 	"workspaces": [
 		"apps/*",

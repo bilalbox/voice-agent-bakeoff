@@ -16,7 +16,7 @@ npm run dev -w apps/edge
 In another terminal, seed + sync the mock CRM (or use the admin route):
 
 ```bash
-curl -X POST http://127.0.0.1:8787/admin/seed -H "x-seed-token: dev-seed-token"
+curl -X POST http://127.0.0.1:8787/admin/seed -H "x-seed-token: dev-seed-token" # betterleaks:allow local demo token
 ```
 
 Open the bakeoff page (served as Worker assets): [http://127.0.0.1:8787/](http://127.0.0.1:8787/)

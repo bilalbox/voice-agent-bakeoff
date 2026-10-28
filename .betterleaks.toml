@@ -1,0 +1,32 @@
+# Quality-kit Betterleaks v1 config (pin binary to 1.x until v2 is stable).
+# Extends built-in rules. Pass -c explicitly — auto-load requires --unsafe-auto-load-config.
+
+title = "quality-kit secret detection"
+betterleaksMinVersion = "v1.9.0"
+
+[extend]
+useDefault = true
+
+[allowlist]
+description = "Ignore tests, mocks, baselines, local secret files, and build caches"
+paths = [
+  '''(?i)tests?\/.*''',
+  '''(?i).*\.test\.(ts|js|py)$''',
+  '''(?i)fixtures\/.*''',
+  '''(?i)baselines\/.*''',
+  '''(?i)\.rev-dep\..*\.json''',
+  # Local-only secrets (still caught if staged/committed via git scan).
+  # Keep patterns simple — allowlist paths become Expr matchesAny (RE2).
+  '''(?:^|/)\.env$''',
+  '''(?:^|/)\.env\.''',
+  '''(?:^|/)\.dev\.vars$''',
+  '''(?:^|/)\.dev\.vars\.''',
+  '''(?i)(?:^|/)\.wrangler/'''
+]
+
+# Built-in retell-api-key requires a nearby "retell" keyword. This catches bare key_ literals.
+[[rules]]
+id = "retell-key-prefix"
+description = "Retell AI API key prefix (key_ + 28 hex)"
+regex = '''\bkey_[a-f0-9]{28}\b'''
+keywords = ["key_"]

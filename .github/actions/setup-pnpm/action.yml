@@ -1,5 +1,5 @@
 name: Setup pnpm and Node
-description: Install pnpm, Node from .nvmrc, and frozen lockfile deps
+description: Install pnpm, Node from .nvmrc, frozen lockfile deps, and Betterleaks v1
 runs:
   using: composite
   steps:
@@ -13,3 +13,21 @@ runs:
       shell: bash
       env:
         HUSKY: "0"
+    - name: Install Betterleaks v1
+      shell: bash
+      run: |
+        set -euo pipefail
+        VERSION=1.9.0
+        ARCH=$(uname -m)
+        case "$ARCH" in
+          x86_64|amd64) ASSET="betterleaks_${VERSION}_linux_x64.tar.gz" ;;
+          aarch64|arm64) ASSET="betterleaks_${VERSION}_linux_arm64.tar.gz" ;;
+          *) echo "Unsupported arch: $ARCH"; exit 1 ;;
+        esac
+        mkdir -p "${HOME}/.local/bin"
+        curl -fsSL "https://github.com/betterleaks/betterleaks/releases/download/v${VERSION}/${ASSET}" \
+          | tar -xz -C "${RUNNER_TEMP}" betterleaks
+        install -m 0755 "${RUNNER_TEMP}/betterleaks" "${HOME}/.local/bin/betterleaks"
+        echo "${HOME}/.local/bin" >> "${GITHUB_PATH}"
+        "${HOME}/.local/bin/betterleaks" version
+

@@ -1,0 +1,3 @@
+# Fingerprints of acknowledged legacy secrets or false positives.
+# Format: <commit-hash>:<file-path>:<rule-id>:<line-number>
+# Or: <file-path>:<rule-id>:<line-number>
