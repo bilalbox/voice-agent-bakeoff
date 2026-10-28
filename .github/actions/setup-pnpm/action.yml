@@ -30,4 +30,3 @@ runs:
         install -m 0755 "${RUNNER_TEMP}/betterleaks" "${HOME}/.local/bin/betterleaks"
         echo "${HOME}/.local/bin" >> "${GITHUB_PATH}"
         "${HOME}/.local/bin/betterleaks" version
-
