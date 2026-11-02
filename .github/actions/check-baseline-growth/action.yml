@@ -1,0 +1,8 @@
+name: Check baseline growth
+description: Fail when committed quality baselines add rows vs the PR base branch
+runs:
+  using: composite
+  steps:
+    - name: Compare baselines to PR base
+      shell: bash
+      run: bash ./tools/quality/check-baseline-growth.sh

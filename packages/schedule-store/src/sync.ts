@@ -1,4 +1,4 @@
-import type { Job, Technician, WorkizClient } from "./types";
+import type { Job } from "./types";
 
 export async function upsertJobCache(
 	db: D1Database,

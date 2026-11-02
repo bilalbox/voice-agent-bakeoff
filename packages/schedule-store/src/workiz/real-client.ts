@@ -6,7 +6,7 @@ import type {
 	Technician,
 	WorkizClient,
 } from "../types";
-import { jobFromWorkizApi, techFromWorkizApi } from "./mappers/fromWorkizApi";
+import { jobFromWorkizApi } from "./mappers/fromWorkizApi";
 import { jobPatchToWorkizApi } from "./mappers/toWorkizApi";
 
 export class RealWorkizClient implements WorkizClient {

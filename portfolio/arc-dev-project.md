@@ -109,6 +109,6 @@ console for live manual testing.
 
 ## Suggested arc.dev ordering
 
-This is a strong first project because it is *narrow and quantified*: one call flow, three
+This is a strong first project because it is _narrow and quantified_: one call flow, three
 architectures, one measured number. Pair it with a broader enterprise-integration project next
 so the portfolio reads "deep on voice, wide on integration" rather than "one demo".

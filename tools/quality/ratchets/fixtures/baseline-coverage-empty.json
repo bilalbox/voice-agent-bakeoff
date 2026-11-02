@@ -1,0 +1,6 @@
+{
+	"version": 1,
+	"worseWhen": "lower",
+	"floor": 80,
+	"findings": []
+}

@@ -1,0 +1,9 @@
+{
+	"version": 1,
+	"worseWhen": "lower",
+	"floor": 80,
+	"findings": [
+		{ "id": ".", "score": 85, "note": "fixture" },
+		{ "id": "packages/api", "score": 90, "note": "fixture" }
+	]
+}

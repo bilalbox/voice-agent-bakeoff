@@ -1,5 +1,4 @@
-import { z } from "zod";
-import { CANCELLATION_POLICY, UNSUPPORTED_SERVICES } from "./policies.js";
+import { CANCELLATION_POLICY } from "./policies.js";
 import type { Architecture } from "./telemetry.js";
 
 export interface EvaluationTurn {

@@ -1,11 +1,6 @@
 /** Normalize Retell/LLM availability args into canonical zone/skill filters. */
 
-import {
-	collapseString,
-	evaluateServiceScope,
-	SKILL_ALIASES,
-	type SupportedSkill,
-} from "@applianceops/contracts";
+import { collapseString, evaluateServiceScope } from "@applianceops/contracts";
 
 const ZONE_ALIASES: Record<string, string> = {
 	north: "north",

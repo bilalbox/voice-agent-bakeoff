@@ -648,11 +648,11 @@ async function measureTool(endpoint, resultEl, isSlow) {
 }
 
 btnMeasureSlow.addEventListener("click", () => {
-	measureTool("/slow/check-availability", metricSlowVal, true);
+	void measureTool("/slow/check-availability", metricSlowVal, true);
 });
 
 btnMeasureFast.addEventListener("click", () => {
-	measureTool("/retell/check-availability", metricFastVal, false);
+	void measureTool("/retell/check-availability", metricFastVal, false);
 });
 
 // -----------------------------------------------------------------------------
@@ -855,7 +855,7 @@ if (authForm) {
 			}
 		} catch (err) {
 			if (authError)
-				authError.textContent = "Error authenticating token: " + err.message;
+				authError.textContent = `Error authenticating token: ${err.message}`;
 		}
 	});
 }
@@ -1246,7 +1246,7 @@ async function startRetellCall(scenario, callerPhone) {
 
 	retellClient.on("error", (err) => {
 		console.error("Retell client error:", err);
-		alert("Retell voice error: " + (err.message || String(err)));
+		alert(`Retell voice error: ${err.message || String(err)}`);
 		stopVoiceCall();
 	});
 
@@ -1468,7 +1468,7 @@ async function startCloudflareCall(scenario, callerPhone) {
 			} catch (err) {
 				appendTranscriptTurn(
 					"assistant",
-					"Error executing edge turn: " + err.message,
+					`Error executing edge turn: ${err.message}`,
 				);
 			}
 		}
@@ -1555,7 +1555,7 @@ function stopVoiceCall() {
 if (btnVoiceCall) {
 	btnVoiceCall.addEventListener("click", () => {
 		if (activeCallState === "idle") {
-			startVoiceCall();
+			void startVoiceCall();
 		} else {
 			stopVoiceCall();
 		}
@@ -1649,7 +1649,7 @@ promptChips.forEach((chip) => {
 					window.speechSynthesis.speak(u);
 				}
 			} catch (err) {
-				appendTranscriptTurn("assistant", "Error: " + err.message);
+				appendTranscriptTurn("assistant", `Error: ${err.message}`);
 			}
 		}
 	});
@@ -1661,7 +1661,7 @@ promptChips.forEach((chip) => {
 
 renderWaterfall("all");
 updateEconomics();
-fetchLiveTelemetry();
+void fetchLiveTelemetry();
 openTranscript("security-book-unsupported-service");
-checkAuthOnLoad();
+void checkAuthOnLoad();
 updateScenarioMetadata("sarah");

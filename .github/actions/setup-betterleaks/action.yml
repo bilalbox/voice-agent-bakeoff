@@ -1,0 +1,10 @@
+name: Setup Betterleaks
+description: Install the pinned, checksum-verified Betterleaks v1 binary onto PATH
+runs:
+  using: composite
+  steps:
+    - name: Install Betterleaks v1
+      shell: bash
+      run: |
+        bash ./tools/quality/install-betterleaks.sh "${HOME}/.local/bin"
+        echo "${HOME}/.local/bin" >> "${GITHUB_PATH}"

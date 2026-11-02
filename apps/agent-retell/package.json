@@ -14,7 +14,7 @@
 	"dependencies": {
 		"@applianceops/contracts": "workspace:*",
 		"dotenv": "^18.0.9",
-		"retell-sdk": "^6.2.12"
+		"retell-sdk": "^6.2.16"
 	},
 	"devDependencies": {
 		"tsx": "^4.23.15",

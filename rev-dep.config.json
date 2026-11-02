@@ -8,7 +8,7 @@
 		"**/.git/**",
 		"**/.wrangler/**",
 		"**/baselines/**",
-		"**/tests/ratchets/fixtures/**",
+		"**/tools/quality/ratchets/fixtures/**",
 		"portfolio/**",
 		"apps/agent-livekit/.venv/**"
 	],
@@ -34,6 +34,7 @@
 				"apps/benchmark/scripts/**/*.ts",
 				"scripts/**/*.{ts,tsx,js,mjs,cjs}",
 				"tests/**/*.{ts,tsx,js,mjs,cjs,sh}",
+				"tools/**/*.{ts,tsx,js,mjs,cjs,sh}",
 				"**/*.{test,spec}.{ts,tsx}"
 			],
 			"moduleBoundaries": [
@@ -63,6 +64,7 @@
 				"graphExclude": [
 					"scripts/**",
 					"tests/**",
+					"tools/**",
 					"baselines/**",
 					"apps/agent-retell/scripts/**",
 					"apps/benchmark/scripts/**",
@@ -75,6 +77,7 @@
 				"ignoreFiles": [
 					"scripts/**",
 					"tests/**",
+					"tools/**",
 					"apps/agent-retell/scripts/**",
 					"apps/benchmark/scripts/**"
 				]
@@ -85,7 +88,7 @@
 				"pkgJsonFieldsWithBinaries": ["scripts", "bin"],
 				"filesWithBinaries": [
 					"scripts/run-rev-dep.ts",
-					"scripts/run-secret-scan.ts",
+					"tools/quality/js-ts/collect-coverage.sh",
 					".husky/pre-commit",
 					".husky/pre-push"
 				],
@@ -116,6 +119,7 @@
 				"ignoreFiles": [
 					"scripts/**",
 					"tests/**",
+					"tools/**",
 					"**/node_modules/**",
 					"apps/benchmark/app.js"
 				]

@@ -4,6 +4,7 @@
 		"noUncheckedIndexedAccess": true,
 		"noImplicitReturns": true,
 		"noFallthroughCasesInSwitch": true,
+		"noImplicitOverride": true,
 		"verbatimModuleSyntax": true,
 		"skipLibCheck": true,
 		"noEmit": true,

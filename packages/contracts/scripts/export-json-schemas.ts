@@ -50,7 +50,7 @@ for (const { name, schema } of toolSchemas) {
 		$refStrategy: "none",
 	});
 	const filePath = path.join(SCHEMAS_DIR, `${name}.json`);
-	fs.writeFileSync(filePath, JSON.stringify(jsonSchema, null, 2) + "\n");
+	fs.writeFileSync(filePath, `${JSON.stringify(jsonSchema, null, 2)}\n`);
 	console.log(`Generated: ${filePath}`);
 }
 
@@ -73,7 +73,7 @@ const combinedManifest = {
 const manifestPath = path.join(SCHEMAS_DIR, "applianceops-tools.json");
 fs.writeFileSync(
 	manifestPath,
-	JSON.stringify(combinedManifest, null, 2) + "\n",
+	`${JSON.stringify(combinedManifest, null, 2)}\n`,
 );
 console.log(`Generated: ${manifestPath}`);
 
@@ -85,7 +85,7 @@ const policiesPayload = {
 };
 
 const policiesPath = path.join(SCHEMAS_DIR, "domain-policies.json");
-fs.writeFileSync(policiesPath, JSON.stringify(policiesPayload, null, 2) + "\n");
+fs.writeFileSync(policiesPath, `${JSON.stringify(policiesPayload, null, 2)}\n`);
 console.log(`Generated: ${policiesPath}`);
 
 // 4. Export benchmark telemetry schemas
@@ -101,14 +101,14 @@ for (const { name, schema } of telemetrySchemas) {
 		$refStrategy: "none",
 	});
 	const filePath = path.join(SCHEMAS_DIR, `${name}.json`);
-	fs.writeFileSync(filePath, JSON.stringify(jsonSchema, null, 2) + "\n");
+	fs.writeFileSync(filePath, `${JSON.stringify(jsonSchema, null, 2)}\n`);
 	console.log(`Generated: ${filePath}`);
 }
 
 const costRatesPath = path.join(SCHEMAS_DIR, "architecture-cost-rates.json");
 fs.writeFileSync(
 	costRatesPath,
-	JSON.stringify(ARCHITECTURE_COST_RATES, null, 2) + "\n",
+	`${JSON.stringify(ARCHITECTURE_COST_RATES, null, 2)}\n`,
 );
 console.log(`Generated: ${costRatesPath}`);
 

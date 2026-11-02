@@ -1,0 +1,6 @@
+{
+	"findings": [
+		{ "id": ".", "score": 85 },
+		{ "id": "packages/api", "score": 92 }
+	]
+}

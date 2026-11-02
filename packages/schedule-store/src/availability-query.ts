@@ -4,7 +4,6 @@ import {
 	collapseString,
 	evaluateServiceScope,
 	SKILL_ALIASES,
-	type SupportedSkill,
 } from "@applianceops/contracts";
 import type { AvailabilitySlot } from "./types";
 

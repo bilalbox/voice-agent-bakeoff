@@ -431,7 +431,7 @@ voiceRoutes.post("/session", async (c) => {
 		const agentUrl =
 			c.env.CLOUDFLARE_AGENT_URL ||
 			"https://applianceops-agent-cloudflare.23p.workers.dev";
-		const wsUrl = agentUrl.replace(/^http/, "ws") + "/agents/voice/default";
+		const wsUrl = `${agentUrl.replace(/^http/, "ws")}/agents/voice/default`;
 
 		return c.json({
 			ok: true,

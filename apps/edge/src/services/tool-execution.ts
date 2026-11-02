@@ -11,7 +11,6 @@ import {
 	type ReschedulePartsInstallInput,
 	ReschedulePartsInstallInputSchema,
 	SUPPORTED_SERVICES_PUBLIC,
-	type TransferToDispatcherInput,
 	TransferToDispatcherInputSchema,
 } from "@applianceops/contracts";
 import type { ScheduleRepository } from "@applianceops/schedule-store";

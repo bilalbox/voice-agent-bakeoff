@@ -1,7 +1,6 @@
 import {
 	evaluateCancellationPolicy,
 	evaluateServiceScope,
-	normalizePhone as normalizeContractPhone,
 } from "@applianceops/contracts";
 import {
 	canonicalizeSkill,

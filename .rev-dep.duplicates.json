@@ -15,6 +15,7 @@
     "ignoreFiles": [
       "scripts/**",
       "tests/**",
+      "tools/**",
       "**/node_modules/**",
       "apps/benchmark/app.js"
     ],
@@ -26,7 +27,7 @@
         "**/.git/**",
         "**/.wrangler/**",
         "**/baselines/**",
-        "**/tests/ratchets/fixtures/**",
+        "**/tools/quality/ratchets/fixtures/**",
         "portfolio/**",
         "apps/agent-livekit/.venv/**"
       ]
@@ -1204,14 +1205,6 @@
       "label": "/**"
     },
     {
-      "hash": "a23a049818932556",
-      "occurrences": 2,
-      "files": {
-        "packages/contracts/scripts/export-json-schemas.ts": 2
-      },
-      "label": "const jsonSchema = zodToJsonSchema(schema, {"
-    },
-    {
       "hash": "a26af89fb7b4b741",
       "occurrences": 2,
       "files": {
@@ -1642,6 +1635,14 @@
         "apps/edge/worker-configuration.d.ts": 1
       },
       "label": "results?: {"
+    },
+    {
+      "hash": "dddd0d7028e5a692",
+      "occurrences": 2,
+      "files": {
+        "packages/contracts/scripts/export-json-schemas.ts": 2
+      },
+      "label": "const jsonSchema = zodToJsonSchema(schema, {"
     },
     {
       "hash": "de409c0a6dd17838",

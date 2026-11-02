@@ -20,8 +20,14 @@ jobs:
       HUSKY: "0"
     steps:
       - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+      - uses: ./.github/actions/check-baseline-growth
+        if: github.event_name == 'pull_request' && !contains(join(github.event.pull_request.labels.*.name, ','), 'allow-baseline-growth')
       - uses: astral-sh/setup-uv@v5
         with:
           enable-cache: true
+      - uses: ./.github/actions/setup-betterleaks
+      - uses: ./.github/actions/setup-osv-scanner
       - uses: ./.github/actions/setup-pnpm
-      - uses: ./.github/actions/quality-gate
+      - uses: ./.github/actions/js-ts-quality-gate

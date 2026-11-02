@@ -1,7 +1,6 @@
 import {
 	type Architecture,
 	type BenchmarkRunIngest,
-	type BenchmarkTurnMetric,
 	calculateTurnCost,
 } from "@applianceops/contracts";
 

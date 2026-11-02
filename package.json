@@ -28,30 +28,34 @@
 		"edge:deploy": "npm run deploy -w apps/edge",
 		"retell:deploy": "npm run deploy -w apps/agent-retell",
 		"benchmark:fidelity": "tsx apps/benchmark/scripts/run-fidelity-suite.ts",
-		"lint": "biome check .",
+		"lint": "tsx scripts/ratchets/run-biome.ts",
 		"lint:graph": "tsx scripts/run-rev-dep.ts",
 		"lint:complexity": "tsx scripts/ratchets/run-complexity.ts",
 		"lint:py": "uvx ruff@0.17.2 check . && uvx ruff@0.17.2 format --check . && uvx basedpyright@1.40.2 && uvx tach@0.35.3 check && uvx vulture@2.16 . vulture_whitelist.py",
-		"gate:fast": "pnpm lint && pnpm lint:secrets && pnpm lint:graph && pnpm lint:complexity && pnpm typecheck && pnpm lint:py",
-		"gate:fast:py": "pnpm gate:fast && pnpm lint:py",
-		"gate": "pnpm gate:fast && pnpm test",
-		"test:ratchets": "bash tests/ratchets/ratchet-contract.test.sh",
+		"gate:fast": "bash tools/quality/js-ts/gate.sh fast lint:py",
+		"gate:fast:py": "pnpm lint:py",
+		"gate": "bash tools/quality/js-ts/gate.sh full",
+		"test:ratchets": "bash tools/quality/ratchets/ratchet-contract.test.sh",
 		"prepare": "husky",
-		"lint:secrets": "tsx scripts/run-secret-scan.ts"
+		"lint:secrets": "bash tools/quality/run-secret-scan.sh",
+		"fix": "biome check --write .",
+		"lint:vulns": "bash tools/quality/run-vuln-scan.sh",
+		"lint:coverage": "bash tools/quality/run-coverage-ratchet.sh"
 	},
 	"workspaces": [
 		"apps/*",
 		"packages/*"
 	],
 	"devDependencies": {
-		"@biomejs/biome": "^2.6.3",
-		"@cloudflare/workers-types": "^5.20261026.1",
+		"@biomejs/biome": "2.6.3",
+		"@cloudflare/workers-types": "^5.20261101.1",
 		"@esbuild/linux-x64": "^0.28.2",
-		"@types/node": "^26.6.5",
+		"@types/node": "^26.6.6",
+		"c8": "^10.1.3",
 		"dotenv": "^18.0.9",
 		"husky": "^9.1.7",
 		"lint-staged": "^17.6.0",
-		"retell-sdk": "^6.2.12",
+		"retell-sdk": "^6.2.16",
 		"rev-dep": "^3.3.0",
 		"tsx": "^4.23.15",
 		"typescript": "^5.9.3",
@@ -65,5 +69,5 @@
 	"engines": {
 		"node": ">=24.0.0 <25"
 	},
-	"packageManager": "pnpm@12.15.0+sha512.b3951d6d6ff4a9f13dc7cf56cd28d2b8eb37dbcc9c68e52e1e1191873ea9f82a017287ab50baadc5ccc494f036c67c0e47eb13608c2fa36f47711b61ea128e61"
+	"packageManager": "pnpm@12.17.0+sha512.b8d223ebec04b580a89ed206daa71d1bccb6a1ee1d52efa95cc3b0db75271561df8f0d8e2c43add39c5ec08018af7a8a95108e7090f95a29f88727b7a40fd53d"
 }

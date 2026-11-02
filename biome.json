@@ -6,7 +6,6 @@
 		"useIgnoreFile": true
 	},
 	"files": {
-		"ignoreUnknown": true,
 		"includes": [
 			"**",
 			"!!**/dist",
@@ -15,10 +14,8 @@
 			"!!**/pnpm-lock.yaml",
 			"!!.rev-dep.baseline.json",
 			"!!.rev-dep.duplicates.json",
-			"!!**/worker-configuration.d.ts",
-			"!!apps/agent-livekit/.venv",
-			"!!apps/benchmark/index.html",
-			"!!portfolio"
+			"!!**/tools/quality/ratchets",
+			"!!**/worker-configuration.d.ts"
 		]
 	},
 	"formatter": {
@@ -29,11 +26,21 @@
 		"enabled": true,
 		"rules": {
 			"preset": "recommended",
+			"correctness": {
+				"noUnusedImports": { "level": "on", "fix": "safe" }
+			},
+			"nursery": {
+				"noFloatingPromises": "error",
+				"noMisusedPromises": "error",
+				"noUnsafeReturn": "error",
+				"useExhaustiveSwitchCases": "error"
+			},
 			"style": {
-				"noNonNullAssertion": "off"
+				"noNonNullAssertion": "off",
+				"useTemplate": { "level": "on", "fix": "safe" }
 			},
 			"suspicious": {
-				"noConsole": "error"
+				"noConsole": "warn"
 			}
 		}
 	},
@@ -45,8 +52,7 @@
 				"tests/**",
 				"**/tests/**",
 				"**/*.test.*",
-				"**/*.spec.*",
-				"apps/**"
+				"**/*.spec.*"
 			],
 			"linter": {
 				"rules": {

@@ -229,7 +229,7 @@ async function main() {
 		);
 		writeFileSync(
 			outImportPath,
-			JSON.stringify(importDoc, null, 2) + "\n",
+			`${JSON.stringify(importDoc, null, 2)}\n`,
 			"utf8",
 		);
 
@@ -328,7 +328,7 @@ async function main() {
 			response_engine_type: "conversation-flow",
 			updated_at: new Date().toISOString(),
 		};
-		writeFileSync(statePath, JSON.stringify(nextState, null, 2) + "\n");
+		writeFileSync(statePath, `${JSON.stringify(nextState, null, 2)}\n`);
 		console.log(`\nWrote ${statePath}`);
 		if (nextAgentId) {
 			console.log(
@@ -455,7 +455,7 @@ async function main() {
 		response_engine_type: "retell-llm",
 		updated_at: new Date().toISOString(),
 	};
-	writeFileSync(statePath, JSON.stringify(nextState, null, 2) + "\n");
+	writeFileSync(statePath, `${JSON.stringify(nextState, null, 2)}\n`);
 	console.log(`\nWrote ${statePath}`);
 	console.log(
 		`Dashboard: https://dashboard.retellai.com/agents/${nextAgentId}`,

@@ -1,0 +1,42 @@
+{
+	"version": 1,
+	"findings": [
+		{
+			"id": "apps/agent-cloudflare",
+			"score": 0.0,
+			"note": "Added via --update; replace with owning issue note."
+		},
+		{
+			"id": "apps/agent-livekit",
+			"score": 0.0,
+			"note": "Added via --update; replace with owning issue note."
+		},
+		{
+			"id": "apps/agent-retell",
+			"score": 0.0,
+			"note": "Added via --update; replace with owning issue note."
+		},
+		{
+			"id": "apps/benchmark",
+			"score": 0.0,
+			"note": "Added via --update; replace with owning issue note."
+		},
+		{
+			"id": "apps/edge",
+			"score": 0.0,
+			"note": "Added via --update; replace with owning issue note."
+		},
+		{
+			"id": "packages/contracts",
+			"score": 0.0,
+			"note": "Added via --update; replace with owning issue note."
+		},
+		{
+			"id": "packages/schedule-store",
+			"score": 0.0,
+			"note": "Added via --update; replace with owning issue note."
+		}
+	],
+	"worseWhen": "lower",
+	"floor": 0
+}

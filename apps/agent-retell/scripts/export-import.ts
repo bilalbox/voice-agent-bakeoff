@@ -746,7 +746,7 @@ export function buildConversationFlowDoc(
 
 export function main() {
 	const { importDoc, conversationFlow } = buildConversationFlowDoc(retellDir);
-	writeFileSync(outPath, JSON.stringify(importDoc, null, 2) + "\n", "utf8");
+	writeFileSync(outPath, `${JSON.stringify(importDoc, null, 2)}\n`, "utf8");
 	const fnNodes = conversationFlow.nodes.filter((n) => n.type === "function");
 	console.log(`Wrote ${outPath}`);
 	console.log(`Function nodes: ${fnNodes.map((n) => n.name).join(", ")}`);

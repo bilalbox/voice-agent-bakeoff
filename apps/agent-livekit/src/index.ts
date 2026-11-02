@@ -32,7 +32,7 @@ export class LiveKitWorkerContainer extends DurableObject<Env> {
 		}
 	}
 
-	async fetch(request: Request): Promise<Response> {
+	override async fetch(request: Request): Promise<Response> {
 		const url = new URL(request.url);
 		if (url.pathname.endsWith("/_restart")) {
 			try {
@@ -117,7 +117,7 @@ export class LiveKitWorkerContainer extends DurableObject<Env> {
 	}
 
 	private observeExit(): void {
-		if (this.monitoring) return;
+		if (this.monitoring !== undefined) return;
 		this.monitoring = this.ctx
 			.container!.monitor()
 			.then(() => console.log("LiveKit worker container exited successfully"))
@@ -184,7 +184,11 @@ app.post("/restart", async (c) => {
 
 export default {
 	fetch: app.fetch,
-	async scheduled(event: ScheduledController, env: Env, ctx: ExecutionContext) {
+	async scheduled(
+		_event: ScheduledController,
+		env: Env,
+		ctx: ExecutionContext,
+	) {
 		const container = env.LIVEKIT_WORKER.getByName(WORKER_DO_NAME);
 		ctx.waitUntil(container.fetch(new Request("http://container/")));
 	},

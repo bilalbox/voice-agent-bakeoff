@@ -1,0 +1,19 @@
+# js-ts additions to the shared .betterleaks.toml (appended by
+# tools/quality/run-secret-scan.sh). Tables only: no top-level keys.
+
+[[allowlists]]
+description = "js-ts: baselines, Cloudflare local vars"
+paths = [
+  '''(?i)baselines\/.*''',
+  '''(?i)\.rev-dep\..*\.json''',
+  '''(?:^|/)\.dev\.vars$''',
+  '''(?:^|/)\.dev\.vars\.''',
+  '''(?i)(?:^|/)\.wrangler/'''
+]
+
+# Built-in retell-api-key requires a nearby "retell" keyword. This catches bare key_ literals.
+[[rules]]
+id = "retell-key-prefix"
+description = "Retell AI API key prefix (key_ + 28 hex)"
+regex = '''\bkey_[a-f0-9]{28}\b'''
+keywords = ["key_"]

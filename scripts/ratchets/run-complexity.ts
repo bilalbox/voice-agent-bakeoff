@@ -11,20 +11,29 @@ import { spawnSync } from "node:child_process";
 import { existsSync, readdirSync, readFileSync, statSync } from "node:fs";
 import { join } from "node:path";
 import { pathToFileURL } from "node:url";
-import type { Finding } from "./compare";
-import { runRatchetTool } from "./run-tool";
+import type { Finding } from "../../tools/quality/ratchets/compare";
+import { runRatchetTool } from "../../tools/quality/ratchets/run-tool";
+
+function resolveRoots(): string[] {
+	const configPath = "biome.complexity.json";
+	if (existsSync(configPath)) {
+		try {
+			const config = JSON.parse(readFileSync(configPath, "utf8")) as {
+				files?: { includes?: string[] };
+			};
+			const includes = config.files?.includes;
+			if (Array.isArray(includes) && includes.length > 0) {
+				return includes.map((p) => p.replace(/(\/\*\*|\/\*)$/, ""));
+			}
+		} catch {
+			// fall back
+		}
+	}
+	return ["src"];
+}
 
 /** Roots walked for biome-ignore bans and passed to biome check. */
-const COMPLEXITY_ROOTS = [
-	"apps/edge/src",
-	"apps/agent-cloudflare/src",
-	"apps/agent-livekit/src",
-	"apps/agent-retell/scripts",
-	"apps/benchmark/scripts",
-	"packages/contracts/src",
-	"packages/schedule-store/src",
-	"scripts",
-];
+const COMPLEXITY_ROOTS = resolveRoots();
 
 type BiomeDiagnostic = {
 	severity: string;
@@ -161,7 +170,8 @@ function collectComplexityFindings(): Finding[] {
 	const ignores = detectComplexityIgnores(sourceFiles);
 	if (ignores.length > 0) {
 		console.error(
-			"Silencing cognitive complexity via biome ignore comments is not an allowed ratchet strategy:",
+			"biome-" +
+				"ignore for noExcessiveCognitiveComplexity is not an allowed ratchet strategy:",
 		);
 		for (const hit of ignores) console.error(`  ! ${hit}`);
 		process.exit(1);

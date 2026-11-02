@@ -1,0 +1,10 @@
+name: Setup osv-scanner
+description: Install the pinned, checksum-verified osv-scanner binary onto PATH
+runs:
+  using: composite
+  steps:
+    - name: Install osv-scanner
+      shell: bash
+      run: |
+        bash ./tools/quality/install-osv-scanner.sh "${HOME}/.local/bin"
+        echo "${HOME}/.local/bin" >> "${GITHUB_PATH}"

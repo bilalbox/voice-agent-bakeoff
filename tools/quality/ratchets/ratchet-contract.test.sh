@@ -1,17 +1,18 @@
 #!/usr/bin/env bash
-# tests/ratchets/ratchet-contract.test.sh
+# tools/quality/ratchets/ratchet-contract.test.sh
 #
 # Shrink-only quality ratchets. Pins the shared compare CLI contract.
 #
-# Run: pnpm run test:ratchets
+# Run: bash tools/quality/ratchets/ratchet-contract.test.sh
+#   (js-ts: pnpm run test:ratchets)
 #
-# Seam: scripts/ratchets/compare.ts — black-box over fixture findings + baseline.
+# Seam: tools/quality/ratchets/compare.py — black-box over fixture findings + baseline.
 
 set -uo pipefail
 
-repo_root="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
-compare=(pnpm exec tsx "$repo_root/scripts/ratchets/compare.ts")
-fixtures="$repo_root/tests/ratchets/fixtures"
+repo_root="$(cd "$(dirname "${BASH_SOURCE[0]}")/../../.." && pwd)"
+compare=(python3 "$repo_root/tools/quality/ratchets/compare.py")
+fixtures="$repo_root/tools/quality/ratchets/fixtures"
 
 failures=0
 checks=0
@@ -94,6 +95,29 @@ expect_output_contains "src/app/foo.ts|handler" "regression ID named in output" 
 	--findings "$fixtures/findings-regression.json"
 
 echo
+echo "Coverage: raise passes; drop fails; below floor fails"
+expect_exit 0 "coverage raise/hold succeeds" \
+	"${compare[@]}" \
+	--baseline "$fixtures/baseline-coverage.json" \
+	--findings "$fixtures/findings-coverage-ok.json"
+expect_exit 1 "coverage drop fails" \
+	"${compare[@]}" \
+	--baseline "$fixtures/baseline-coverage.json" \
+	--findings "$fixtures/findings-coverage-drop.json"
+expect_output_contains "." "coverage drop names module id" \
+	"${compare[@]}" \
+	--baseline "$fixtures/baseline-coverage.json" \
+	--findings "$fixtures/findings-coverage-drop.json"
+expect_exit 1 "coverage below floor on empty baseline fails" \
+	"${compare[@]}" \
+	--baseline "$fixtures/baseline-coverage-empty.json" \
+	--findings "$fixtures/findings-coverage-below-floor.json"
+expect_output_contains "floor" "below-floor failure names floor" \
+	"${compare[@]}" \
+	--baseline "$fixtures/baseline-coverage-empty.json" \
+	--findings "$fixtures/findings-coverage-below-floor.json"
+
+echo
 echo "Baseline update under CI=true → refused"
 tmpdir=$(mktemp -d)
 trap 'rm -rf "$tmpdir"' EXIT
@@ -117,10 +141,11 @@ expect_exit 0 "local --update succeeds" \
 	--baseline "$tmpdir/baseline-local.json" \
 	--findings "$fixtures/findings-novel.json" \
 	--update
-if node -e '
-const b=require(process.argv[1]);
-const ids=b.findings.map(f=>f.id).sort();
-if(!ids.includes("exports|src/b.ts|newThing")) process.exit(1);
+if python3 -c '
+import json, sys
+b=json.load(open(sys.argv[1]))
+ids=sorted(f["id"] for f in b["findings"])
+sys.exit(0 if "exports|src/b.ts|newThing" in ids else 1)
 ' "$tmpdir/baseline-local.json"; then
 	echo "  ✓ local --update wrote novel ID into baseline"
 	checks=$((checks + 1))

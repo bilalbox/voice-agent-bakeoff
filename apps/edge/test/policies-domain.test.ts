@@ -1,5 +1,4 @@
 import {
-	CANCELLATION_POLICY,
 	evaluateCancellationPolicy,
 	evaluatePartsReschedule,
 	evaluateServiceScope,
