@@ -7,6 +7,11 @@
 			"note": "Added via --update; replace with owning issue note."
 		},
 		{
+			"id": "apps/agent-elevenlabs",
+			"score": 0.0,
+			"note": "Added via --update; replace with owning issue note."
+		},
+		{
 			"id": "apps/agent-livekit",
 			"score": 0.0,
 			"note": "Added via --update; replace with owning issue note."

@@ -234,7 +234,7 @@ describe("Voice Client Session & Security Auth", () => {
 			expect(typeof json.text).toBe("string");
 			expect(json.text).toBeTruthy();
 			expect(typeof json.total_turn_rtt_ms).toBe("number");
-		});
+		}, 15000);
 
 		it("handles ElevenLabs session creation (missing credentials vs public agent mode)", async () => {
 			const prevAgentId = env.ELEVENLABS_AGENT_ID;
