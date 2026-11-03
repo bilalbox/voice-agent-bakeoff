@@ -2,11 +2,6 @@
 	"version": 1,
 	"findings": [
 		{
-			"id": "apps/agent-cloudflare/src/agent.ts|processTurn",
-			"score": 57,
-			"note": "Added via --update; replace with owning issue note."
-		},
-		{
 			"id": "apps/agent-retell/scripts/sync-agent.ts|main",
 			"score": 66,
 			"note": "Added via --update; replace with owning issue note."
@@ -19,11 +14,6 @@
 		{
 			"id": "apps/edge/src/handlers/cancel-job.ts|handleCancelJob",
 			"score": 36,
-			"note": "Added via --update; replace with owning issue note."
-		},
-		{
-			"id": "apps/edge/src/routes/voice.ts|(anonymous)|227",
-			"score": 51,
 			"note": "Added via --update; replace with owning issue note."
 		},
 		{

@@ -36,8 +36,9 @@
   "duplications": [
     {
       "hash": "006bcdf8618f709c",
-      "occurrences": 2,
+      "occurrences": 3,
       "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 1,
         "apps/agent-livekit/worker-configuration.d.ts": 1,
         "apps/edge/worker-configuration.d.ts": 1
       },
@@ -45,8 +46,9 @@
     },
     {
       "hash": "006c0599bc698acb",
-      "occurrences": 2,
+      "occurrences": 3,
       "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 1,
         "apps/agent-livekit/worker-configuration.d.ts": 1,
         "apps/edge/worker-configuration.d.ts": 1
       },
@@ -54,8 +56,9 @@
     },
     {
       "hash": "044ebc91b781c083",
-      "occurrences": 4,
+      "occurrences": 6,
       "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 2,
         "apps/agent-livekit/worker-configuration.d.ts": 2,
         "apps/edge/worker-configuration.d.ts": 2
       },
@@ -63,8 +66,9 @@
     },
     {
       "hash": "058d4a90f2385670",
-      "occurrences": 2,
+      "occurrences": 3,
       "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 1,
         "apps/agent-livekit/worker-configuration.d.ts": 1,
         "apps/edge/worker-configuration.d.ts": 1
       },
@@ -72,8 +76,9 @@
     },
     {
       "hash": "0783536db94793d3",
-      "occurrences": 2,
+      "occurrences": 3,
       "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 1,
         "apps/agent-livekit/worker-configuration.d.ts": 1,
         "apps/edge/worker-configuration.d.ts": 1
       },
@@ -81,8 +86,9 @@
     },
     {
       "hash": "08a032100b43eb0a",
-      "occurrences": 2,
+      "occurrences": 3,
       "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 1,
         "apps/agent-livekit/worker-configuration.d.ts": 1,
         "apps/edge/worker-configuration.d.ts": 1
       },
@@ -90,8 +96,9 @@
     },
     {
       "hash": "0d820aa5e1e197d8",
-      "occurrences": 2,
+      "occurrences": 3,
       "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 1,
         "apps/agent-livekit/worker-configuration.d.ts": 1,
         "apps/edge/worker-configuration.d.ts": 1
       },
@@ -99,8 +106,9 @@
     },
     {
       "hash": "0de6b2b0b3208813",
-      "occurrences": 2,
+      "occurrences": 3,
       "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 1,
         "apps/agent-livekit/worker-configuration.d.ts": 1,
         "apps/edge/worker-configuration.d.ts": 1
       },
@@ -108,8 +116,9 @@
     },
     {
       "hash": "0e32f6c55cf910a2",
-      "occurrences": 2,
+      "occurrences": 3,
       "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 1,
         "apps/agent-livekit/worker-configuration.d.ts": 1,
         "apps/edge/worker-configuration.d.ts": 1
       },
@@ -117,8 +126,9 @@
     },
     {
       "hash": "10176e585c2d0398",
-      "occurrences": 2,
+      "occurrences": 3,
       "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 1,
         "apps/agent-livekit/worker-configuration.d.ts": 1,
         "apps/edge/worker-configuration.d.ts": 1
       },
@@ -126,8 +136,9 @@
     },
     {
       "hash": "1052c9dd7781ac70",
-      "occurrences": 2,
+      "occurrences": 3,
       "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 1,
         "apps/agent-livekit/worker-configuration.d.ts": 1,
         "apps/edge/worker-configuration.d.ts": 1
       },
@@ -135,8 +146,9 @@
     },
     {
       "hash": "110ccf058a9932e7",
-      "occurrences": 2,
+      "occurrences": 3,
       "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 1,
         "apps/agent-livekit/worker-configuration.d.ts": 1,
         "apps/edge/worker-configuration.d.ts": 1
       },
@@ -144,8 +156,9 @@
     },
     {
       "hash": "113fa2921acd4efc",
-      "occurrences": 2,
+      "occurrences": 3,
       "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 1,
         "apps/agent-livekit/worker-configuration.d.ts": 1,
         "apps/edge/worker-configuration.d.ts": 1
       },
@@ -153,8 +166,9 @@
     },
     {
       "hash": "115ac7a22afa17c6",
-      "occurrences": 2,
+      "occurrences": 3,
       "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 1,
         "apps/agent-livekit/worker-configuration.d.ts": 1,
         "apps/edge/worker-configuration.d.ts": 1
       },
@@ -162,8 +176,9 @@
     },
     {
       "hash": "126e9755ac7b5542",
-      "occurrences": 2,
+      "occurrences": 3,
       "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 1,
         "apps/agent-livekit/worker-configuration.d.ts": 1,
         "apps/edge/worker-configuration.d.ts": 1
       },
@@ -171,8 +186,9 @@
     },
     {
       "hash": "139686f75eee50e0",
-      "occurrences": 2,
+      "occurrences": 3,
       "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 1,
         "apps/agent-livekit/worker-configuration.d.ts": 1,
         "apps/edge/worker-configuration.d.ts": 1
       },
@@ -180,8 +196,9 @@
     },
     {
       "hash": "145e7e588e52f9bd",
-      "occurrences": 2,
+      "occurrences": 3,
       "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 1,
         "apps/agent-livekit/worker-configuration.d.ts": 1,
         "apps/edge/worker-configuration.d.ts": 1
       },
@@ -189,8 +206,9 @@
     },
     {
       "hash": "1527b324e80e1146",
-      "occurrences": 2,
+      "occurrences": 3,
       "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 1,
         "apps/agent-livekit/worker-configuration.d.ts": 1,
         "apps/edge/worker-configuration.d.ts": 1
       },
@@ -198,8 +216,9 @@
     },
     {
       "hash": "16465d8925bccbb3",
-      "occurrences": 2,
+      "occurrences": 3,
       "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 1,
         "apps/agent-livekit/worker-configuration.d.ts": 1,
         "apps/edge/worker-configuration.d.ts": 1
       },
@@ -207,8 +226,9 @@
     },
     {
       "hash": "165d3d2e8aaa162a",
-      "occurrences": 2,
+      "occurrences": 3,
       "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 1,
         "apps/agent-livekit/worker-configuration.d.ts": 1,
         "apps/edge/worker-configuration.d.ts": 1
       },
@@ -216,8 +236,9 @@
     },
     {
       "hash": "166dc0fd907ee33e",
-      "occurrences": 2,
+      "occurrences": 3,
       "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 1,
         "apps/agent-livekit/worker-configuration.d.ts": 1,
         "apps/edge/worker-configuration.d.ts": 1
       },
@@ -225,8 +246,9 @@
     },
     {
       "hash": "17f7fb4a76b6fae1",
-      "occurrences": 2,
+      "occurrences": 3,
       "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 1,
         "apps/agent-livekit/worker-configuration.d.ts": 1,
         "apps/edge/worker-configuration.d.ts": 1
       },
@@ -234,8 +256,9 @@
     },
     {
       "hash": "18ef2a5baccbafff",
-      "occurrences": 2,
+      "occurrences": 3,
       "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 1,
         "apps/agent-livekit/worker-configuration.d.ts": 1,
         "apps/edge/worker-configuration.d.ts": 1
       },
@@ -243,8 +266,9 @@
     },
     {
       "hash": "1a71b8a03e72bdb8",
-      "occurrences": 2,
+      "occurrences": 3,
       "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 1,
         "apps/agent-livekit/worker-configuration.d.ts": 1,
         "apps/edge/worker-configuration.d.ts": 1
       },
@@ -252,8 +276,9 @@
     },
     {
       "hash": "1ae3bd084c34a01b",
-      "occurrences": 2,
+      "occurrences": 3,
       "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 1,
         "apps/agent-livekit/worker-configuration.d.ts": 1,
         "apps/edge/worker-configuration.d.ts": 1
       },
@@ -270,8 +295,9 @@
     },
     {
       "hash": "1e513aaeb895a35f",
-      "occurrences": 2,
+      "occurrences": 3,
       "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 1,
         "apps/agent-livekit/worker-configuration.d.ts": 1,
         "apps/edge/worker-configuration.d.ts": 1
       },
@@ -279,8 +305,9 @@
     },
     {
       "hash": "1e53b0440cf89f39",
-      "occurrences": 2,
+      "occurrences": 3,
       "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 1,
         "apps/agent-livekit/worker-configuration.d.ts": 1,
         "apps/edge/worker-configuration.d.ts": 1
       },
@@ -288,17 +315,29 @@
     },
     {
       "hash": "1e6b5d8d4fac7db3",
-      "occurrences": 4,
+      "occurrences": 6,
       "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 2,
         "apps/agent-livekit/worker-configuration.d.ts": 2,
         "apps/edge/worker-configuration.d.ts": 2
       },
       "label": "/**"
     },
     {
-      "hash": "22563b635a746244",
-      "occurrences": 2,
+      "hash": "2210afa5f77b97bf",
+      "occurrences": 3,
       "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 1,
+        "apps/agent-livekit/worker-configuration.d.ts": 1,
+        "apps/edge/worker-configuration.d.ts": 1
+      },
+      "label": "entrypoint?: string[];"
+    },
+    {
+      "hash": "22563b635a746244",
+      "occurrences": 3,
+      "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 1,
         "apps/agent-livekit/worker-configuration.d.ts": 1,
         "apps/edge/worker-configuration.d.ts": 1
       },
@@ -306,8 +345,9 @@
     },
     {
       "hash": "244d033242d1b9fe",
-      "occurrences": 2,
+      "occurrences": 3,
       "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 1,
         "apps/agent-livekit/worker-configuration.d.ts": 1,
         "apps/edge/worker-configuration.d.ts": 1
       },
@@ -315,8 +355,9 @@
     },
     {
       "hash": "2492678826dbc5b6",
-      "occurrences": 2,
+      "occurrences": 3,
       "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 1,
         "apps/agent-livekit/worker-configuration.d.ts": 1,
         "apps/edge/worker-configuration.d.ts": 1
       },
@@ -324,8 +365,9 @@
     },
     {
       "hash": "2743feddfd8f6e67",
-      "occurrences": 2,
+      "occurrences": 3,
       "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 1,
         "apps/agent-livekit/worker-configuration.d.ts": 1,
         "apps/edge/worker-configuration.d.ts": 1
       },
@@ -342,8 +384,9 @@
     },
     {
       "hash": "2a358128de4e4d28",
-      "occurrences": 4,
+      "occurrences": 6,
       "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 2,
         "apps/agent-livekit/worker-configuration.d.ts": 2,
         "apps/edge/worker-configuration.d.ts": 2
       },
@@ -351,8 +394,9 @@
     },
     {
       "hash": "2cd49f7d5050722e",
-      "occurrences": 2,
+      "occurrences": 3,
       "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 1,
         "apps/agent-livekit/worker-configuration.d.ts": 1,
         "apps/edge/worker-configuration.d.ts": 1
       },
@@ -360,8 +404,9 @@
     },
     {
       "hash": "2cdb8b1e1c600c05",
-      "occurrences": 2,
+      "occurrences": 3,
       "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 1,
         "apps/agent-livekit/worker-configuration.d.ts": 1,
         "apps/edge/worker-configuration.d.ts": 1
       },
@@ -369,8 +414,9 @@
     },
     {
       "hash": "2d85a4d6448f6d03",
-      "occurrences": 2,
+      "occurrences": 3,
       "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 1,
         "apps/agent-livekit/worker-configuration.d.ts": 1,
         "apps/edge/worker-configuration.d.ts": 1
       },
@@ -396,8 +442,9 @@
     },
     {
       "hash": "2ffed29eb8aed1c0",
-      "occurrences": 2,
+      "occurrences": 3,
       "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 1,
         "apps/agent-livekit/worker-configuration.d.ts": 1,
         "apps/edge/worker-configuration.d.ts": 1
       },
@@ -405,8 +452,9 @@
     },
     {
       "hash": "327b7143ea291010",
-      "occurrences": 2,
+      "occurrences": 3,
       "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 1,
         "apps/agent-livekit/worker-configuration.d.ts": 1,
         "apps/edge/worker-configuration.d.ts": 1
       },
@@ -414,8 +462,9 @@
     },
     {
       "hash": "32e72820fc1e0a12",
-      "occurrences": 2,
+      "occurrences": 3,
       "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 1,
         "apps/agent-livekit/worker-configuration.d.ts": 1,
         "apps/edge/worker-configuration.d.ts": 1
       },
@@ -423,8 +472,9 @@
     },
     {
       "hash": "3352090b759a1fe8",
-      "occurrences": 2,
+      "occurrences": 3,
       "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 1,
         "apps/agent-livekit/worker-configuration.d.ts": 1,
         "apps/edge/worker-configuration.d.ts": 1
       },
@@ -441,8 +491,9 @@
     },
     {
       "hash": "33d617e497725e49",
-      "occurrences": 2,
+      "occurrences": 3,
       "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 1,
         "apps/agent-livekit/worker-configuration.d.ts": 1,
         "apps/edge/worker-configuration.d.ts": 1
       },
@@ -450,8 +501,9 @@
     },
     {
       "hash": "361a279d9ab3b679",
-      "occurrences": 2,
+      "occurrences": 3,
       "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 1,
         "apps/agent-livekit/worker-configuration.d.ts": 1,
         "apps/edge/worker-configuration.d.ts": 1
       },
@@ -459,8 +511,9 @@
     },
     {
       "hash": "36229cc145280a76",
-      "occurrences": 2,
+      "occurrences": 3,
       "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 1,
         "apps/agent-livekit/worker-configuration.d.ts": 1,
         "apps/edge/worker-configuration.d.ts": 1
       },
@@ -468,8 +521,9 @@
     },
     {
       "hash": "377ca9d566d705d3",
-      "occurrences": 2,
+      "occurrences": 3,
       "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 1,
         "apps/agent-livekit/worker-configuration.d.ts": 1,
         "apps/edge/worker-configuration.d.ts": 1
       },
@@ -477,8 +531,9 @@
     },
     {
       "hash": "379178db54c2f0a6",
-      "occurrences": 2,
+      "occurrences": 3,
       "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 1,
         "apps/agent-livekit/worker-configuration.d.ts": 1,
         "apps/edge/worker-configuration.d.ts": 1
       },
@@ -486,8 +541,9 @@
     },
     {
       "hash": "388a5a7c86028e37",
-      "occurrences": 2,
+      "occurrences": 3,
       "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 1,
         "apps/agent-livekit/worker-configuration.d.ts": 1,
         "apps/edge/worker-configuration.d.ts": 1
       },
@@ -495,8 +551,9 @@
     },
     {
       "hash": "39d36ca90d6e4e8a",
-      "occurrences": 2,
+      "occurrences": 3,
       "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 1,
         "apps/agent-livekit/worker-configuration.d.ts": 1,
         "apps/edge/worker-configuration.d.ts": 1
       },
@@ -504,8 +561,9 @@
     },
     {
       "hash": "3a23ad1e0fd57995",
-      "occurrences": 2,
+      "occurrences": 3,
       "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 1,
         "apps/agent-livekit/worker-configuration.d.ts": 1,
         "apps/edge/worker-configuration.d.ts": 1
       },
@@ -513,8 +571,9 @@
     },
     {
       "hash": "3c54b9127c338178",
-      "occurrences": 2,
+      "occurrences": 3,
       "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 1,
         "apps/agent-livekit/worker-configuration.d.ts": 1,
         "apps/edge/worker-configuration.d.ts": 1
       },
@@ -531,8 +590,9 @@
     },
     {
       "hash": "3e2573f53f8aa1e5",
-      "occurrences": 2,
+      "occurrences": 3,
       "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 1,
         "apps/agent-livekit/worker-configuration.d.ts": 1,
         "apps/edge/worker-configuration.d.ts": 1
       },
@@ -549,8 +609,9 @@
     },
     {
       "hash": "3f4f247a67ab3d1a",
-      "occurrences": 2,
+      "occurrences": 3,
       "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 1,
         "apps/agent-livekit/worker-configuration.d.ts": 1,
         "apps/edge/worker-configuration.d.ts": 1
       },
@@ -558,8 +619,9 @@
     },
     {
       "hash": "4018f32fb12d728e",
-      "occurrences": 2,
+      "occurrences": 3,
       "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 1,
         "apps/agent-livekit/worker-configuration.d.ts": 1,
         "apps/edge/worker-configuration.d.ts": 1
       },
@@ -567,8 +629,9 @@
     },
     {
       "hash": "4284b610bdad8e77",
-      "occurrences": 2,
+      "occurrences": 3,
       "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 1,
         "apps/agent-livekit/worker-configuration.d.ts": 1,
         "apps/edge/worker-configuration.d.ts": 1
       },
@@ -576,8 +639,9 @@
     },
     {
       "hash": "42e3d22d76705150",
-      "occurrences": 2,
+      "occurrences": 3,
       "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 1,
         "apps/agent-livekit/worker-configuration.d.ts": 1,
         "apps/edge/worker-configuration.d.ts": 1
       },
@@ -585,8 +649,9 @@
     },
     {
       "hash": "444d50a96437bfc7",
-      "occurrences": 2,
+      "occurrences": 3,
       "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 1,
         "apps/agent-livekit/worker-configuration.d.ts": 1,
         "apps/edge/worker-configuration.d.ts": 1
       },
@@ -594,8 +659,9 @@
     },
     {
       "hash": "44aba2e9bbcb7666",
-      "occurrences": 2,
+      "occurrences": 3,
       "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 1,
         "apps/agent-livekit/worker-configuration.d.ts": 1,
         "apps/edge/worker-configuration.d.ts": 1
       },
@@ -603,8 +669,9 @@
     },
     {
       "hash": "45b2a54457256411",
-      "occurrences": 2,
+      "occurrences": 3,
       "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 1,
         "apps/agent-livekit/worker-configuration.d.ts": 1,
         "apps/edge/worker-configuration.d.ts": 1
       },
@@ -612,8 +679,9 @@
     },
     {
       "hash": "46064cb2d19a4811",
-      "occurrences": 2,
+      "occurrences": 3,
       "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 1,
         "apps/agent-livekit/worker-configuration.d.ts": 1,
         "apps/edge/worker-configuration.d.ts": 1
       },
@@ -621,8 +689,9 @@
     },
     {
       "hash": "47272c71ffc964e2",
-      "occurrences": 2,
+      "occurrences": 3,
       "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 1,
         "apps/agent-livekit/worker-configuration.d.ts": 1,
         "apps/edge/worker-configuration.d.ts": 1
       },
@@ -630,8 +699,9 @@
     },
     {
       "hash": "472f16505e1b8490",
-      "occurrences": 2,
+      "occurrences": 3,
       "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 1,
         "apps/agent-livekit/worker-configuration.d.ts": 1,
         "apps/edge/worker-configuration.d.ts": 1
       },
@@ -639,8 +709,9 @@
     },
     {
       "hash": "482ccf68d70cfdc8",
-      "occurrences": 2,
+      "occurrences": 3,
       "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 1,
         "apps/agent-livekit/worker-configuration.d.ts": 1,
         "apps/edge/worker-configuration.d.ts": 1
       },
@@ -648,8 +719,9 @@
     },
     {
       "hash": "4b8c8bc8e81e3119",
-      "occurrences": 2,
+      "occurrences": 3,
       "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 1,
         "apps/agent-livekit/worker-configuration.d.ts": 1,
         "apps/edge/worker-configuration.d.ts": 1
       },
@@ -657,8 +729,9 @@
     },
     {
       "hash": "4da11b4be53332c2",
-      "occurrences": 2,
+      "occurrences": 3,
       "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 1,
         "apps/agent-livekit/worker-configuration.d.ts": 1,
         "apps/edge/worker-configuration.d.ts": 1
       },
@@ -666,8 +739,9 @@
     },
     {
       "hash": "4dd31208d0589661",
-      "occurrences": 2,
+      "occurrences": 3,
       "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 1,
         "apps/agent-livekit/worker-configuration.d.ts": 1,
         "apps/edge/worker-configuration.d.ts": 1
       },
@@ -675,8 +749,9 @@
     },
     {
       "hash": "4dda852e1585bd59",
-      "occurrences": 2,
+      "occurrences": 3,
       "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 1,
         "apps/agent-livekit/worker-configuration.d.ts": 1,
         "apps/edge/worker-configuration.d.ts": 1
       },
@@ -693,8 +768,9 @@
     },
     {
       "hash": "50abdbc35f7fed28",
-      "occurrences": 2,
+      "occurrences": 3,
       "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 1,
         "apps/agent-livekit/worker-configuration.d.ts": 1,
         "apps/edge/worker-configuration.d.ts": 1
       },
@@ -702,8 +778,9 @@
     },
     {
       "hash": "50e0117b057bd236",
-      "occurrences": 2,
+      "occurrences": 3,
       "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 1,
         "apps/agent-livekit/worker-configuration.d.ts": 1,
         "apps/edge/worker-configuration.d.ts": 1
       },
@@ -711,8 +788,9 @@
     },
     {
       "hash": "5284646568b977de",
-      "occurrences": 2,
+      "occurrences": 3,
       "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 1,
         "apps/agent-livekit/worker-configuration.d.ts": 1,
         "apps/edge/worker-configuration.d.ts": 1
       },
@@ -720,8 +798,9 @@
     },
     {
       "hash": "544754ef0747d66c",
-      "occurrences": 2,
+      "occurrences": 3,
       "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 1,
         "apps/agent-livekit/worker-configuration.d.ts": 1,
         "apps/edge/worker-configuration.d.ts": 1
       },
@@ -729,8 +808,9 @@
     },
     {
       "hash": "54d372ef157cc6be",
-      "occurrences": 2,
+      "occurrences": 3,
       "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 1,
         "apps/agent-livekit/worker-configuration.d.ts": 1,
         "apps/edge/worker-configuration.d.ts": 1
       },
@@ -738,8 +818,9 @@
     },
     {
       "hash": "56b562f71d0be288",
-      "occurrences": 2,
+      "occurrences": 3,
       "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 1,
         "apps/agent-livekit/worker-configuration.d.ts": 1,
         "apps/edge/worker-configuration.d.ts": 1
       },
@@ -747,8 +828,9 @@
     },
     {
       "hash": "584790c616fa17ae",
-      "occurrences": 2,
+      "occurrences": 3,
       "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 1,
         "apps/agent-livekit/worker-configuration.d.ts": 1,
         "apps/edge/worker-configuration.d.ts": 1
       },
@@ -756,8 +838,9 @@
     },
     {
       "hash": "589c88823744643e",
-      "occurrences": 2,
+      "occurrences": 3,
       "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 1,
         "apps/agent-livekit/worker-configuration.d.ts": 1,
         "apps/edge/worker-configuration.d.ts": 1
       },
@@ -765,8 +848,9 @@
     },
     {
       "hash": "59248765d93f8144",
-      "occurrences": 2,
+      "occurrences": 3,
       "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 1,
         "apps/agent-livekit/worker-configuration.d.ts": 1,
         "apps/edge/worker-configuration.d.ts": 1
       },
@@ -774,8 +858,9 @@
     },
     {
       "hash": "59a7b0d03c3a325e",
-      "occurrences": 2,
+      "occurrences": 3,
       "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 1,
         "apps/agent-livekit/worker-configuration.d.ts": 1,
         "apps/edge/worker-configuration.d.ts": 1
       },
@@ -783,8 +868,9 @@
     },
     {
       "hash": "5b3b3f993d92aef3",
-      "occurrences": 2,
+      "occurrences": 3,
       "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 1,
         "apps/agent-livekit/worker-configuration.d.ts": 1,
         "apps/edge/worker-configuration.d.ts": 1
       },
@@ -792,8 +878,9 @@
     },
     {
       "hash": "5c4b2ec35d465f06",
-      "occurrences": 2,
+      "occurrences": 3,
       "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 1,
         "apps/agent-livekit/worker-configuration.d.ts": 1,
         "apps/edge/worker-configuration.d.ts": 1
       },
@@ -801,8 +888,9 @@
     },
     {
       "hash": "5eb1cee8f52ff437",
-      "occurrences": 24,
+      "occurrences": 36,
       "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 12,
         "apps/agent-livekit/worker-configuration.d.ts": 12,
         "apps/edge/worker-configuration.d.ts": 12
       },
@@ -810,8 +898,9 @@
     },
     {
       "hash": "6029f00ba7729f12",
-      "occurrences": 2,
+      "occurrences": 3,
       "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 1,
         "apps/agent-livekit/worker-configuration.d.ts": 1,
         "apps/edge/worker-configuration.d.ts": 1
       },
@@ -819,8 +908,9 @@
     },
     {
       "hash": "605e5c5d911f08e4",
-      "occurrences": 2,
+      "occurrences": 3,
       "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 1,
         "apps/agent-livekit/worker-configuration.d.ts": 1,
         "apps/edge/worker-configuration.d.ts": 1
       },
@@ -828,8 +918,9 @@
     },
     {
       "hash": "62202efd7aad199c",
-      "occurrences": 2,
+      "occurrences": 3,
       "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 1,
         "apps/agent-livekit/worker-configuration.d.ts": 1,
         "apps/edge/worker-configuration.d.ts": 1
       },
@@ -837,8 +928,9 @@
     },
     {
       "hash": "65b4ec7b2e81971e",
-      "occurrences": 2,
+      "occurrences": 3,
       "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 1,
         "apps/agent-livekit/worker-configuration.d.ts": 1,
         "apps/edge/worker-configuration.d.ts": 1
       },
@@ -846,8 +938,9 @@
     },
     {
       "hash": "65d017c627d923e7",
-      "occurrences": 2,
+      "occurrences": 3,
       "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 1,
         "apps/agent-livekit/worker-configuration.d.ts": 1,
         "apps/edge/worker-configuration.d.ts": 1
       },
@@ -855,8 +948,9 @@
     },
     {
       "hash": "66c9f8193d07a2f9",
-      "occurrences": 2,
+      "occurrences": 3,
       "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 1,
         "apps/agent-livekit/worker-configuration.d.ts": 1,
         "apps/edge/worker-configuration.d.ts": 1
       },
@@ -864,8 +958,9 @@
     },
     {
       "hash": "67b372ef832169b2",
-      "occurrences": 2,
+      "occurrences": 3,
       "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 1,
         "apps/agent-livekit/worker-configuration.d.ts": 1,
         "apps/edge/worker-configuration.d.ts": 1
       },
@@ -873,8 +968,9 @@
     },
     {
       "hash": "6ae082d115f59d35",
-      "occurrences": 2,
+      "occurrences": 3,
       "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 1,
         "apps/agent-livekit/worker-configuration.d.ts": 1,
         "apps/edge/worker-configuration.d.ts": 1
       },
@@ -882,8 +978,9 @@
     },
     {
       "hash": "6b4c7f4b1bb3d276",
-      "occurrences": 2,
+      "occurrences": 3,
       "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 1,
         "apps/agent-livekit/worker-configuration.d.ts": 1,
         "apps/edge/worker-configuration.d.ts": 1
       },
@@ -891,8 +988,9 @@
     },
     {
       "hash": "6bd5ad47e6a8f6ac",
-      "occurrences": 2,
+      "occurrences": 3,
       "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 1,
         "apps/agent-livekit/worker-configuration.d.ts": 1,
         "apps/edge/worker-configuration.d.ts": 1
       },
@@ -900,8 +998,9 @@
     },
     {
       "hash": "6c6022a6250246c4",
-      "occurrences": 2,
+      "occurrences": 3,
       "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 1,
         "apps/agent-livekit/worker-configuration.d.ts": 1,
         "apps/edge/worker-configuration.d.ts": 1
       },
@@ -909,8 +1008,9 @@
     },
     {
       "hash": "6e1aa81ef27ddd2f",
-      "occurrences": 2,
+      "occurrences": 3,
       "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 1,
         "apps/agent-livekit/worker-configuration.d.ts": 1,
         "apps/edge/worker-configuration.d.ts": 1
       },
@@ -918,8 +1018,9 @@
     },
     {
       "hash": "73dfd192ef6b9977",
-      "occurrences": 2,
+      "occurrences": 3,
       "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 1,
         "apps/agent-livekit/worker-configuration.d.ts": 1,
         "apps/edge/worker-configuration.d.ts": 1
       },
@@ -927,8 +1028,9 @@
     },
     {
       "hash": "75c80a651f91a832",
-      "occurrences": 2,
+      "occurrences": 3,
       "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 1,
         "apps/agent-livekit/worker-configuration.d.ts": 1,
         "apps/edge/worker-configuration.d.ts": 1
       },
@@ -936,17 +1038,28 @@
     },
     {
       "hash": "77f4fc27a6a00144",
-      "occurrences": 2,
+      "occurrences": 3,
       "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 1,
         "apps/agent-livekit/worker-configuration.d.ts": 1,
         "apps/edge/worker-configuration.d.ts": 1
       },
       "label": "/**"
     },
     {
-      "hash": "79b03f3a601e732a",
+      "hash": "78cf6ca2cbf93da1",
       "occurrences": 2,
       "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 1,
+        "apps/edge/worker-configuration.d.ts": 1
+      },
+      "label": "waitUntil(promise: Promise<any>): void;"
+    },
+    {
+      "hash": "79b03f3a601e732a",
+      "occurrences": 3,
+      "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 1,
         "apps/agent-livekit/worker-configuration.d.ts": 1,
         "apps/edge/worker-configuration.d.ts": 1
       },
@@ -954,8 +1067,9 @@
     },
     {
       "hash": "7b802380e0f98bb3",
-      "occurrences": 2,
+      "occurrences": 3,
       "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 1,
         "apps/agent-livekit/worker-configuration.d.ts": 1,
         "apps/edge/worker-configuration.d.ts": 1
       },
@@ -963,8 +1077,9 @@
     },
     {
       "hash": "7e00a5a67d9b3a17",
-      "occurrences": 6,
+      "occurrences": 9,
       "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 3,
         "apps/agent-livekit/worker-configuration.d.ts": 3,
         "apps/edge/worker-configuration.d.ts": 3
       },
@@ -972,8 +1087,9 @@
     },
     {
       "hash": "7e12c8a4e7bd7804",
-      "occurrences": 2,
+      "occurrences": 3,
       "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 1,
         "apps/agent-livekit/worker-configuration.d.ts": 1,
         "apps/edge/worker-configuration.d.ts": 1
       },
@@ -981,8 +1097,9 @@
     },
     {
       "hash": "7e820b2358a37760",
-      "occurrences": 2,
+      "occurrences": 3,
       "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 1,
         "apps/agent-livekit/worker-configuration.d.ts": 1,
         "apps/edge/worker-configuration.d.ts": 1
       },
@@ -990,8 +1107,9 @@
     },
     {
       "hash": "7f0d601f406cfcf5",
-      "occurrences": 2,
+      "occurrences": 3,
       "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 1,
         "apps/agent-livekit/worker-configuration.d.ts": 1,
         "apps/edge/worker-configuration.d.ts": 1
       },
@@ -999,8 +1117,9 @@
     },
     {
       "hash": "800ca9986f5b845e",
-      "occurrences": 2,
+      "occurrences": 3,
       "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 1,
         "apps/agent-livekit/worker-configuration.d.ts": 1,
         "apps/edge/worker-configuration.d.ts": 1
       },
@@ -1017,8 +1136,9 @@
     },
     {
       "hash": "82ec163e27ee4964",
-      "occurrences": 2,
+      "occurrences": 3,
       "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 1,
         "apps/agent-livekit/worker-configuration.d.ts": 1,
         "apps/edge/worker-configuration.d.ts": 1
       },
@@ -1026,8 +1146,9 @@
     },
     {
       "hash": "84383eb2e0b8d47f",
-      "occurrences": 2,
+      "occurrences": 3,
       "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 1,
         "apps/agent-livekit/worker-configuration.d.ts": 1,
         "apps/edge/worker-configuration.d.ts": 1
       },
@@ -1035,8 +1156,9 @@
     },
     {
       "hash": "850fce3bc6d03043",
-      "occurrences": 2,
+      "occurrences": 3,
       "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 1,
         "apps/agent-livekit/worker-configuration.d.ts": 1,
         "apps/edge/worker-configuration.d.ts": 1
       },
@@ -1053,8 +1175,9 @@
     },
     {
       "hash": "8645b90172bdebb1",
-      "occurrences": 2,
+      "occurrences": 3,
       "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 1,
         "apps/agent-livekit/worker-configuration.d.ts": 1,
         "apps/edge/worker-configuration.d.ts": 1
       },
@@ -1062,17 +1185,28 @@
     },
     {
       "hash": "89fb05199011a480",
-      "occurrences": 2,
+      "occurrences": 3,
       "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 1,
         "apps/agent-livekit/worker-configuration.d.ts": 1,
         "apps/edge/worker-configuration.d.ts": 1
       },
       "label": "/**"
     },
     {
-      "hash": "8b89cac4d28307bb",
+      "hash": "8b46ade4c36498ed",
       "occurrences": 2,
       "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 1,
+        "apps/edge/worker-configuration.d.ts": 1
+      },
+      "label": "waitUntil(promise: Promise<any>): void;"
+    },
+    {
+      "hash": "8b89cac4d28307bb",
+      "occurrences": 3,
+      "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 1,
         "apps/agent-livekit/worker-configuration.d.ts": 1,
         "apps/edge/worker-configuration.d.ts": 1
       },
@@ -1089,8 +1223,9 @@
     },
     {
       "hash": "8ee31a987ee13001",
-      "occurrences": 2,
+      "occurrences": 3,
       "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 1,
         "apps/agent-livekit/worker-configuration.d.ts": 1,
         "apps/edge/worker-configuration.d.ts": 1
       },
@@ -1098,8 +1233,9 @@
     },
     {
       "hash": "8f01b10d0bff4358",
-      "occurrences": 2,
+      "occurrences": 3,
       "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 1,
         "apps/agent-livekit/worker-configuration.d.ts": 1,
         "apps/edge/worker-configuration.d.ts": 1
       },
@@ -1107,8 +1243,9 @@
     },
     {
       "hash": "91131ecef16b11e9",
-      "occurrences": 2,
+      "occurrences": 3,
       "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 1,
         "apps/agent-livekit/worker-configuration.d.ts": 1,
         "apps/edge/worker-configuration.d.ts": 1
       },
@@ -1116,8 +1253,9 @@
     },
     {
       "hash": "91c55f155b4fe6d6",
-      "occurrences": 2,
+      "occurrences": 3,
       "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 1,
         "apps/agent-livekit/worker-configuration.d.ts": 1,
         "apps/edge/worker-configuration.d.ts": 1
       },
@@ -1125,8 +1263,9 @@
     },
     {
       "hash": "9473b44bd01bf5fd",
-      "occurrences": 2,
+      "occurrences": 3,
       "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 1,
         "apps/agent-livekit/worker-configuration.d.ts": 1,
         "apps/edge/worker-configuration.d.ts": 1
       },
@@ -1134,8 +1273,9 @@
     },
     {
       "hash": "94daac2a1897f053",
-      "occurrences": 4,
+      "occurrences": 6,
       "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 2,
         "apps/agent-livekit/worker-configuration.d.ts": 2,
         "apps/edge/worker-configuration.d.ts": 2
       },
@@ -1143,8 +1283,9 @@
     },
     {
       "hash": "951f3b242e111d6a",
-      "occurrences": 2,
+      "occurrences": 3,
       "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 1,
         "apps/agent-livekit/worker-configuration.d.ts": 1,
         "apps/edge/worker-configuration.d.ts": 1
       },
@@ -1152,8 +1293,9 @@
     },
     {
       "hash": "97e5149fba50b3da",
-      "occurrences": 2,
+      "occurrences": 3,
       "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 1,
         "apps/agent-livekit/worker-configuration.d.ts": 1,
         "apps/edge/worker-configuration.d.ts": 1
       },
@@ -1161,8 +1303,9 @@
     },
     {
       "hash": "9c05450e0d9dcce5",
-      "occurrences": 2,
+      "occurrences": 3,
       "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 1,
         "apps/agent-livekit/worker-configuration.d.ts": 1,
         "apps/edge/worker-configuration.d.ts": 1
       },
@@ -1179,17 +1322,29 @@
     },
     {
       "hash": "9d1aeac05cd9d692",
-      "occurrences": 2,
+      "occurrences": 3,
       "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 1,
         "apps/agent-livekit/worker-configuration.d.ts": 1,
         "apps/edge/worker-configuration.d.ts": 1
       },
       "label": "/**"
     },
     {
-      "hash": "a189d213f6fff911",
-      "occurrences": 2,
+      "hash": "a0bad0080e1423c9",
+      "occurrences": 3,
       "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 1,
+        "apps/agent-livekit/worker-configuration.d.ts": 1,
+        "apps/edge/worker-configuration.d.ts": 1
+      },
+      "label": "interface Header {"
+    },
+    {
+      "hash": "a189d213f6fff911",
+      "occurrences": 3,
+      "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 1,
         "apps/agent-livekit/worker-configuration.d.ts": 1,
         "apps/edge/worker-configuration.d.ts": 1
       },
@@ -1197,8 +1352,9 @@
     },
     {
       "hash": "a1beb34d2fd9b41a",
-      "occurrences": 2,
+      "occurrences": 3,
       "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 1,
         "apps/agent-livekit/worker-configuration.d.ts": 1,
         "apps/edge/worker-configuration.d.ts": 1
       },
@@ -1206,8 +1362,9 @@
     },
     {
       "hash": "a26af89fb7b4b741",
-      "occurrences": 2,
+      "occurrences": 3,
       "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 1,
         "apps/agent-livekit/worker-configuration.d.ts": 1,
         "apps/edge/worker-configuration.d.ts": 1
       },
@@ -1215,8 +1372,9 @@
     },
     {
       "hash": "a3c3d8c302074fb0",
-      "occurrences": 2,
+      "occurrences": 3,
       "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 1,
         "apps/agent-livekit/worker-configuration.d.ts": 1,
         "apps/edge/worker-configuration.d.ts": 1
       },
@@ -1224,8 +1382,9 @@
     },
     {
       "hash": "a4a5e219a65e6ede",
-      "occurrences": 2,
+      "occurrences": 3,
       "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 1,
         "apps/agent-livekit/worker-configuration.d.ts": 1,
         "apps/edge/worker-configuration.d.ts": 1
       },
@@ -1233,8 +1392,9 @@
     },
     {
       "hash": "a4bb708f845bfb4c",
-      "occurrences": 2,
+      "occurrences": 3,
       "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 1,
         "apps/agent-livekit/worker-configuration.d.ts": 1,
         "apps/edge/worker-configuration.d.ts": 1
       },
@@ -1242,8 +1402,9 @@
     },
     {
       "hash": "a54a66f35219704a",
-      "occurrences": 2,
+      "occurrences": 3,
       "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 1,
         "apps/agent-livekit/worker-configuration.d.ts": 1,
         "apps/edge/worker-configuration.d.ts": 1
       },
@@ -1251,8 +1412,9 @@
     },
     {
       "hash": "a6e9176c11a91dc9",
-      "occurrences": 2,
+      "occurrences": 3,
       "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 1,
         "apps/agent-livekit/worker-configuration.d.ts": 1,
         "apps/edge/worker-configuration.d.ts": 1
       },
@@ -1260,8 +1422,9 @@
     },
     {
       "hash": "a9e7109c9cba64e2",
-      "occurrences": 2,
+      "occurrences": 3,
       "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 1,
         "apps/agent-livekit/worker-configuration.d.ts": 1,
         "apps/edge/worker-configuration.d.ts": 1
       },
@@ -1269,8 +1432,9 @@
     },
     {
       "hash": "aa5c817955587a3b",
-      "occurrences": 2,
+      "occurrences": 3,
       "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 1,
         "apps/agent-livekit/worker-configuration.d.ts": 1,
         "apps/edge/worker-configuration.d.ts": 1
       },
@@ -1278,8 +1442,9 @@
     },
     {
       "hash": "ab71b0c22f45037e",
-      "occurrences": 2,
+      "occurrences": 3,
       "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 1,
         "apps/agent-livekit/worker-configuration.d.ts": 1,
         "apps/edge/worker-configuration.d.ts": 1
       },
@@ -1287,8 +1452,9 @@
     },
     {
       "hash": "ad39b600e59bceff",
-      "occurrences": 2,
+      "occurrences": 3,
       "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 1,
         "apps/agent-livekit/worker-configuration.d.ts": 1,
         "apps/edge/worker-configuration.d.ts": 1
       },
@@ -1296,8 +1462,9 @@
     },
     {
       "hash": "ae839c0022a379fb",
-      "occurrences": 2,
+      "occurrences": 3,
       "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 1,
         "apps/agent-livekit/worker-configuration.d.ts": 1,
         "apps/edge/worker-configuration.d.ts": 1
       },
@@ -1305,8 +1472,9 @@
     },
     {
       "hash": "af8f18a804f2e661",
-      "occurrences": 2,
+      "occurrences": 3,
       "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 1,
         "apps/agent-livekit/worker-configuration.d.ts": 1,
         "apps/edge/worker-configuration.d.ts": 1
       },
@@ -1314,8 +1482,9 @@
     },
     {
       "hash": "b19cbf0ba3fc9247",
-      "occurrences": 2,
+      "occurrences": 3,
       "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 1,
         "apps/agent-livekit/worker-configuration.d.ts": 1,
         "apps/edge/worker-configuration.d.ts": 1
       },
@@ -1323,8 +1492,9 @@
     },
     {
       "hash": "b371680eaf5a3fda",
-      "occurrences": 2,
+      "occurrences": 3,
       "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 1,
         "apps/agent-livekit/worker-configuration.d.ts": 1,
         "apps/edge/worker-configuration.d.ts": 1
       },
@@ -1332,8 +1502,9 @@
     },
     {
       "hash": "b3ec27ab364414c9",
-      "occurrences": 10,
+      "occurrences": 15,
       "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 5,
         "apps/agent-livekit/worker-configuration.d.ts": 5,
         "apps/edge/worker-configuration.d.ts": 5
       },
@@ -1341,8 +1512,9 @@
     },
     {
       "hash": "b5de8522dfb375f9",
-      "occurrences": 2,
+      "occurrences": 3,
       "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 1,
         "apps/agent-livekit/worker-configuration.d.ts": 1,
         "apps/edge/worker-configuration.d.ts": 1
       },
@@ -1350,8 +1522,9 @@
     },
     {
       "hash": "b5edda2cfe0b1b60",
-      "occurrences": 2,
+      "occurrences": 3,
       "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 1,
         "apps/agent-livekit/worker-configuration.d.ts": 1,
         "apps/edge/worker-configuration.d.ts": 1
       },
@@ -1359,8 +1532,9 @@
     },
     {
       "hash": "b7500a2aa3ac9aac",
-      "occurrences": 2,
+      "occurrences": 3,
       "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 1,
         "apps/agent-livekit/worker-configuration.d.ts": 1,
         "apps/edge/worker-configuration.d.ts": 1
       },
@@ -1368,26 +1542,19 @@
     },
     {
       "hash": "b8ef6413d88c797e",
-      "occurrences": 4,
+      "occurrences": 6,
       "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 2,
         "apps/agent-livekit/worker-configuration.d.ts": 2,
         "apps/edge/worker-configuration.d.ts": 2
       },
       "label": "/**"
     },
     {
-      "hash": "b9f66f2486dd36ac",
-      "occurrences": 2,
-      "files": {
-        "apps/agent-livekit/worker-configuration.d.ts": 1,
-        "apps/edge/worker-configuration.d.ts": 1
-      },
-      "label": "interface Header {"
-    },
-    {
       "hash": "bab6e206c3669999",
-      "occurrences": 2,
+      "occurrences": 3,
       "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 1,
         "apps/agent-livekit/worker-configuration.d.ts": 1,
         "apps/edge/worker-configuration.d.ts": 1
       },
@@ -1395,8 +1562,9 @@
     },
     {
       "hash": "bc04c52462807455",
-      "occurrences": 2,
+      "occurrences": 3,
       "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 1,
         "apps/agent-livekit/worker-configuration.d.ts": 1,
         "apps/edge/worker-configuration.d.ts": 1
       },
@@ -1404,8 +1572,9 @@
     },
     {
       "hash": "bf143965dce1ef79",
-      "occurrences": 4,
+      "occurrences": 6,
       "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 2,
         "apps/agent-livekit/worker-configuration.d.ts": 2,
         "apps/edge/worker-configuration.d.ts": 2
       },
@@ -1413,8 +1582,9 @@
     },
     {
       "hash": "bf8fadee0bca701d",
-      "occurrences": 2,
+      "occurrences": 3,
       "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 1,
         "apps/agent-livekit/worker-configuration.d.ts": 1,
         "apps/edge/worker-configuration.d.ts": 1
       },
@@ -1422,8 +1592,9 @@
     },
     {
       "hash": "bfed119ea4ac350e",
-      "occurrences": 2,
+      "occurrences": 3,
       "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 1,
         "apps/agent-livekit/worker-configuration.d.ts": 1,
         "apps/edge/worker-configuration.d.ts": 1
       },
@@ -1440,8 +1611,9 @@
     },
     {
       "hash": "c2317c84e14dc02b",
-      "occurrences": 2,
+      "occurrences": 3,
       "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 1,
         "apps/agent-livekit/worker-configuration.d.ts": 1,
         "apps/edge/worker-configuration.d.ts": 1
       },
@@ -1449,8 +1621,9 @@
     },
     {
       "hash": "c2578ab6b3f9a93d",
-      "occurrences": 2,
+      "occurrences": 3,
       "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 1,
         "apps/agent-livekit/worker-configuration.d.ts": 1,
         "apps/edge/worker-configuration.d.ts": 1
       },
@@ -1458,8 +1631,9 @@
     },
     {
       "hash": "c364de1caeae2a2b",
-      "occurrences": 4,
+      "occurrences": 6,
       "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 2,
         "apps/agent-livekit/worker-configuration.d.ts": 2,
         "apps/edge/worker-configuration.d.ts": 2
       },
@@ -1467,8 +1641,9 @@
     },
     {
       "hash": "c4fc04df1f5198a9",
-      "occurrences": 2,
+      "occurrences": 3,
       "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 1,
         "apps/agent-livekit/worker-configuration.d.ts": 1,
         "apps/edge/worker-configuration.d.ts": 1
       },
@@ -1485,8 +1660,9 @@
     },
     {
       "hash": "c76665ca62f01a77",
-      "occurrences": 2,
+      "occurrences": 3,
       "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 1,
         "apps/agent-livekit/worker-configuration.d.ts": 1,
         "apps/edge/worker-configuration.d.ts": 1
       },
@@ -1512,8 +1688,9 @@
     },
     {
       "hash": "cf6dc3015fcadd3d",
-      "occurrences": 2,
+      "occurrences": 3,
       "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 1,
         "apps/agent-livekit/worker-configuration.d.ts": 1,
         "apps/edge/worker-configuration.d.ts": 1
       },
@@ -1521,8 +1698,9 @@
     },
     {
       "hash": "d027aeb7f1fd4a53",
-      "occurrences": 2,
+      "occurrences": 3,
       "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 1,
         "apps/agent-livekit/worker-configuration.d.ts": 1,
         "apps/edge/worker-configuration.d.ts": 1
       },
@@ -1530,8 +1708,9 @@
     },
     {
       "hash": "d216e3668a9bbf13",
-      "occurrences": 2,
+      "occurrences": 3,
       "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 1,
         "apps/agent-livekit/worker-configuration.d.ts": 1,
         "apps/edge/worker-configuration.d.ts": 1
       },
@@ -1539,8 +1718,9 @@
     },
     {
       "hash": "d485751992aab999",
-      "occurrences": 2,
+      "occurrences": 3,
       "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 1,
         "apps/agent-livekit/worker-configuration.d.ts": 1,
         "apps/edge/worker-configuration.d.ts": 1
       },
@@ -1548,8 +1728,9 @@
     },
     {
       "hash": "d665fe8ed7d425bb",
-      "occurrences": 2,
+      "occurrences": 3,
       "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 1,
         "apps/agent-livekit/worker-configuration.d.ts": 1,
         "apps/edge/worker-configuration.d.ts": 1
       },
@@ -1557,8 +1738,9 @@
     },
     {
       "hash": "d67c5afb6e39e146",
-      "occurrences": 2,
+      "occurrences": 3,
       "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 1,
         "apps/agent-livekit/worker-configuration.d.ts": 1,
         "apps/edge/worker-configuration.d.ts": 1
       },
@@ -1566,8 +1748,9 @@
     },
     {
       "hash": "d69ad63907059418",
-      "occurrences": 2,
+      "occurrences": 3,
       "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 1,
         "apps/agent-livekit/worker-configuration.d.ts": 1,
         "apps/edge/worker-configuration.d.ts": 1
       },
@@ -1575,8 +1758,9 @@
     },
     {
       "hash": "d8680c5d794887b4",
-      "occurrences": 2,
+      "occurrences": 3,
       "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 1,
         "apps/agent-livekit/worker-configuration.d.ts": 1,
         "apps/edge/worker-configuration.d.ts": 1
       },
@@ -1584,8 +1768,9 @@
     },
     {
       "hash": "d90b3fbc6063ec26",
-      "occurrences": 2,
+      "occurrences": 3,
       "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 1,
         "apps/agent-livekit/worker-configuration.d.ts": 1,
         "apps/edge/worker-configuration.d.ts": 1
       },
@@ -1593,8 +1778,9 @@
     },
     {
       "hash": "d923df4e08b32db4",
-      "occurrences": 2,
+      "occurrences": 3,
       "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 1,
         "apps/agent-livekit/worker-configuration.d.ts": 1,
         "apps/edge/worker-configuration.d.ts": 1
       },
@@ -1602,8 +1788,9 @@
     },
     {
       "hash": "d95ae241edd333fe",
-      "occurrences": 4,
+      "occurrences": 6,
       "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 2,
         "apps/agent-livekit/worker-configuration.d.ts": 2,
         "apps/edge/worker-configuration.d.ts": 2
       },
@@ -1611,8 +1798,9 @@
     },
     {
       "hash": "da25b57e68a75298",
-      "occurrences": 2,
+      "occurrences": 3,
       "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 1,
         "apps/agent-livekit/worker-configuration.d.ts": 1,
         "apps/edge/worker-configuration.d.ts": 1
       },
@@ -1620,8 +1808,9 @@
     },
     {
       "hash": "dad42af054c864cd",
-      "occurrences": 2,
+      "occurrences": 3,
       "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 1,
         "apps/agent-livekit/worker-configuration.d.ts": 1,
         "apps/edge/worker-configuration.d.ts": 1
       },
@@ -1629,8 +1818,9 @@
     },
     {
       "hash": "dc6c98bd0d9060d3",
-      "occurrences": 2,
+      "occurrences": 3,
       "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 1,
         "apps/agent-livekit/worker-configuration.d.ts": 1,
         "apps/edge/worker-configuration.d.ts": 1
       },
@@ -1646,8 +1836,9 @@
     },
     {
       "hash": "de409c0a6dd17838",
-      "occurrences": 2,
+      "occurrences": 3,
       "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 1,
         "apps/agent-livekit/worker-configuration.d.ts": 1,
         "apps/edge/worker-configuration.d.ts": 1
       },
@@ -1655,8 +1846,9 @@
     },
     {
       "hash": "deaa47412989aec2",
-      "occurrences": 2,
+      "occurrences": 3,
       "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 1,
         "apps/agent-livekit/worker-configuration.d.ts": 1,
         "apps/edge/worker-configuration.d.ts": 1
       },
@@ -1664,8 +1856,9 @@
     },
     {
       "hash": "df30d3ea34c0c169",
-      "occurrences": 2,
+      "occurrences": 3,
       "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 1,
         "apps/agent-livekit/worker-configuration.d.ts": 1,
         "apps/edge/worker-configuration.d.ts": 1
       },
@@ -1673,26 +1866,19 @@
     },
     {
       "hash": "e44553840371a927",
-      "occurrences": 2,
+      "occurrences": 3,
       "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 1,
         "apps/agent-livekit/worker-configuration.d.ts": 1,
         "apps/edge/worker-configuration.d.ts": 1
       },
       "label": "sessionId: string;"
     },
     {
-      "hash": "e4522b0f2759d84e",
-      "occurrences": 2,
-      "files": {
-        "apps/agent-livekit/worker-configuration.d.ts": 1,
-        "apps/edge/worker-configuration.d.ts": 1
-      },
-      "label": "entrypoint?: string[];"
-    },
-    {
       "hash": "e4950cb81f70331d",
-      "occurrences": 2,
+      "occurrences": 3,
       "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 1,
         "apps/agent-livekit/worker-configuration.d.ts": 1,
         "apps/edge/worker-configuration.d.ts": 1
       },
@@ -1700,8 +1886,9 @@
     },
     {
       "hash": "e49d82152fc56cec",
-      "occurrences": 2,
+      "occurrences": 3,
       "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 1,
         "apps/agent-livekit/worker-configuration.d.ts": 1,
         "apps/edge/worker-configuration.d.ts": 1
       },
@@ -1709,8 +1896,9 @@
     },
     {
       "hash": "e4e43a5d804c4048",
-      "occurrences": 2,
+      "occurrences": 3,
       "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 1,
         "apps/agent-livekit/worker-configuration.d.ts": 1,
         "apps/edge/worker-configuration.d.ts": 1
       },
@@ -1718,8 +1906,9 @@
     },
     {
       "hash": "e5c9b565676949f4",
-      "occurrences": 2,
+      "occurrences": 3,
       "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 1,
         "apps/agent-livekit/worker-configuration.d.ts": 1,
         "apps/edge/worker-configuration.d.ts": 1
       },
@@ -1727,8 +1916,9 @@
     },
     {
       "hash": "e601b16fc1bd0b51",
-      "occurrences": 2,
+      "occurrences": 3,
       "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 1,
         "apps/agent-livekit/worker-configuration.d.ts": 1,
         "apps/edge/worker-configuration.d.ts": 1
       },
@@ -1736,8 +1926,9 @@
     },
     {
       "hash": "e622fe0cdad0d6f1",
-      "occurrences": 2,
+      "occurrences": 3,
       "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 1,
         "apps/agent-livekit/worker-configuration.d.ts": 1,
         "apps/edge/worker-configuration.d.ts": 1
       },
@@ -1745,8 +1936,9 @@
     },
     {
       "hash": "e7b10acb39f262d7",
-      "occurrences": 2,
+      "occurrences": 3,
       "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 1,
         "apps/agent-livekit/worker-configuration.d.ts": 1,
         "apps/edge/worker-configuration.d.ts": 1
       },
@@ -1754,8 +1946,9 @@
     },
     {
       "hash": "e7d924d3fd24d661",
-      "occurrences": 2,
+      "occurrences": 3,
       "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 1,
         "apps/agent-livekit/worker-configuration.d.ts": 1,
         "apps/edge/worker-configuration.d.ts": 1
       },
@@ -1763,8 +1956,9 @@
     },
     {
       "hash": "e80f63ea8c1c7dc8",
-      "occurrences": 2,
+      "occurrences": 3,
       "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 1,
         "apps/agent-livekit/worker-configuration.d.ts": 1,
         "apps/edge/worker-configuration.d.ts": 1
       },
@@ -1772,8 +1966,9 @@
     },
     {
       "hash": "e980153dd800ae69",
-      "occurrences": 4,
+      "occurrences": 6,
       "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 2,
         "apps/agent-livekit/worker-configuration.d.ts": 2,
         "apps/edge/worker-configuration.d.ts": 2
       },
@@ -1781,8 +1976,9 @@
     },
     {
       "hash": "e9b8c2db9c6084c4",
-      "occurrences": 2,
+      "occurrences": 3,
       "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 1,
         "apps/agent-livekit/worker-configuration.d.ts": 1,
         "apps/edge/worker-configuration.d.ts": 1
       },
@@ -1790,8 +1986,9 @@
     },
     {
       "hash": "ea6117a67487aa2c",
-      "occurrences": 2,
+      "occurrences": 3,
       "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 1,
         "apps/agent-livekit/worker-configuration.d.ts": 1,
         "apps/edge/worker-configuration.d.ts": 1
       },
@@ -1799,8 +1996,9 @@
     },
     {
       "hash": "ecb5b10e430f051d",
-      "occurrences": 2,
+      "occurrences": 3,
       "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 1,
         "apps/agent-livekit/worker-configuration.d.ts": 1,
         "apps/edge/worker-configuration.d.ts": 1
       },
@@ -1808,8 +2006,9 @@
     },
     {
       "hash": "eed417e63cd75fc5",
-      "occurrences": 2,
+      "occurrences": 3,
       "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 1,
         "apps/agent-livekit/worker-configuration.d.ts": 1,
         "apps/edge/worker-configuration.d.ts": 1
       },
@@ -1817,8 +2016,9 @@
     },
     {
       "hash": "f06092af59e87555",
-      "occurrences": 2,
+      "occurrences": 3,
       "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 1,
         "apps/agent-livekit/worker-configuration.d.ts": 1,
         "apps/edge/worker-configuration.d.ts": 1
       },
@@ -1826,8 +2026,9 @@
     },
     {
       "hash": "f0ff7355173ba609",
-      "occurrences": 2,
+      "occurrences": 3,
       "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 1,
         "apps/agent-livekit/worker-configuration.d.ts": 1,
         "apps/edge/worker-configuration.d.ts": 1
       },
@@ -1835,8 +2036,9 @@
     },
     {
       "hash": "f1079336d2fd1d60",
-      "occurrences": 2,
+      "occurrences": 3,
       "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 1,
         "apps/agent-livekit/worker-configuration.d.ts": 1,
         "apps/edge/worker-configuration.d.ts": 1
       },
@@ -1844,8 +2046,9 @@
     },
     {
       "hash": "f17d96ab19c1185f",
-      "occurrences": 2,
+      "occurrences": 3,
       "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 1,
         "apps/agent-livekit/worker-configuration.d.ts": 1,
         "apps/edge/worker-configuration.d.ts": 1
       },
@@ -1853,8 +2056,9 @@
     },
     {
       "hash": "f36d5b94675d8bae",
-      "occurrences": 2,
+      "occurrences": 3,
       "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 1,
         "apps/agent-livekit/worker-configuration.d.ts": 1,
         "apps/edge/worker-configuration.d.ts": 1
       },
@@ -1862,8 +2066,9 @@
     },
     {
       "hash": "f42e4e7cc0e637d8",
-      "occurrences": 2,
+      "occurrences": 3,
       "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 1,
         "apps/agent-livekit/worker-configuration.d.ts": 1,
         "apps/edge/worker-configuration.d.ts": 1
       },
@@ -1871,8 +2076,9 @@
     },
     {
       "hash": "f49509c580bf90a5",
-      "occurrences": 2,
+      "occurrences": 3,
       "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 1,
         "apps/agent-livekit/worker-configuration.d.ts": 1,
         "apps/edge/worker-configuration.d.ts": 1
       },
@@ -1880,8 +2086,9 @@
     },
     {
       "hash": "f64bd05ab8d35a44",
-      "occurrences": 2,
+      "occurrences": 3,
       "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 1,
         "apps/agent-livekit/worker-configuration.d.ts": 1,
         "apps/edge/worker-configuration.d.ts": 1
       },
@@ -1889,8 +2096,9 @@
     },
     {
       "hash": "f78b90638f15f2da",
-      "occurrences": 2,
+      "occurrences": 3,
       "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 1,
         "apps/agent-livekit/worker-configuration.d.ts": 1,
         "apps/edge/worker-configuration.d.ts": 1
       },
@@ -1898,8 +2106,9 @@
     },
     {
       "hash": "f891296b8893a41b",
-      "occurrences": 2,
+      "occurrences": 3,
       "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 1,
         "apps/agent-livekit/worker-configuration.d.ts": 1,
         "apps/edge/worker-configuration.d.ts": 1
       },
@@ -1907,8 +2116,9 @@
     },
     {
       "hash": "fc73aa6896f7d6ac",
-      "occurrences": 2,
+      "occurrences": 3,
       "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 1,
         "apps/agent-livekit/worker-configuration.d.ts": 1,
         "apps/edge/worker-configuration.d.ts": 1
       },
@@ -1916,8 +2126,9 @@
     },
     {
       "hash": "fcd6b91ee943fb26",
-      "occurrences": 2,
+      "occurrences": 3,
       "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 1,
         "apps/agent-livekit/worker-configuration.d.ts": 1,
         "apps/edge/worker-configuration.d.ts": 1
       },
@@ -1925,8 +2136,9 @@
     },
     {
       "hash": "fd0a74db201ec9f0",
-      "occurrences": 2,
+      "occurrences": 3,
       "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 1,
         "apps/agent-livekit/worker-configuration.d.ts": 1,
         "apps/edge/worker-configuration.d.ts": 1
       },
@@ -1934,8 +2146,9 @@
     },
     {
       "hash": "fd8bef2aa69484c8",
-      "occurrences": 2,
+      "occurrences": 3,
       "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 1,
         "apps/agent-livekit/worker-configuration.d.ts": 1,
         "apps/edge/worker-configuration.d.ts": 1
       },
@@ -1943,8 +2156,9 @@
     },
     {
       "hash": "fdf0fcb1309f4e21",
-      "occurrences": 2,
+      "occurrences": 3,
       "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 1,
         "apps/agent-livekit/worker-configuration.d.ts": 1,
         "apps/edge/worker-configuration.d.ts": 1
       },
@@ -1952,8 +2166,9 @@
     },
     {
       "hash": "fec4a466ac7a5282",
-      "occurrences": 2,
+      "occurrences": 3,
       "files": {
+        "apps/agent-cloudflare/worker-configuration.d.ts": 1,
         "apps/agent-livekit/worker-configuration.d.ts": 1,
         "apps/edge/worker-configuration.d.ts": 1
       },

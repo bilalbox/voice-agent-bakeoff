@@ -9,7 +9,7 @@
 				},
 				"architecture": {
 					"type": "string",
-					"enum": ["retell", "livekit", "cloudflare"]
+					"enum": ["retell", "livekit", "cloudflare", "elevenlabs"]
 				},
 				"scenario_id": {
 					"type": "string",
@@ -21,6 +21,62 @@
 				"policy_passed": {
 					"type": "boolean",
 					"description": "Whether all policy checks passed in this run"
+				},
+				"task_completed": {
+					"type": "boolean",
+					"description": "Whether the caller's primary task or scenario objective was resolved"
+				},
+				"resolution_turns": {
+					"type": "integer",
+					"minimum": 0,
+					"description": "Number of assistant turns taken to reach resolution"
+				},
+				"tools_called_count": {
+					"type": "integer",
+					"minimum": 0,
+					"description": "Total number of backend CRM tools invoked"
+				},
+				"tool_accuracy_score": {
+					"type": "number",
+					"minimum": 0,
+					"maximum": 100,
+					"description": "Accuracy score (0-100) for tool selection and arguments"
+				},
+				"effectiveness_score": {
+					"type": "number",
+					"minimum": 0,
+					"maximum": 100,
+					"description": "Composite agent effectiveness score (0-100) combining policy fidelity, task resolution, tool accuracy, and turn efficiency"
+				},
+				"assertions_passed": {
+					"type": "integer",
+					"minimum": 0
+				},
+				"total_assertions": {
+					"type": "integer",
+					"minimum": 0
+				},
+				"evaluation_details": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"properties": {
+							"id": {
+								"type": "string"
+							},
+							"description": {
+								"type": "string"
+							},
+							"passed": {
+								"type": "boolean"
+							},
+							"reason": {
+								"type": "string"
+							}
+						},
+						"required": ["id", "description", "passed", "reason"],
+						"additionalProperties": false
+					}
 				},
 				"total_duration_ms": {
 					"type": "number",
@@ -69,6 +125,11 @@
 								"minimum": 0,
 								"description": "Total ear-to-mouth turn latency in ms"
 							},
+							"client_rtt_ms": {
+								"type": "number",
+								"minimum": 0,
+								"description": "Client-observed ear-to-mouth or request RTT in ms"
+							},
 							"prompt_tokens": {
 								"type": "integer",
 								"minimum": 0
@@ -92,6 +153,14 @@
 							},
 							"tool_called": {
 								"type": ["string", "null"]
+							},
+							"tool_args": {
+								"type": "object",
+								"additionalProperties": {}
+							},
+							"tool_result": {
+								"type": "object",
+								"additionalProperties": {}
 							},
 							"policy_verdict": {
 								"type": "string",

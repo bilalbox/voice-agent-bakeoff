@@ -7,7 +7,7 @@
 		"resolveJsonModule": true,
 		"isolatedModules": true,
 		"noEmit": true,
-		"types": ["node", "@cloudflare/workers-types"],
+		"types": ["node"],
 		"paths": {
 			"@applianceops/contracts": ["./packages/contracts/src/index.ts"],
 			"@applianceops/contracts/*": ["./packages/contracts/src/*"],
@@ -18,6 +18,7 @@
 		"apps/edge/src/**/*",
 		"apps/edge/worker-configuration.d.ts",
 		"apps/agent-cloudflare/src/**/*",
+		"apps/agent-cloudflare/worker-configuration.d.ts",
 		"apps/agent-livekit/src/**/*",
 		"apps/agent-livekit/worker-configuration.d.ts",
 		"packages/contracts/src/**/*",

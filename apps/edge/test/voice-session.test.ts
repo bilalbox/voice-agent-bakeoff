@@ -235,5 +235,50 @@ describe("Voice Client Session & Security Auth", () => {
 			expect(json.text).toBeTruthy();
 			expect(typeof json.total_turn_rtt_ms).toBe("number");
 		});
+
+		it("handles ElevenLabs session creation (missing credentials vs public agent mode)", async () => {
+			const prevAgentId = env.ELEVENLABS_AGENT_ID;
+			const prevApiKey = env.ELEVENLABS_API_KEY;
+			try {
+				env.ELEVENLABS_AGENT_ID = undefined;
+				env.ELEVENLABS_API_KEY = undefined;
+				const missingRes = await postJson(
+					"/api/voice/session",
+					{
+						architecture: "elevenlabs",
+						scenario: "sarah",
+					},
+					{ "x-demo-token": "dev-seed-token" },
+				);
+				expect(missingRes.status).toBe(500);
+				expect(missingRes.json.error).toContain(
+					"ElevenLabs credentials not configured",
+				);
+
+				env.ELEVENLABS_AGENT_ID = "agent_test_applianceops_01";
+				const pubRes = await postJson(
+					"/api/voice/session",
+					{
+						architecture: "elevenlabs",
+						scenario: "sarah",
+						caller_phone: "+15550104200",
+					},
+					{ "x-demo-token": "dev-seed-token" },
+				);
+				expect(pubRes.status).toBe(200);
+				expect(pubRes.json.ok).toBe(true);
+				expect(pubRes.json.architecture).toBe("elevenlabs");
+				expect(pubRes.json.agent_id).toBe("agent_test_applianceops_01");
+				expect(pubRes.json.dynamic_variables).toEqual(
+					expect.objectContaining({
+						customer_name: "Sarah",
+						job_id: "1042",
+					}),
+				);
+			} finally {
+				env.ELEVENLABS_AGENT_ID = prevAgentId;
+				env.ELEVENLABS_API_KEY = prevApiKey;
+			}
+		});
 	});
 });

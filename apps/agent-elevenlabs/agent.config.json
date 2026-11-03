@@ -1,0 +1,55 @@
+{
+	"agent_name": "ApplianceOps Dispatch (ElevenLabs)",
+	"version_description": "Synced from repo apps/agent-elevenlabs/ (Flash v2.5 TTS + Scribe v1 ASR + Gemini 3.1 Flash-Lite + D1 Edge Webhook Tools)",
+	"voice_id": "cjVigY5qzO86Huf0OWal",
+	"voice_name": "Eric (Conversational Dispatch)",
+	"tts_model_id": "eleven_flash_v2_5",
+	"tts_stability": 0.55,
+	"tts_similarity_boost": 0.8,
+	"tts_speed": 1.04,
+	"language": "en",
+	"llm_model": "gemini-3.1-flash-lite",
+	"llm_temperature": 0.15,
+	"turn_timeout_seconds": 7,
+	"turn_eagerness": "normal",
+	"max_duration_seconds": 600,
+	"first_message": "Thanks for calling ApplianceOps. How can I help you today?",
+	"dispatcher_phone_number": "+14155550100",
+	"default_dynamic_variables": {
+		"customer_name": "there",
+		"open_job_status": "none",
+		"assigned_tech": "",
+		"job_id": "",
+		"appliance": "",
+		"model_serial": "",
+		"parts_status": "",
+		"known_caller": "false"
+	},
+	"pronunciation_dictionary": [
+		{
+			"word": "Miele",
+			"alphabet": "ipa",
+			"phoneme": "ˈmiːlə"
+		},
+		{
+			"word": "Gaggenau",
+			"alphabet": "ipa",
+			"phoneme": "ˈɡɑːɡənaʊ"
+		},
+		{
+			"word": "Bosch",
+			"alphabet": "ipa",
+			"phoneme": "bɔʃ"
+		},
+		{
+			"word": "Sub-Zero",
+			"alphabet": "ipa",
+			"phoneme": "sʌbˈzɪroʊ"
+		},
+		{
+			"word": "ApplianceOps",
+			"alphabet": "ipa",
+			"phoneme": "əˈplaɪəns ɑːps"
+		}
+	]
+}

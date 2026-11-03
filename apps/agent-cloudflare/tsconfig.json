@@ -4,7 +4,6 @@
 		"module": "ESNext",
 		"moduleResolution": "Bundler",
 		"lib": ["ES2022"],
-		"types": ["@cloudflare/workers-types"],
 		"strict": true,
 		"skipLibCheck": true,
 		"noEmit": true,
@@ -12,5 +11,5 @@
 		"forceConsistentCasingInFileNames": true,
 		"resolveJsonModule": true
 	},
-	"include": ["src/**/*.ts"]
+	"include": ["src/**/*.ts", "worker-configuration.d.ts"]
 }

@@ -31,6 +31,7 @@
 				"apps/edge/test/**/*.ts",
 				"apps/edge/vitest.config.ts",
 				"apps/agent-retell/scripts/**/*.ts",
+				"apps/agent-elevenlabs/scripts/**/*.ts",
 				"apps/benchmark/scripts/**/*.ts",
 				"scripts/**/*.{ts,tsx,js,mjs,cjs}",
 				"tests/**/*.{ts,tsx,js,mjs,cjs,sh}",
@@ -67,6 +68,7 @@
 					"tools/**",
 					"baselines/**",
 					"apps/agent-retell/scripts/**",
+					"apps/agent-elevenlabs/scripts/**",
 					"apps/benchmark/scripts/**",
 					"apps/benchmark/app.js"
 				]
@@ -79,6 +81,7 @@
 					"tests/**",
 					"tools/**",
 					"apps/agent-retell/scripts/**",
+					"apps/agent-elevenlabs/scripts/**",
 					"apps/benchmark/scripts/**"
 				]
 			},

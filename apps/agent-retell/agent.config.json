@@ -3,7 +3,7 @@
 	"version_description": "Synced from repo retell/ files (prompt + custom tools + turn/pronunciation tuning)",
 	"voice_id": "REPLACE_WITH_RETELL_VOICE_ID",
 	"language": "en-US",
-	"llm_model": "gpt-6-luna",
+	"llm_model": "gemini-3.1-flash-lite",
 	"responsiveness": 0.55,
 	"interruption_sensitivity": 0.4,
 	"begin_message": "",

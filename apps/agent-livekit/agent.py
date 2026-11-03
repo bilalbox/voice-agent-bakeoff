@@ -45,7 +45,7 @@ EDGE_BASE_URL = os.environ.get("EDGE_BASE_URL", "https://applianceops-edge.23p.w
 )
 LIVEKIT_STT_MODEL = os.environ.get("LIVEKIT_STT_MODEL", "deepgram/nova-3")
 LIVEKIT_TTS_MODEL = os.environ.get("LIVEKIT_TTS_MODEL", "inworld/inworld-tts-2-flash")
-LIVEKIT_LLM_MODEL = os.environ.get("LIVEKIT_LLM_MODEL", "openai/gpt-6-luna")
+LIVEKIT_LLM_MODEL = os.environ.get("LIVEKIT_LLM_MODEL", "google/gemini-3.1-flash-lite")
 
 TOOL_PATHS = {
     "call_inbound": "/api/tools/call-inbound",
@@ -581,6 +581,100 @@ def _extract_item_text(item: Any) -> str:
     return text.strip()
 
 
+def _record_pipeline_metric(metric_obj: Any, bucket: dict[str, Any]) -> None:
+    if metric_obj is None:
+        return
+    cls_name = type(metric_obj).__name__.lower()
+    eou_delay = getattr(metric_obj, "end_of_utterance_delay", None)
+    if eou_delay is not None:
+        bucket["vad_ms"] = max(1, round(float(eou_delay) * 1000))
+
+    ttft = getattr(metric_obj, "ttft", None)
+    if ttft is not None:
+        bucket["llm_ttft_ms"] = max(1, round(float(ttft) * 1000))
+        prompt_tok = getattr(metric_obj, "prompt_tokens", None)
+        comp_tok = getattr(metric_obj, "completion_tokens", None)
+        if prompt_tok is not None:
+            bucket["prompt_tokens"] = int(prompt_tok)
+        if comp_tok is not None:
+            bucket["completion_tokens"] = int(comp_tok)
+
+    ttfb = getattr(metric_obj, "ttfb", None)
+    if ttfb is not None:
+        bucket["tts_ttfb_ms"] = max(1, round(float(ttfb) * 1000))
+        out_dur = getattr(metric_obj, "audio_duration", None)
+        if out_dur is not None:
+            bucket["audio_output_seconds"] = round(float(out_dur), 2)
+
+    if "stt" in cls_name:
+        stt_dur = getattr(metric_obj, "duration", None)
+        in_dur = getattr(metric_obj, "audio_duration", None)
+        if stt_dur is not None and float(stt_dur) > 0:
+            bucket["stt_ms"] = max(1, round(float(stt_dur) * 1000))
+        if in_dur is not None and float(in_dur) > 0:
+            bucket["audio_input_seconds"] = round(float(in_dur), 2)
+
+
+def _publish_room_json(ctx: Any, payload: dict[str, Any]) -> None:
+    room = getattr(ctx, "room", None)
+    local_p = getattr(room, "local_participant", None)
+    if local_p:
+        asyncio.create_task(local_p.publish_data(json.dumps(payload).encode("utf-8")))
+
+
+def _build_assistant_turn_payload(
+    text: str,
+    last_user_final_ts: float,
+    turn_metrics_bucket: dict[str, Any],
+    last_tool_call: dict[str, Any] | None,
+) -> dict[str, Any]:
+    wall_ms = max(1, round((time.perf_counter() - last_user_final_ts) * 1000))
+    tool_ms = int(
+        turn_metrics_bucket.get("tool_ms") or (last_tool_call or {}).get("latency_ms") or 0
+    )
+    vad_ms = int(turn_metrics_bucket.get("vad_ms") or 0)
+    stt_ms = int(turn_metrics_bucket.get("stt_ms") or 0)
+    llm_ms = int(turn_metrics_bucket.get("llm_ttft_ms") or max(1, wall_ms - tool_ms))
+    tts_ms = int(turn_metrics_bucket.get("tts_ttfb_ms") or 0)
+    stage_sum = vad_ms + stt_ms + llm_ms + tool_ms + tts_ms
+    total_rtt = stage_sum if stage_sum > 0 else wall_ms
+
+    payload: dict[str, Any] = {
+        "type": "turn",
+        "role": "assistant",
+        "text": text,
+        "metrics": {
+            "vad_ms": vad_ms,
+            "stt_ms": stt_ms,
+            "llm_ttft_ms": llm_ms,
+            "tool_ms": tool_ms,
+            "tts_ttfb_ms": tts_ms,
+            "total_turn_rtt_ms": total_rtt,
+            "prompt_tokens": turn_metrics_bucket.get("prompt_tokens"),
+            "completion_tokens": turn_metrics_bucket.get("completion_tokens"),
+            "audio_input_seconds": turn_metrics_bucket.get("audio_input_seconds"),
+            "audio_output_seconds": turn_metrics_bucket.get("audio_output_seconds"),
+        },
+    }
+    if last_tool_call:
+        payload["tool"] = last_tool_call
+    return payload
+
+
+def _handle_room_data_packet(data_packet: Any, session: Any) -> float | None:
+    try:
+        raw_bytes = getattr(data_packet, "data", data_packet)
+        if isinstance(raw_bytes, (bytes, bytearray)):
+            msg = json.loads(raw_bytes.decode("utf-8"))
+            if msg.get("type") == "user_prompt" and msg.get("text"):
+                if hasattr(session, "generate_reply"):
+                    asyncio.create_task(session.generate_reply(user_input=str(msg["text"])))
+                return time.perf_counter()
+    except Exception as err:
+        logger.debug("Ignored room data packet: %s", err)
+    return None
+
+
 async def entrypoint(ctx: Any) -> None:
     await ctx.connect(auto_subscribe=AutoSubscribe.AUDIO_ONLY)
     participant = await ctx.wait_for_participant()
@@ -603,24 +697,22 @@ async def entrypoint(ctx: Any) -> None:
     greeting = _build_greeting(vars_ctx)
 
     last_tool_call: dict[str, Any] | None = None
+    turn_metrics_bucket: dict[str, Any] = {}
+    last_user_final_ts: float = time.perf_counter()
 
     async def _handle_tool_event(tool_name: str, latency_ms: int) -> None:
         nonlocal last_tool_call
         last_tool_call = {"name": tool_name, "latency_ms": latency_ms}
-        try:
-            if ctx.room and ctx.room.local_participant:
-                await ctx.room.local_participant.publish_data(
-                    json.dumps(
-                        {
-                            "type": "tool",
-                            "name": tool_name,
-                            "latency_ms": latency_ms,
-                            "status": "executed",
-                        }
-                    ).encode("utf-8")
-                )
-        except Exception as err:
-            logger.debug("Failed to publish tool event: %s", err)
+        turn_metrics_bucket["tool_ms"] = latency_ms
+        _publish_room_json(
+            ctx,
+            {
+                "type": "tool",
+                "name": tool_name,
+                "latency_ms": latency_ms,
+                "status": "executed",
+            },
+        )
 
     tools = build_tools_v1(caller_phone, on_tool_event=_handle_tool_event)
     agent = VoiceAgent(instructions=system_prompt, tools=tools)
@@ -631,45 +723,46 @@ async def entrypoint(ctx: Any) -> None:
         tts=tts_provider,
     )
 
+    @session.on("metrics_collected")
+    def _on_metrics(ev: Any) -> None:
+        metric_obj = getattr(ev, "metrics", None)
+        _record_pipeline_metric(metric_obj, turn_metrics_bucket)
+        if getattr(metric_obj, "ttfb", None) is not None:
+            _publish_room_json(ctx, {"type": "metrics", "metrics": dict(turn_metrics_bucket)})
+
     @session.on("user_input_transcribed")
     def _on_user_input(ev: Any) -> None:
-        transcript = getattr(ev, "transcript", "") or ""
+        nonlocal last_user_final_ts
+        transcript = (getattr(ev, "transcript", "") or "").strip()
         is_final = getattr(ev, "is_final", True)
-        logger.info("livekit_user_input: %s (final=%s)", transcript, is_final)
-        if transcript and is_final and ctx.room and ctx.room.local_participant:
-            asyncio.create_task(
-                ctx.room.local_participant.publish_data(
-                    json.dumps(
-                        {
-                            "type": "turn",
-                            "role": "user",
-                            "text": transcript.strip(),
-                        }
-                    ).encode("utf-8")
-                )
-            )
+        if transcript and is_final:
+            last_user_final_ts = time.perf_counter()
+            _publish_room_json(ctx, {"type": "turn", "role": "user", "text": transcript})
 
     @session.on("conversation_item_added")
     def _on_item(ev: Any) -> None:
         nonlocal last_tool_call
-        try:
-            item = getattr(ev, "item", None)
-            if item and getattr(item, "role", "") == "assistant":
-                text = _extract_item_text(item)
-                if text and ctx.room and ctx.room.local_participant:
-                    payload: dict[str, Any] = {
-                        "type": "turn",
-                        "role": "assistant",
-                        "text": text,
-                    }
-                    if last_tool_call:
-                        payload["tool"] = last_tool_call
-                        last_tool_call = None
-                    asyncio.create_task(
-                        ctx.room.local_participant.publish_data(json.dumps(payload).encode("utf-8"))
-                    )
-        except Exception as err:
-            logger.debug("Failed to publish turn data: %s", err)
+        item = getattr(ev, "item", None)
+        if getattr(item, "role", "") != "assistant":
+            return
+        text = _extract_item_text(item)
+        if not text:
+            return
+        payload = _build_assistant_turn_payload(
+            text, last_user_final_ts, turn_metrics_bucket, last_tool_call
+        )
+        last_tool_call = None
+        turn_metrics_bucket.clear()
+        _publish_room_json(ctx, payload)
+
+    if getattr(ctx, "room", None) and hasattr(ctx.room, "on"):
+
+        @ctx.room.on("data_received")
+        def _on_room_data(data_packet: Any) -> None:
+            nonlocal last_user_final_ts
+            ts = _handle_room_data_packet(data_packet, session)
+            if ts is not None:
+                last_user_final_ts = ts
 
     await session.start(agent, room=ctx.room)
 

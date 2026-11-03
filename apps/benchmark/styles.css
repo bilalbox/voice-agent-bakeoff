@@ -35,6 +35,10 @@
 	--color-retell-bg: rgba(192, 132, 252, 0.12);
 	--color-retell-border: rgba(192, 132, 252, 0.35);
 
+	--color-elevenlabs: #2dd4bf;
+	--color-elevenlabs-bg: rgba(45, 212, 191, 0.12);
+	--color-elevenlabs-border: rgba(45, 212, 191, 0.35);
+
 	/* Pipeline Stage Latencies */
 	--stage-vad: #475569;
 	--stage-stt: #0284c7;
@@ -377,6 +381,12 @@ body {
 }
 .tag-retell {
 	color: var(--color-retell);
+}
+.tag-elevenlabs {
+	color: var(--color-elevenlabs);
+}
+.text-elevenlabs {
+	color: var(--color-elevenlabs);
 }
 
 .arch-specs {
@@ -1297,7 +1307,7 @@ body {
 /* Architecture Selector Grid */
 .arch-selector-grid {
 	display: grid;
-	grid-template-columns: repeat(3, 1fr);
+	grid-template-columns: repeat(2, 1fr);
 	gap: 0.5rem;
 }
 
@@ -1342,6 +1352,9 @@ body {
 .dot-retell {
 	background: var(--color-retell);
 }
+.dot-elevenlabs {
+	background: var(--color-elevenlabs);
+}
 
 .arch-title {
 	font-size: 0.8rem;
@@ -1384,6 +1397,14 @@ body {
 }
 .arch-select-btn.active-retell .arch-speed {
 	color: var(--color-retell);
+}
+
+.arch-select-btn.active-elevenlabs {
+	background: rgba(45, 212, 191, 0.12);
+	border-color: var(--color-elevenlabs);
+}
+.arch-select-btn.active-elevenlabs .arch-speed {
+	color: var(--color-elevenlabs);
 }
 
 /* Scenario Select & Meta */
@@ -1681,7 +1702,8 @@ body {
 	background: var(--panel);
 	padding: 0.75rem 1.25rem;
 	display: flex;
-	gap: 1.5rem;
+	flex-wrap: wrap;
+	gap: 1.15rem;
 }
 
 .telemetry-pill {
@@ -1701,6 +1723,141 @@ body {
 	font-size: 0.85rem;
 	font-weight: 600;
 	color: var(--text-main);
+}
+
+.telemetry-controls-inline {
+	margin-left: auto;
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+	flex-wrap: wrap;
+}
+
+.select-compact {
+	width: auto;
+	padding: 0.3rem 0.6rem;
+	font-size: 0.75rem;
+	font-family: var(--font-mono);
+}
+
+.sr-only {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	border: 0;
+}
+
+.arch-sample-pill {
+	font-family: var(--font-mono);
+	font-size: 0.68rem;
+	font-weight: 500;
+	padding: 0.1rem 0.4rem;
+	border-radius: 4px;
+	background: var(--bg-subtle);
+	border: 1px solid var(--border);
+	color: var(--text-secondary);
+	margin-left: 0.4rem;
+}
+
+.scenario-engine-strip {
+	display: flex;
+	gap: 0.35rem;
+	flex-wrap: wrap;
+	margin-top: 0.35rem;
+}
+
+.engine-mini-badge {
+	font-family: var(--font-mono);
+	font-size: 0.68rem;
+	padding: 0.12rem 0.4rem;
+	border-radius: 4px;
+	background: var(--bg-subtle);
+	border: 1px solid var(--border);
+	color: var(--text-secondary);
+}
+
+.drawer-engine-bar {
+	display: flex;
+	gap: 0.35rem;
+	margin-top: 0.45rem;
+}
+
+.active-drawer-arch {
+	border-color: var(--color-cf);
+	color: var(--color-cf);
+}
+
+.recent-runs-panel {
+	margin-top: 1.5rem;
+	background: var(--panel);
+	border: 1px solid var(--border);
+	border-radius: 8px;
+	padding: 1.25rem 1.5rem;
+	display: flex;
+	flex-direction: column;
+	gap: 0.85rem;
+}
+
+.recent-runs-header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.live-eval-panel {
+	border-top: 1px solid var(--border);
+	background: var(--bg-subtle);
+	padding: 0.85rem 1.25rem;
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+}
+
+.live-eval-header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.live-eval-title {
+	font-size: 0.75rem;
+	font-weight: 600;
+	text-transform: uppercase;
+	letter-spacing: 0.04em;
+	color: var(--text-secondary);
+}
+
+.live-eval-body {
+	font-size: 0.8rem;
+	display: flex;
+	flex-direction: column;
+	gap: 0.35rem;
+}
+
+.eval-assertion-row {
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+	font-family: var(--font-mono);
+	font-size: 0.74rem;
+}
+
+.stage-breakdown-badge {
+	display: inline-flex;
+	flex-wrap: wrap;
+	gap: 0.4rem;
+	background: var(--bg-subtle);
+	border: 1px solid var(--border);
+	color: var(--text-secondary);
+	font-family: var(--font-mono);
+	font-size: 0.7rem;
+	padding: 0.2rem 0.5rem;
+	border-radius: 4px;
+	margin-top: 0.25rem;
 }
 
 @media (prefers-reduced-motion: reduce) {

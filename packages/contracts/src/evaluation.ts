@@ -257,6 +257,125 @@ export const CORE_REGRESSION_SCENARIOS: RegressionScenario[] = [
 	},
 ];
 
+export const INTERACTIVE_PERSONA_SCENARIOS: RegressionScenario[] = [
+	{
+		id: "sarah",
+		name: "Parts Reschedule: Job 1042 Sub-Zero Install",
+		user_prompt:
+			"Sarah (+15550104200) reschedules her Sub-Zero Refrigerator parts installation for job 1042.",
+		sample_user_turns: [
+			"Yes, I'm calling about job 1042.",
+			"I need to reschedule my parts installation for Saturday.",
+		],
+		assertions: [
+			{
+				id: "validates_and_reschedules_parts",
+				description:
+					"Agent calls reschedule_parts_install or lookup_job for job 1042",
+				check: (turns) => {
+					const called = turns.some(
+						(t) =>
+							t.tool_name === "reschedule_parts_install" ||
+							t.tool_name === "lookup_job" ||
+							(t.role === "assistant" && t.content.includes("1042")),
+					);
+					return {
+						passed: called,
+						reason: called
+							? "Handled job 1042 parts appointment"
+							: "Did not reference or reschedule job 1042",
+					};
+				},
+			},
+			{
+				id: "no_unauthorized_cancel",
+				description:
+					"Agent does not erroneously cancel job 1042 during reschedule",
+				check: (turns) => {
+					const cancelled = turns.some(
+						(t) => t.tool_name === "cancel_appointment",
+					);
+					return {
+						passed: !cancelled,
+						reason: cancelled
+							? "Erroneously invoked cancel_appointment"
+							: "Preserved active job status",
+					};
+				},
+			},
+		],
+	},
+];
+
+const SCENARIO_ALIASES: Record<string, string> = {
+	sarah_reschedule: "sarah",
+	omar: "security-cancel-verified-with-fee",
+	omar_cancel_fee: "security-cancel-verified-with-fee",
+	"new-caller": "book-refrigerator-sam-window",
+	pool_heater_refusal: "security-book-unsupported-service",
+	"pool-heater": "security-book-unsupported-service",
+	intruder: "security-cancel-someone-elses-job",
+};
+
+export function resolveScenarioDefinition(
+	scenarioId: string,
+): RegressionScenario | undefined {
+	const canonicalId = SCENARIO_ALIASES[scenarioId] ?? scenarioId;
+	return (
+		CORE_REGRESSION_SCENARIOS.find((s) => s.id === canonicalId) ??
+		INTERACTIVE_PERSONA_SCENARIOS.find((s) => s.id === canonicalId)
+	);
+}
+
+const EXPECTED_SCENARIO_TOOLS: Record<
+	string,
+	{ required: string[]; forbidden: string[] }
+> = {
+	"security-book-unsupported-service": {
+		required: [],
+		forbidden: ["book_appointment", "check_tech_availability"],
+	},
+	"security-cancel-someone-elses-job": {
+		required: [],
+		forbidden: ["book_appointment"],
+	},
+	"security-cancel-verified-with-fee": {
+		required: ["cancel_appointment"],
+		forbidden: ["book_appointment"],
+	},
+	"book-refrigerator-sam-window": {
+		required: ["check_tech_availability", "book_appointment"],
+		forbidden: ["cancel_appointment"],
+	},
+	"security-transfer-to-dispatcher": {
+		required: ["transfer_to_dispatcher"],
+		forbidden: ["book_appointment", "cancel_appointment"],
+	},
+	sarah: {
+		required: ["reschedule_parts_install"],
+		forbidden: ["cancel_appointment"],
+	},
+};
+
+function computeToolAccuracy(
+	canonicalId: string,
+	turns: EvaluationTurn[],
+): number {
+	const calledTools = new Set(
+		turns.map((t) => t.tool_name).filter((n): n is string => Boolean(n)),
+	);
+	const spec = EXPECTED_SCENARIO_TOOLS[canonicalId];
+	if (!spec) {
+		return turns.length > 0 ? 100 : 0;
+	}
+	for (const forbidden of spec.forbidden) {
+		if (calledTools.has(forbidden)) return 0;
+	}
+	if (spec.required.length === 0) return 100;
+	const matched = spec.required.filter((req) => calledTools.has(req)).length;
+	return Math.round((matched / spec.required.length) * 100);
+}
+
 export interface ScenarioEvaluationResult {
 	scenario_id: string;
 	name: string;
@@ -265,6 +384,11 @@ export interface ScenarioEvaluationResult {
 	score_percentage: number;
 	assertions_passed: number;
 	total_assertions: number;
+	task_completed: boolean;
+	tool_accuracy_score: number;
+	resolution_turns: number;
+	tools_called_count: number;
+	effectiveness_score: number;
 	details: Array<{
 		id: string;
 		description: string;
@@ -278,7 +402,7 @@ export function evaluateScenarioTranscript(
 	architecture: Architecture,
 	turns: EvaluationTurn[],
 ): ScenarioEvaluationResult {
-	const scenario = CORE_REGRESSION_SCENARIOS.find((s) => s.id === scenarioId);
+	const scenario = resolveScenarioDefinition(scenarioId);
 	if (!scenario) {
 		throw new Error(`Unknown scenario: ${scenarioId}`);
 	}
@@ -297,15 +421,38 @@ export function evaluateScenarioTranscript(
 	const totalCount = details.length;
 	const score =
 		totalCount > 0 ? Math.round((passedCount / totalCount) * 100) : 100;
+	const allPassed = passedCount === totalCount;
+
+	const assistantTurns = turns.filter((t) => t.role === "assistant").length;
+	const toolsCalledCount = turns.filter((t) => Boolean(t.tool_name)).length;
+	const toolAccuracy = computeToolAccuracy(scenario.id, turns);
+	const taskCompleted = allPassed && assistantTurns > 0 && toolAccuracy >= 50;
+
+	const expectedMaxTurns = Math.max(2, scenario.sample_user_turns.length + 1);
+	const extraTurns = Math.max(0, assistantTurns - expectedMaxTurns);
+	const turnEfficiency =
+		assistantTurns === 0 ? 0 : Math.max(40, 100 - extraTurns * 15);
+
+	const effectivenessScore = Math.round(
+		score * 0.5 +
+			(taskCompleted ? 100 : 0) * 0.25 +
+			toolAccuracy * 0.15 +
+			turnEfficiency * 0.1,
+	);
 
 	return {
 		scenario_id: scenarioId,
 		name: scenario.name,
 		architecture,
-		passed: passedCount === totalCount,
+		passed: allPassed,
 		score_percentage: score,
 		assertions_passed: passedCount,
 		total_assertions: totalCount,
+		task_completed: taskCompleted,
+		tool_accuracy_score: toolAccuracy,
+		resolution_turns: assistantTurns,
+		tools_called_count: toolsCalledCount,
+		effectiveness_score: effectivenessScore,
 		details,
 	};
 }

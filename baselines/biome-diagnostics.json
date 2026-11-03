@@ -2,11 +2,6 @@
 	"version": 1,
 	"findings": [
 		{
-			"id": "apps/agent-cloudflare/src/agent.ts|lint/suspicious/noExplicitAny",
-			"score": 2,
-			"note": "Added via --update; replace with owning issue note."
-		},
-		{
 			"id": "apps/agent-cloudflare/src/index.ts|lint/correctness/noUnusedFunctionParameters",
 			"score": 1,
 			"note": "Added via --update; replace with owning issue note."
@@ -37,21 +32,6 @@
 			"note": "Added via --update; replace with owning issue note."
 		},
 		{
-			"id": "apps/benchmark/app.js|lint/complexity/useOptionalChain",
-			"score": 1,
-			"note": "Added via --update; replace with owning issue note."
-		},
-		{
-			"id": "apps/benchmark/app.js|lint/correctness/noUnusedFunctionParameters",
-			"score": 1,
-			"note": "Added via --update; replace with owning issue note."
-		},
-		{
-			"id": "apps/benchmark/app.js|lint/correctness/noUnusedVariables",
-			"score": 2,
-			"note": "Added via --update; replace with owning issue note."
-		},
-		{
 			"id": "apps/benchmark/app.js|lint/suspicious/noConsole",
 			"score": 2,
 			"note": "Added via --update; replace with owning issue note."
@@ -77,11 +57,6 @@
 			"note": "Added via --update; replace with owning issue note."
 		},
 		{
-			"id": "apps/benchmark/scripts/run-fidelity-suite.ts|lint/suspicious/noExplicitAny",
-			"score": 3,
-			"note": "Added via --update; replace with owning issue note."
-		},
-		{
 			"id": "apps/benchmark/styles.css|lint/complexity/noImportantStyles",
 			"score": 4,
 			"note": "Added via --update; replace with owning issue note."
@@ -97,18 +72,8 @@
 			"note": "Added via --update; replace with owning issue note."
 		},
 		{
-			"id": "apps/edge/src/routes/benchmark.ts|lint/suspicious/noExplicitAny",
-			"score": 3,
-			"note": "Added via --update; replace with owning issue note."
-		},
-		{
 			"id": "apps/edge/src/routes/tools.ts|lint/suspicious/noExplicitAny",
 			"score": 2,
-			"note": "Added via --update; replace with owning issue note."
-		},
-		{
-			"id": "apps/edge/src/routes/voice.ts|lint/suspicious/noExplicitAny",
-			"score": 6,
 			"note": "Added via --update; replace with owning issue note."
 		},
 		{
@@ -119,11 +84,6 @@
 		{
 			"id": "apps/edge/src/workiz/mappers/fromWorkizApi.ts|lint/complexity/noUselessTernary",
 			"score": 1,
-			"note": "Added via --update; replace with owning issue note."
-		},
-		{
-			"id": "apps/edge/test/telemetry-pipeline.test.ts|lint/suspicious/noExplicitAny",
-			"score": 3,
 			"note": "Added via --update; replace with owning issue note."
 		},
 		{

@@ -12,6 +12,8 @@ export type Env = {
 	DEMO_VOICE_TOKEN?: string;
 	DEMO_PASSWORD?: string;
 	RETELL_AGENT_ID?: string;
+	ELEVENLABS_API_KEY?: string;
+	ELEVENLABS_AGENT_ID?: string;
 	LIVEKIT_URL?: string;
 	LIVEKIT_WS_URL?: string;
 	LIVEKIT_API_TOKEN?: string;

@@ -90,7 +90,8 @@ export class LiveKitWorkerContainer extends DurableObject<Env> {
 					LIVEKIT_STT_MODEL: this.env.LIVEKIT_STT_MODEL || "deepgram/nova-3",
 					LIVEKIT_TTS_MODEL:
 						this.env.LIVEKIT_TTS_MODEL || "inworld/inworld-tts-2-flash",
-					LIVEKIT_LLM_MODEL: this.env.LIVEKIT_LLM_MODEL || "openai/gpt-6-luna",
+					LIVEKIT_LLM_MODEL:
+						this.env.LIVEKIT_LLM_MODEL || "google/gemini-3.1-flash-lite",
 					PORT: String(PORT),
 				},
 			});

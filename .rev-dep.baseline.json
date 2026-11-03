@@ -122,6 +122,9 @@
       ],
       "orphan-files": [
         {
+          "file": "apps/agent-cloudflare/worker-configuration.d.ts"
+        },
+        {
           "file": "apps/agent-livekit/worker-configuration.d.ts"
         },
         {
@@ -181,12 +184,6 @@
           "file": "apps/edge/test/voice-session.test.ts",
           "request": "cloudflare:test",
           "kind": "literal"
-        }
-      ],
-      "unused-node-modules": [
-        {
-          "module": "@cloudflare/workers-types",
-          "packageJson": "package.json"
         }
       ]
     }

@@ -14,6 +14,7 @@ export default {
 		if (
 			url.pathname.startsWith("/agents/voice/") ||
 			url.pathname.endsWith("/simulate-turn") ||
+			url.pathname.endsWith("/reset") ||
 			url.pathname === "/simulate-turn"
 		) {
 			if (!env.ApplianceOpsVoiceAgent) {
@@ -22,7 +23,8 @@ export default {
 					{ status: 500 },
 				);
 			}
-			const id = env.ApplianceOpsVoiceAgent.idFromName("default");
+			const sessionId = url.searchParams.get("session_id") || "default";
+			const id = env.ApplianceOpsVoiceAgent.idFromName(sessionId);
 			const stub = env.ApplianceOpsVoiceAgent.get(id);
 			return stub.fetch(request);
 		}

@@ -1,0 +1,147 @@
+{
+	"tools": [
+		{
+			"name": "check_tech_availability",
+			"description": "Return open 2-hour technician arrival windows for supported residential kitchen and laundry appliances (refrigeration, dishwasher, laundry, cooking, Bosch, Miele, Gaggenau, Sub-Zero). Do NOT call for unsupported services like pool heaters or water heaters. Omit zone to search all service areas.",
+			"endpoint": "/api/tools/check_tech_availability",
+			"method": "POST",
+			"parameters": {
+				"type": "object",
+				"properties": {
+					"zone": {
+						"type": "string",
+						"description": "Optional service zone: north | central | south. Omit to search all zones."
+					},
+					"skill": {
+						"type": "string",
+						"description": "Canonical appliance skill: dishwasher, refrigeration, laundry, cooking, bosch, miele, gaggenau, general"
+					},
+					"appliance_type": {
+						"type": "string",
+						"description": "Appliance category named by the caller (e.g. refrigerator, dishwasher)"
+					},
+					"preferred_date": {
+						"type": "string",
+						"description": "Optional ISO date YYYY-MM-DD (e.g. 2026-10-22)"
+					}
+				}
+			}
+		},
+		{
+			"name": "lookup_job",
+			"description": "Look up an active appointment by the caller's verified account phone number when they do not know their job ID.",
+			"endpoint": "/api/tools/lookup_job",
+			"method": "POST",
+			"parameters": {
+				"type": "object",
+				"required": ["phone"],
+				"properties": {
+					"phone": {
+						"type": "string",
+						"description": "Caller's account phone number (e.g. +15550108800)"
+					},
+					"customer_name": {
+						"type": "string",
+						"description": "Optional caller name on the account"
+					},
+					"job_id": {
+						"type": "string",
+						"description": "Optional job ID if known"
+					}
+				}
+			}
+		},
+		{
+			"name": "book_appointment",
+			"description": "Book a technician arrival window for a supported residential appliance using tech_id and window_start from check_tech_availability.",
+			"endpoint": "/api/tools/book_appointment",
+			"method": "POST",
+			"parameters": {
+				"type": "object",
+				"required": ["tech_id", "window_start"],
+				"properties": {
+					"tech_id": {
+						"type": "string",
+						"description": "Technician ID from open_windows (e.g. tech-sam, tech-mike)"
+					},
+					"window_start": {
+						"type": "string",
+						"description": "ISO-8601 start timestamp of the open arrival window"
+					},
+					"appliance": {
+						"type": "string",
+						"description": "Appliance description (e.g. Refrigerator)"
+					},
+					"phone": {
+						"type": "string",
+						"description": "Caller phone number"
+					},
+					"customer_name": {
+						"type": "string",
+						"description": "Caller name"
+					}
+				}
+			}
+		},
+		{
+			"name": "reschedule_parts_install",
+			"description": "Reschedule an existing parts installation appointment after verifying parts are in stock.",
+			"endpoint": "/api/tools/reschedule_parts_install",
+			"method": "POST",
+			"parameters": {
+				"type": "object",
+				"required": ["job_id", "preferred_date"],
+				"properties": {
+					"job_id": {
+						"type": "string",
+						"description": "Appointment job ID (e.g. 1042)"
+					},
+					"preferred_date": {
+						"type": "string",
+						"description": "Requested new install datetime in ISO-8601"
+					}
+				}
+			}
+		},
+		{
+			"name": "cancel_appointment",
+			"description": "Cancel an existing appointment after 2FA verification (requires BOTH job_id and account phone). Enforces the $85 fee for appointments within 24 hours — call with confirmed=false first, get verbal confirmation of the $85 fee, then call again with confirmed=true.",
+			"endpoint": "/api/tools/cancel_appointment",
+			"method": "POST",
+			"parameters": {
+				"type": "object",
+				"required": ["job_id", "phone"],
+				"properties": {
+					"job_id": {
+						"type": "string",
+						"description": "Appointment job ID (e.g. 1088)"
+					},
+					"phone": {
+						"type": "string",
+						"description": "Account phone number for 2FA verification (e.g. +15550108800)"
+					},
+					"confirmed": {
+						"type": "boolean",
+						"description": "Set true only after the caller verbally agrees to the $85 late cancellation fee"
+					}
+				}
+			}
+		},
+		{
+			"name": "transfer_to_dispatcher",
+			"description": "Transfer the caller to a human dispatcher when requested, when 2FA phone verification fails, or when an unsupported service request requires escalation.",
+			"endpoint": "/api/tools/transfer_to_dispatcher",
+			"method": "POST",
+			"parameters": {
+				"type": "object",
+				"required": ["reason"],
+				"properties": {
+					"reason": {
+						"type": "string",
+						"description": "Concise reason for human dispatcher escalation"
+					}
+				}
+			}
+		}
+	]
+}

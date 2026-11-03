@@ -27,6 +27,9 @@
 		"cloudflare:deploy": "npm run deploy -w apps/agent-cloudflare",
 		"edge:deploy": "npm run deploy -w apps/edge",
 		"retell:deploy": "npm run deploy -w apps/agent-retell",
+		"elevenlabs:sync": "npm run sync -w apps/agent-elevenlabs",
+		"elevenlabs:sync:dry": "npm run sync:dry -w apps/agent-elevenlabs",
+		"elevenlabs:deploy": "npm run deploy -w apps/agent-elevenlabs",
 		"benchmark:fidelity": "tsx apps/benchmark/scripts/run-fidelity-suite.ts",
 		"lint": "tsx scripts/ratchets/run-biome.ts",
 		"lint:graph": "tsx scripts/run-rev-dep.ts",
@@ -48,7 +51,6 @@
 	],
 	"devDependencies": {
 		"@biomejs/biome": "2.6.3",
-		"@cloudflare/workers-types": "^5.20261101.1",
 		"@esbuild/linux-x64": "^0.28.2",
 		"@types/node": "^26.6.6",
 		"c8": "^10.1.3",
